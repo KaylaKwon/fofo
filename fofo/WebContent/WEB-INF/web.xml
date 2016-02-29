@@ -16,7 +16,7 @@
   </description>
   <servlet>
     <servlet-name>action</servlet-name>
-    <servlet-class>com.kayla.board.controller.DispatcherServlet</servlet-class>
+    <servlet-class>org.fofo.common.DispatcherServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>action</servlet-name>

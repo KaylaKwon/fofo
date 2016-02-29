@@ -2,6 +2,8 @@ package org.fofo.common;
 
 import java.util.HashMap;
 
+import org.fofo.project.controller.AddProjectController;
+
 
 public class HandlerMapping {
 
@@ -13,6 +15,7 @@ public class HandlerMapping {
 	
 	void init(){
 //		mappings.put("/hello.do", new HelloController());
+		mappings.put("/addProjectList.do", new AddProjectController());
 		
 	}
 	
