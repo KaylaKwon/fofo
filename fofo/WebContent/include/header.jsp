@@ -29,7 +29,7 @@
   </head>
       <!-- jQuery 2.1.4 -->
     <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    
+    <script src="/resources/dist/js/project/project.js"></script>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
       
@@ -330,7 +330,7 @@
               </ul>
             </li>
               <li>
-              <a href="../widgets.html">
+              <a href="project.do">
                 <i class="fa fa-th"></i> <span>프로젝트</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>

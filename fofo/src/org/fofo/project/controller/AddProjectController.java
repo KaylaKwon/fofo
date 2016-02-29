@@ -20,7 +20,7 @@ public class AddProjectController implements Controller{
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String returnURL = "/project.do";
+		String returnURL = "/addProject.do";
 		
 		ProjectDAOImpl dao = new ProjectDAOImpl();
 		Project project = new Project();
