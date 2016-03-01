@@ -1,23 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page session="false"%>
 
+<link href="/resources/dist/css/project/project.css" rel="stylesheet" type="text/css" />
 
 <%@ include file="../include/header.jsp"%>
+<script src="/resources/dist/js/project/project.js"></script>
+
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>프로젝트 편집</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li><a href="#">Formss</a></li>
+			<li class="active">General Elements</li>
+		</ol>
+	</section>
 
 
-<div class="container">
-  <div class="well">
-    
-    <a href="#" id="btnProjectTabAdd"><i class="icon-plus-sign-alt"></i> Add Tab</a>
-    <br><br>
-    <ul class="nav nav-tabs" id="projectTabs">
-        <li class="active"><a href="#tab1">Tab 1</a></li>
-    </ul>
-    
-    <div class="projectTab-content">
-        <div class="tab-pane active" id="tab1">Hello tab #1 content...</div>
-    </div>
-  </div>
+	<!-- Main Content -->
+	<div class="projectContent">
+		<div role="tabpanel">
+
+			<!-- Nav tabs -->
+			<ul id="projectTabs" class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#home"
+					aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+				<a href="#newTab" id=btnProjectTabAdd role="tab">+</a>
+
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="projectTab-content tab-content">
+				<div role="tabpanel" class="tab-pane active" id="home">...</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 
@@ -25,5 +44,5 @@
 <%@ include file="../include/footer.jsp"%>
 
 <script>
-
+	
 </script>
