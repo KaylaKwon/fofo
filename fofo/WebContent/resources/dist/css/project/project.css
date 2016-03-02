@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+.projectContent {
+	padding: 30px;
+	margin-right: 260px;
+}
+
+/* #floatMenu */
+#floatMenu {
+	background-color: #DDDDDD; 
+	text-align: left;
+	position: absolute;
+	width: 260px;
+	top: 200px;
+	right: 10px;
+	padding: 0;
+	margin: 0;
+	z-index: 1000;
+}
+
+#floatMenu a {
+	text-decoration: none;
+	display: block;
+}

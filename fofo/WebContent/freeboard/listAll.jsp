@@ -8,8 +8,7 @@
 <div class="content-wrapper">
 <form action="freeboard.do" method="post">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
+    <section class="content-header">      <h1>
         Free Board
         <small>View</small>
       </h1>

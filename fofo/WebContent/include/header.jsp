@@ -331,7 +331,7 @@
               </ul>
             </li>
               <li>
-              <a href="../widgets.html">
+              <a href="project.do">
                 <i class="fa fa-th"></i> <span>프로젝트</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
