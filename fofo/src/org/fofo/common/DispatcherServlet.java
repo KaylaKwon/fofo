@@ -24,9 +24,9 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println("uri : " + uri);
 		System.out.println("path: " + path);
 		
-		String returnURL = "/home.jsp";	// hashmap에 없는 주소를 요청할 때 보낼 주소
+		String returnURL = "/home.jsp";	
 		
-		HandlerMapping mappings = new HandlerMapping();	//분기시키는 애
+		HandlerMapping mappings = new HandlerMapping();	
 		Controller controller = mappings.getController(path);
 		
 		
@@ -34,13 +34,14 @@ public class DispatcherServlet extends HttpServlet {
 			returnURL = controller.handleRequest(request, response);
 		}
 		
-		if("/login.jsp".equals(returnURL)){
-			response.sendRedirect("login.jsp");
+		if("/user/login.jsp".equals(returnURL)){
+			response.sendRedirect("/user/login.jsp");
+		}else if("/freeboard/listAll.jsp".equals(returnURL)){
+			response.sendRedirect("/freeboard/listAll.jsp");
 		}else{
 			RequestDispatcher dispatcher = request.getRequestDispatcher(returnURL);
 			dispatcher.forward(request, response);
 		}
-		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

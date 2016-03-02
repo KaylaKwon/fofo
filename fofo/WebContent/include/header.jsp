@@ -299,15 +299,16 @@
         </br> --> 
  <!-- 목차형 로그인/회원가입 -->
  		 
-          <ul class="sidebar-menu">
+    <ul class="sidebar-menu">
          
          <!--   <li class="header">MAIN NAVIGATION</li>  --> 
- 
-          	<li align = "center"><a href = "http://localhost:8282/user/login.jsp">
+ 			<br>
+ 			<br>
+          	<li align="center"><a href = "http://localhost:8282/user/login.jsp">
           		<i class = "glyphicon glyphicon-ice-lolly"></i>
           		<span>로그인</span>
           	</a></li>
-          	<li align = "center"><a href = "http://localhost:8282/user/register.jsp">
+          	<li align="center"><a href = "http://localhost:8282/user/register.jsp">
           		<i class = "glyphicon glyphicon-user"></i>
           		<span>회원가입</span>
           	</a>
@@ -342,13 +343,13 @@
               </a>
             </li>
              <li class="treeview">
-              <a href="http://localhost:8282/post/listAll.jsp">
+              <a href="http://localhost:8282/freeboard/listAll.jsp">
                 <i class="fa fa-dashboard"></i> <span>커뮤니티</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/resources/index.html"><i class="fa fa-circle-o"></i> 공지사항</a></li>
-                <li><a href="/resources/index2.html"><i class="fa fa-circle-o"></i> 지식인</a></li>
-                <li><a href="/resources/index2.html"><i class="fa fa-circle-o"></i> 자유게시판</a></li>
+                <li><a href="/freeboard/listAll.jsp"><i class="fa fa-circle-o"></i> 공지사항</a></li>
+                <li><a href="/freeboard/listAll.jsp"><i class="fa fa-circle-o"></i> 지식인</a></li>
+                <li><a href="/freeboard/listAll.jsp"><i class="fa fa-circle-o"></i> 자유게시판</a></li>
               </ul>
             </li>
         </ul>

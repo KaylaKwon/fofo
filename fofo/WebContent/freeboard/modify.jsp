@@ -1,28 +1,30 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page session="false"%>
 
-<%@ include file="../include/header.jsp" %>
-	
-	
-	
-	<div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Board Management
-            <small>Preview</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">General Elements</li>
-          </ol>
-        </section>
-	
-	
-	<form role="form" method="post">
-		<div class="box-body">
+<%@ include file="../include/header.jsp"%>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Free Board
+        <small>Modify</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/home.jsp"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/freeboard/listall.jsp">Community</a></li>
+        <li class="active">Free Board</li>
+      </ol>
+      <br>
+    </section>
+    <section class="content">
+    <div class = "box box-primary">
+	    <div class="box-header">
+	    	<h3 class="box-title">Free Board</h3>
+	    </div>
+		<div class="box-body pad table-responsive">
 			<div class="form-group">
 				<label for="exampleInputEmail1>">PostId</label>
 				<input type="text" name='postId' class="form-control" value="${postVO.postId}" readonly="readonly">
@@ -50,6 +52,8 @@
 	</div>
 	
 	</div>
+	</section>
+</div>
 <%@ include file="../include/footer.jsp" %>
 
 
