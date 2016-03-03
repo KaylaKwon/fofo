@@ -11,36 +11,37 @@ import org.fofo.common.JDBCUtil;
 
 public class FreeBoardDAO {
 
-	private static String addBoardSQL = "insert into board(title, writer, content) values(?, ?, ?)";
+	private static String addBoardSQL = "insert into freepost (boardID, fpostTitle, userID, fpostContent, ftags) values(1, ?, ?, ?, ?)";
 	private static String listBoardSQL = "select * from freepost order by fpostdate desc";
-	private static String getBoardSQL = "select * from freepost where setfPostId = ?";
-	private static String countBoardSQL = "update freepost set fhitNum  = fhitNum + 1 where setfPostId = ?";
-	private static String updateBoardSQL = "update freepost set title = ?, content = ? where seq = ?";
+	private static String getBoardSQL = "select * from freepost where fPostId = ?";
+	private static String countBoardSQL = "update freepost set fhitNum = fhitNum + 1 where fPostId = ?";
+	private static String updateBoardSQL = "update freepost set fpostTitle = ?, fpostContent = ?, ftags = ? where fPostId = ?";
 	
 	public void doUpdateBoard(FreePost freepost){
-	//		
-	//		Connection conn = null;
-	//		PreparedStatement stmt = null;
-	//		try{
-	//			conn = JDBCUtil.getConnection();
-	//			stmt = conn.prepareStatement(updateBoardSQL);
-	//			stmt.setString(1, freepost.getTitle());
-	//			stmt.setString(2, freepost.getContent());
-	//			stmt.setInt(3, freepost.getSeq());
-	//			int cnt = stmt.executeUpdate();
-	//			if(cnt == 1){
-	//				System.out.println("updateBoard success");
-	//			}else{
-	//				System.out.println("updateBoard fail");
-	//			}
-	//		}catch(SQLException e){
-	//			System.out.println("updateBoard ?뿉?윭 : " + e);
-	//		}finally{
-	//			JDBCUtil.close(stmt, conn);
-	//		}
+			
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			try{
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(updateBoardSQL);
+				stmt.setString(1, freepost.getfPostTitle());
+				stmt.setString(2, freepost.getfPostContent());
+				stmt.setString(3, freepost.getfTags());
+				stmt.setInt(4, freepost.getfPostId());
+				int cnt = stmt.executeUpdate();
+				if(cnt == 1){
+					System.out.println("updateBoard success");
+				}else{
+					System.out.println("updateBoard fail");
+				}
+			}catch(SQLException e){
+				System.out.println("updateBoard error : " + e);
+			}finally{
+				JDBCUtil.close(stmt, conn);
+			}
 		}
 		
-	//	
+	
 	public void doGetBoard(FreePost freepost){
 		
 		Connection conn = null;
@@ -57,7 +58,7 @@ public class FreeBoardDAO {
 			stmt.setInt(1, freepost.getfPostId());
 			rst = stmt.executeQuery();
 			if(rst.next()){
-				freepost.setfPostId(rst.getInt("fPostId"));
+				
 				freepost.setBoardId(rst.getInt("BoardId"));
 				freepost.setUserId(rst.getInt("UserId"));
 				freepost.setfHitNum(rst.getInt("fHitNum"));
@@ -68,6 +69,7 @@ public class FreeBoardDAO {
 				freepost.setfPostTitle(rst.getString("fPostTitle"));
 				freepost.setfPostContent(rst.getString("fPostContent"));
 				freepost.setfTags(rst.getString("fTags"));
+				//System.out.println("글 정보 : " + freepost);
 			}
 		}catch(SQLException e){
 			System.out.println("list error : " + e);
@@ -86,7 +88,6 @@ public class FreeBoardDAO {
 		try{
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(listBoardSQL);
-			System.out.println("gg");
 			rst = stmt.executeQuery();
 			while(rst.next()){
 				freepost = new FreePost();
@@ -108,31 +109,32 @@ public class FreeBoardDAO {
 		}finally{
 			JDBCUtil.close(rst, stmt, conn);
 		}
-		System.out.println(list);
+		//System.out.println("리스트정보 : " + list);
 		return list;
 	}
 	
-	public void doAddBoard(FreePost board){
-	//	
-	//	Connection conn = null;
-	//	PreparedStatement stmt = null;
-	//	try{
-	//		conn = JDBCUtil.getConnection();
-	//		stmt = conn.prepareStatement(addBoardSQL);
-	//		stmt.setString(1, board.getTitle());
-	//		stmt.setString(2, board.getWriter());
-	//		stmt.setString(3, board.getContent());
-	//		int cnt = stmt.executeUpdate();
-	//		if(cnt == 1){
-	//			System.out.println("addBoard success");
-	//		}else{
-	//			System.out.println("addBoard fail");
-	//		}
-	//	}catch(SQLException e){
-	//		System.out.println("addBoard ?뿉?윭 : " + e);
-	//	}finally{
-	//		JDBCUtil.close(stmt, conn);
-	//	}
+	public void doAddBoard(FreePost freepost){
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		try{
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(addBoardSQL);
+			stmt.setString(1, freepost.getfPostTitle());
+			stmt.setInt(2, freepost.getUserId());
+			stmt.setString(3, freepost.getfPostContent());
+			stmt.setString(4, freepost.getfTags());
+			int cnt = stmt.executeUpdate();
+			if(cnt == 1){
+				System.out.println("addBoard success");
+			}else{
+				System.out.println("addBoard fail");
+			}
+		}catch(SQLException e){
+			System.out.println("addBoard error : " + e);
+		}finally{
+			JDBCUtil.close(stmt, conn);
+		}
 	}
 	
 	public FreeBoardDAO() {

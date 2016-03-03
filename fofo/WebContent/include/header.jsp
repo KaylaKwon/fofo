@@ -343,13 +343,13 @@
               </a>
             </li>
              <li class="treeview">
-              <a href="http://localhost:8282/freeboard/listAll.jsp">
+              <a href="/freeboard.do">
                 <i class="fa fa-dashboard"></i> <span>커뮤니티</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/freeboard/listAll.jsp"><i class="fa fa-circle-o"></i> 공지사항</a></li>
-                <li><a href="/freeboard/listAll.jsp"><i class="fa fa-circle-o"></i> 지식인</a></li>
-                <li><a href="/freeboard/listAll.jsp"><i class="fa fa-circle-o"></i> 자유게시판</a></li>
+                <li><a href="/freeboard.do"><i class="fa fa-circle-o"></i> 공지사항</a></li>
+                <li><a href="/freeboard.do"><i class="fa fa-circle-o"></i> 지식인</a></li>
+                <li><a href="/freeboard.do"><i class="fa fa-circle-o"></i> 자유게시판</a></li>
               </ul>
             </li>
         </ul>

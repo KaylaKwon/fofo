@@ -25,19 +25,23 @@
 	    	<h3 class="box-title">Free Board write</h3>
 	    </div>
 		<div class="box-body pad table-responsive">
-			<form role="form" method="post">
+			<form action="addfreeboard.do" method="post">
 				<div class="box-body">
 					<div class="form-group">
 						<label for="exampleInputEmail1">Title</label>
-						<input type="text" name='title' class="form-control" placeholder="Enter Title">
+						<input type="text" name="title" class="form-control" placeholder="Enter Title">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Writer</label>
+						<input name="writer" class="form-control" placeholder="Enter Writer">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Content</label>
 						<textarea class="form-control" name="content" rows="3" placeholder="Enter content"></textarea>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Writer</label>
-						<input type="text" name="writer" class="form-control" placeholder="Enter Writer">
+						<label for="exampleInputEmail1">Tags</label>
+						<input type="text" name="tags" class="form-control" placeholder="Enter Writer">
 					</div>
 				</div>
 			
