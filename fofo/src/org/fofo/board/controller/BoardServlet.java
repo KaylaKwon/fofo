@@ -46,7 +46,6 @@ public class BoardServlet extends HttpServlet {
 
 		FreeBoardDAO dao = new FreeBoardDAO();
 		ArrayList<FreePost> list = dao.doListBoard();
-		System.out.println("sdg");
 
 		String returnURL = "freeboard/listAll.jsp";
 		request.setAttribute("list", list);
@@ -85,23 +84,16 @@ public class BoardServlet extends HttpServlet {
 	
 	public void doGetBoard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		FreeBoardDAO dao = new FreeBoardDAO();
-//		FreePost freepost = new FreePost();
-//		freepost.setSeq(Integer.parseInt(request.getParameter("seq")));
-//		dao.doGetBoard(freepost);
-//		
-//		String format = request.getParameter("format");
-//		String returnURL = "getBoard.jsp";
-//		if("json".equals(format)){
-//			Gson gson = new Gson();
-//			String json = gson.toJson(freepost);
-//			request.setAttribute("result", json);
-//			returnURL = "result.jsp";
-//		}else{
-//			request.setAttribute("board", freepost);
-//		}
-//		RequestDispatcher dispatcher = request.getRequestDispatcher(returnURL);
-//		dispatcher.forward(request, response);
+		FreeBoardDAO dao = new FreeBoardDAO();
+		FreePost freepost = new FreePost();
+		freepost.setfPostId(Integer.parseInt(request.getParameter("fPostId")));
+		dao.doGetBoard(freepost);
+		
+		String returnURL = "getBoard.jsp";
+		
+		request.setAttribute("board", freepost);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(returnURL);
+		dispatcher.forward(request, response);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

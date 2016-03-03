@@ -2,9 +2,9 @@ package org.fofo.common;
 
 import java.util.HashMap;
 
+import org.fofo.board.controller.GetBoardController;
 import org.fofo.board.controller.GetBoardListController;
 import org.fofo.project.controller.AddProjectController;
-import org.fofo.project.controller.ProjectController;
 
 
 public class HandlerMapping {
@@ -17,13 +17,11 @@ public class HandlerMapping {
 	
 	void init(){
 //		mappings.put("/hello.do", new HelloController());
-<<<<<<< HEAD
 		mappings.put("/login.do", new GetBoardListController());
 		mappings.put("/freeboard.do", new GetBoardListController());
-=======
+		mappings.put("/getfreeboard.do", new GetBoardController());
 		mappings.put("/addProjectList.do", new AddProjectController());
-		mappings.put("/project.do", new ProjectController());
->>>>>>> f4ea3700560b647070f448546cef01825582046d
+		mappings.put("/project.do", new AddProjectController());
 		
 	}
 	
