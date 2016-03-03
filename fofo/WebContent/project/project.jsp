@@ -27,9 +27,9 @@
 
 			<!-- Nav tabs -->
 			<ul id="projectTab" class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active">
-					<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
-				</li>
+				<!-- <li id="liProjectTabAdd">
+					<a href="#tab1" role="tab">기본</a>
+				</li> -->
 				<li id="liProjectTabAdd">
 					<a href="#newTab" id="btnProjectTabAdd" role="tab">+</a>
 				</li>
@@ -37,7 +37,12 @@
 
 			<!-- Tab panes -->
 			<div class="projectTab-content tab-content">
-				<div role="tabpanel" class="tab-pane active" id="home">...</div>
+				<!-- <div role="tabpanel" class="tab-pane fade" id="tab1">
+					<canvas id="stockGraph" width="150" height="150">
+  					현재 주식 가격: $3.15 +0.15
+					</canvas>
+				</div> -->
+
 			</div>
 		</div>
 	</div>
