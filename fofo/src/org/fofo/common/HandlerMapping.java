@@ -5,7 +5,7 @@ import java.util.HashMap;
 import org.fofo.board.controller.GetBoardController;
 import org.fofo.board.controller.GetBoardListController;
 import org.fofo.project.controller.AddProjectController;
-import org.fofo.project.controller.ProjectController;
+import org.fofo.project.controller.GetProjectEditorController;
 
 
 public class HandlerMapping {
@@ -21,7 +21,7 @@ public class HandlerMapping {
 		mappings.put("/login.do", new GetBoardListController());
 		mappings.put("/freeboard.do", new GetBoardListController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
-		mappings.put("/project.do", new ProjectController());
+		mappings.put("/getProjectEditor.do", new GetProjectEditorController());
 		mappings.put("/getfreeboard.do", new GetBoardController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
 		

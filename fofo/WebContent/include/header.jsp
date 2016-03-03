@@ -9,14 +9,9 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="/resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
     <link href="/resources/dist/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins 
-         folder instead of downloading all of them to reduce the load. -->
     <link href="/resources/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -29,6 +24,7 @@
   </head>
       <!-- jQuery 2.1.4 -->
     <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="scripts/jquery-1.6.2.min.js"></script>
     
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
@@ -331,7 +327,7 @@
               </ul>
             </li>
               <li>
-              <a href="project.do">
+              <a href="getProjectEditor.do">
                 <i class="fa fa-th"></i> <span>프로젝트</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
