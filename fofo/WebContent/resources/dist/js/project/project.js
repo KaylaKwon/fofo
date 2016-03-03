@@ -18,6 +18,7 @@ $(function () {
 	  	
 	  	// make the new tab active
 	  	$('#projectTab a:last').tab('show');
+//	  	$('#projectTab a:nth-last-child(1)').tab('show');	//자잘한 에러
 	});
 
 	
