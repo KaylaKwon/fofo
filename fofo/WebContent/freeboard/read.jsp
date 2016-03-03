@@ -50,7 +50,7 @@
 		
 		<div class="box-footer">
 			<a href = "/modifyviewfreeboard.do?fPostId=${freepost.fPostId}"><button type="submit" class="btn btn-warning">Modify</button></a>
-			<button id="removePost" type="submit" class="btn btn-danger">REMOVE</button>
+			<a href = "/removefreeboard.do?fPostId=${freepost.fPostId}"><button type="submit" class="btn btn-danger">REMOVE</button></a>
 			<a href = "/freeboard.do"><button type="submit" class="btn btn-primary">LIST ALL</button></a>
 		</div>
 		

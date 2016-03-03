@@ -7,6 +7,7 @@ import org.fofo.board.controller.GetBoardController;
 import org.fofo.board.controller.GetBoardListController;
 import org.fofo.board.controller.ModifyBoardController;
 import org.fofo.board.controller.ModifyViewBoardController;
+import org.fofo.board.controller.RemoveBoardController;
 import org.fofo.project.controller.AddProjectController;
 import org.fofo.project.controller.ProjectController;
 
@@ -23,12 +24,16 @@ public class HandlerMapping {
 //		mappings.put("/hello.do", new HelloController());
 		mappings.put("/login.do", new GetBoardListController());
 		mappings.put("/freeboard.do", new GetBoardListController());
+//		mappings.put("/addProjectList.do", new AddProjectController());
+		mappings.put("/project.do", new ProjectController());
 		mappings.put("/getfreeboard.do", new GetBoardController());
 		mappings.put("/addfreeboard.do", new AddBoardController());
 		mappings.put("/modifyfreeboard.do", new ModifyBoardController());
+		mappings.put("/removefreeboard.do", new RemoveBoardController());
 		mappings.put("/modifyviewfreeboard.do", new ModifyViewBoardController());
 		mappings.put("/addProjectList.do", new AddProjectController());
 		mappings.put("/project.do", new ProjectController());
+//		mappings.put("/addProjectList.do", new AddProjectController());
 		
 	}
 	
