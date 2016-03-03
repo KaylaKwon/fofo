@@ -27,7 +27,8 @@ public class HandlerMapping {
 //		mappings.put("/hello.do", new HelloController());
 		mappings.put("/freeboard.do", new GetBoardListController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
-		mappings.put("/getProjectEditor.do", new GetProjectEditorController());
+//		mappings.put("/getProjectEditor.do", new GetProjectEditorController());
+		//위에 에러나서 주석처리함
 		mappings.put("/getfreeboard.do", new GetBoardController());
 		mappings.put("/addfreeboard.do", new AddBoardController());
 		mappings.put("/modifyfreeboard.do", new ModifyBoardController());
