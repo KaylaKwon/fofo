@@ -29,15 +29,12 @@ public class DispatcherServlet extends HttpServlet {
 		HandlerMapping mappings = new HandlerMapping();	
 		Controller controller = mappings.getController(path);
 		
-		
 		if(controller != null){
 			returnURL = controller.handleRequest(request, response);
 		}
 		
 		if("/user/login.jsp".equals(returnURL)){
 			response.sendRedirect("/user/login.jsp");
-		}else if("/freeboard/listAll.jsp".equals(returnURL)){
-			response.sendRedirect("/freeboard/listAll.jsp");
 		}else{
 			RequestDispatcher dispatcher = request.getRequestDispatcher(returnURL);
 			dispatcher.forward(request, response);
@@ -50,6 +47,7 @@ public class DispatcherServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}
 

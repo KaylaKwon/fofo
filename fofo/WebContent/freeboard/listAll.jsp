@@ -1,6 +1,6 @@
-<%@page import="org.fofo.board.vo.FreePost"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="org.fofo.board.dao.FreeBoardDAO"%>
+<%@ page import="org.fofo.board.vo.FreePost"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="org.fofo.board.dao.FreeBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -9,7 +9,6 @@
 <%@ include file="../include/header.jsp"%>
 
 <div class="content-wrapper">
-<form action="freeboard.do" method="post">
     <!-- Content Header (Page header) -->
     <section class="content-header">      <h1>
         Free Board
@@ -51,9 +50,9 @@
 				<c:forEach items="${list}" var="freepost">
 					<tr>
 						<td>${freepost.fPostId}</td>
-						<td><a href='/getfreeboard.do?postId=${freepost.fPostId}'>${freepost.fPostTitle}</a></td>
+						<td><a href='/getfreeboard.do?fPostId=${freepost.fPostId}'>${freepost.fPostTitle}</a></td>
 						<td>${freepost.userId}</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${freepost.fPostDate}"/></td>
+						<td>${freepost.fPostDate}</td>
 						<td><span class="badge bg-red">${freepost.fHitNum }</span></td>
 					</tr>
 				</c:forEach>
@@ -61,7 +60,6 @@
 		</div>
 	</div>
 	</section>
-	</form>
 </div>
 
 

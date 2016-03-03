@@ -17,16 +17,15 @@ public class GetBoardController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		//?´?¼?´?–¸?Š¸?—?…“ seq ê°’ì„ ë°›ì•„ DB?— ?“±ë¡?
-		//getBoard.jspë¡? ?´?™?•´?„œ ë³´ì—¬ì£¼ê¸°
 		FreeBoardDAO dao = new FreeBoardDAO();
 		FreePost freepost = new FreePost();
-		freepost.setfPostId(Integer.parseInt(request.getParameter("seq")));
+		
+		freepost.setfPostId(Integer.parseInt(request.getParameter("fPostId")));
 		dao.doGetBoard(freepost);
 		
-		request.setAttribute("board", freepost);
+		request.setAttribute("freepost", freepost);
 		
-		return "/getBoard.jsp";
+		return "/freeboard/read.jsp";
 	}
 
 }

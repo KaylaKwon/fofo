@@ -25,32 +25,31 @@
 	    	<h3 class="box-title">Free Board</h3>
 	    </div>
 		<div class="box-body pad table-responsive">
-			<div class="form-group">
-				<label for="exampleInputEmail1>">PostId</label>
-				<input type="text" name='postId' class="form-control" value="${postVO.postId}" readonly="readonly">
-			</div>
+		<form action="modifyfreeboard.do" method="post">
+			<input type="hidden" name="fpostid" value="${freepost.fPostId}">
 			<div class="form-group">
 				<label for="exampleInputEmail1>">Title</label>
-				<input type="text" name='postTitle' class="form-control" value='${postVO.postTitle}'>
-			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">Content</label>
-				<textarea class="form-control" name="postContent" rows="3">${postVO.postContent}</textarea>
+				<input type="text" name="title" class="form-control" value="${freepost.fPostTitle}">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1>">Writer</label>
-				<input type="text" name='userId' class="form-control" value="${postVO.userId}">
+				<input name="writer" class="form-control" value="${freepost.userId}" readonly="readonly">
 			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1>">Content</label>
+				<textarea class="form-control" name="content" rows="3">${freepost.fPostContent}</textarea>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1>">Tags</label>
+				<input type="text" name="tags" class="form-control" value="${freepost.fTags}">
+			</div>
+		
+			<div class="box-footer">
+				<button type="submit" class="btn btn-primary">SAVE</button>
+				<a href = "/getfreeboard.do"><button type="submit" class="btn btn-warning">CANCEL</button></a>
+			</div>
+		</form>
 		</div>
-		
-		
-	</form>
-	
-	<div class="box-footer">
-		<button type="submit" class="btn btn-primary">SAVE</button>
-		<button type="submit" class="btn btn-warning">CANCEL</button>
-	</div>
-	
 	</div>
 	</section>
 </div>
