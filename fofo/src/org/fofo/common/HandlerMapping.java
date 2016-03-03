@@ -8,6 +8,9 @@ import org.fofo.board.controller.GetBoardListController;
 import org.fofo.board.controller.ModifyBoardController;
 import org.fofo.board.controller.ModifyViewBoardController;
 import org.fofo.board.controller.RemoveBoardController;
+import org.fofo.member.controller.DoJoinController;
+import org.fofo.member.controller.DoLoginController;
+import org.fofo.member.controller.DoLogoutController;
 import org.fofo.project.controller.AddProjectController;
 import org.fofo.project.controller.GetProjectEditorController;
 
@@ -22,7 +25,6 @@ public class HandlerMapping {
 	
 	void init(){
 //		mappings.put("/hello.do", new HelloController());
-		mappings.put("/login.do", new GetBoardListController());
 		mappings.put("/freeboard.do", new GetBoardListController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
 		mappings.put("/getProjectEditor.do", new GetProjectEditorController());
@@ -32,6 +34,10 @@ public class HandlerMapping {
 		mappings.put("/removefreeboard.do", new RemoveBoardController());
 		mappings.put("/modifyviewfreeboard.do", new ModifyViewBoardController());
 		mappings.put("/addProjectList.do", new AddProjectController());
+		mappings.put("/doJoin.do", new DoJoinController());
+		mappings.put("/doLogout.do", new DoLogoutController());
+		mappings.put("/doLogin.do", new DoLoginController());
+
 //		mappings.put("/project.do", new ProjectController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
 		
