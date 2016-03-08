@@ -34,7 +34,10 @@ public class HandlerMapping {
 		mappings.put("/modifyfreeboard.do", new ModifyBoardController());
 		mappings.put("/removefreeboard.do", new RemoveBoardController());
 		mappings.put("/modifyviewfreeboard.do", new ModifyViewBoardController());
-		mappings.put("/addProjectList.do", new AddProjectController());
+		
+//		mappings.put("/addProjectList.do", new AddProjectController());
+		mappings.put("/project.do", new GetProjectEditorController());
+		
 		mappings.put("/doJoin.do", new DoJoinController());
 		mappings.put("/doLogout.do", new DoLogoutController());
 		mappings.put("/doLogin.do", new DoLoginController());

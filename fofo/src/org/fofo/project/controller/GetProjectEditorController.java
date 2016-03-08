@@ -22,19 +22,19 @@ public class GetProjectEditorController implements Controller{
 			throws ServletException, IOException {
 		String returnURL = "/project/project.jsp";
 		
-//		ProjectDAOImpl dao = new ProjectDAOImpl();
-//		Project project = new Project();
-//		
+		ProjectDAOImpl dao = new ProjectDAOImpl();
+		Project project = new Project();
+		
 //		project.setProjectTitle(request.getParameter("title"));
 //		project.setUserId(Integer.parseInt(request.getParameter("title")));
-//
-//		
-//		try {
-//			dao.doAddProject(project);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
+		
+		try {
+			dao.doAddProject(project);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return returnURL;
 	}

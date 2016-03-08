@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
+
 #draggablePanelList .panel-heading {
         cursor: move;
 }

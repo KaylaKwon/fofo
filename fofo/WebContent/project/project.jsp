@@ -9,7 +9,8 @@
 
 
 <%@ include file="../include/header.jsp"%>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>  -->
+
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
 <script src="../resources/js/project.js"></script>
@@ -43,29 +44,35 @@
 
 				<div role="tabpanel" class="tab-pane active in" id="tab1">
 					<div id="projectContent">
-						<ul id="draggablePanelList" class="list-unstyled">
+					
+						<ul id="blockList" class="list-unstyled draggableList">
+							
 							<li class="panel panel-info">
-								<div class="panel-heading">You can drag this panel.</div>
-								<div class="panel-body">Content ...</div>
-							</li>
-							<li class="panel panel-info">
-								<div class="panel-heading">You can drag this panel too.</div>
-								<div class="panel-body">Content ...</div>
+								<!-- <div class="block">
+									<div id="summernote"></div>
+									<input class="btn btn-warning" type="button" value="수정">
+									<input class="btn btn-danger" type="button" value="삭제">
+								</div> -->
 							</li>
 						</ul>
-
-
-
-						<div class="block">
-							<div id="summernote"></div>
-							
+						
+						<!-- <div class="block">
+							<div id="summernote">init</div>
 							<input class="btn btn-warning" type="button" value="수정">
 							<input class="btn btn-danger" type="button" value="삭제">
+						</div> -->
+
+						<div class="block">
+							<div class="blockContent">hihi</div>
+							<input class="btn btn-warning editBlockBtn" type="button" value="수정">
+							<input class="btn btn-success endEditBlockBtn" type="button" value="완료" style="display: none;">
+							<input class="btn btn-danger delBlockBtn" type="button" value="삭제">
 						</div>
 						
 						
+						
 						<div id="addBlock" class="table-hover">
-							<span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</div>
 					</div>
 
