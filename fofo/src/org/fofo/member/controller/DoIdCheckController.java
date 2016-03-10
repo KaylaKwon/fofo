@@ -1,6 +1,7 @@
 package org.fofo.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,31 +11,31 @@ import org.fofo.common.Controller;
 import org.fofo.member.dao.MemberDAOImpl;
 import org.fofo.member.vo.Member;
 
-public class DoJoinController implements Controller {
+public class DoIdCheckController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String returnURL = "/home.jsp";
-		int result=0;
+		String returnURL = "/user/register.jsp";
+		int result=-1;
 		MemberDAOImpl dao = new MemberDAOImpl();
 		Member vo = new Member();
+	
+		vo.setUEmail(request.getParameter("uId"));
 		
-		vo.setUName(request.getParameter("name"));
-		vo.setUEmail(request.getParameter("email"));
-		vo.setUPW(request.getParameter("pw"));
-
+		System.out.println("받은것"+request.getParameter("uId"));
 		try {
-			result=dao.doJoin(vo);
+			result=dao.doIdCheck(vo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(result==0){
-			returnURL="/user/register.jsp";
-		}
 
+		if(result==-1){//중복
+			 request.setAttribute("idcheck","error");			 
+		}
+		
 		return returnURL;
 	}
 

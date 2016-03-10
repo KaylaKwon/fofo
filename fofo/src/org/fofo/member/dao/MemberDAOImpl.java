@@ -22,12 +22,13 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public void doJoin(Member vo) throws Exception {
+	public int doJoin(Member vo) throws Exception {
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		System.out.println("vo ->"+vo.getUName()+vo.getUEmail()+vo.getUPW());
 		int result=0;
+		int joinResult=0;
 		result=doIdCheck(vo);
 		if(result==1){
 			try{
@@ -51,9 +52,12 @@ public class MemberDAOImpl implements MemberDAO{
 			}finally{
 				JDBCUtil.close(stmt, conn);
 			}
+			joinResult=1;
 		}else{
 			System.out.println("??");
+		
 		}
+		return joinResult;
 
 	}
 
