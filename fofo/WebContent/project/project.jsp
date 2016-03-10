@@ -47,6 +47,14 @@
 						<ul id="blockList" class="list-unstyled draggableList">
 							
 							<li class="panel panel-info">
+							
+								<div class="block">
+									<div class="blockMover"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
+									<div class="blockContent"><p>hihi</p></div>
+									<input class="btn btn-warning editBlockBtn" type="button" value="수정">
+									<input class="btn btn-success endEditBlockBtn" type="button" value="완료" style="display: none;">
+									<input class="btn btn-danger delBlockBtn" type="button" value="삭제">
+								</div>
 								<!-- <div class="block">
 									<div id="summernote"></div>
 									<input class="btn btn-warning" type="button" value="수정">
@@ -61,12 +69,7 @@
 							<input class="btn btn-danger" type="button" value="삭제">
 						</div> -->
 
-						<div class="block">
-							<div class="blockContent">hihi</div>
-							<input class="btn btn-warning editBlockBtn" type="button" value="수정">
-							<input class="btn btn-success endEditBlockBtn" type="button" value="완료" style="display: none;">
-							<input class="btn btn-danger delBlockBtn" type="button" value="삭제">
-						</div>
+						
 						
 						
 						
@@ -90,13 +93,17 @@
 
 <!-- floating menu -->
 <div id="floatMenu">
-	<ul>
+	
+	<input id="editBlockOrder" class="btn btn-default" type="button" value="순서 편집">
+	<input id="endEditBlockOrder" class="btn btn-primary" type="button" value="순서 편집 완료" style="display: none;">
+	
+	<!-- <ul>
 		<li><a href="#">menu1</a></li>
 		<li><a href="#">menu2</a></li>
 		<li><a href="#">menu3</a></li>
 		<li><a href="#">menu4</a></li>
 		<li><a href="#">menu5</a></li>
-	</ul>
+	</ul> -->
 </div>
 <!-- //floatMenu -->
 <%@ include file="../include/footer.jsp"%>
