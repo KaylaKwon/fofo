@@ -36,6 +36,7 @@
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
              <p id="emailcheck"></p>
           </div>
+        	
           <div class="form-group has-feedback">
             <input type="password" class="form-control" placeholder="Password" name="pw" id="pw" >
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -73,12 +74,6 @@
     </div><!-- /.register-box -->
     </div>
 
-    <!-- jQuery 2.1.4 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="../../plugins/iCheck/icheck.min.js"></script>
   
     </div>
   </body>
@@ -90,7 +85,7 @@
           increaseArea: '20%' // optional
         });
       });
-      
+     
       function joinCheck(){
 		var count=0;
     	  if(document.frm["name"].value==""){
@@ -134,7 +129,7 @@
     		  count++;
     		  
     	  }
-    	   /* var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    	    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		    if( re.test(document.frm["email"].value)){
 		    	$("#emailcheck").text("");
 	    		  $("#email").css("border","1px solid #66cc33");
@@ -144,38 +139,32 @@
 	    		  $("#emailcheck").text("Please Check your email");
 	    		  $("#emailcheck").css("color","red");
 	    		  count++;
-		    }   */
-		      $.ajax({
+		    }   
+		      /* $.ajax({
 				url : "../idCheck.do",
 				type : "post",
 				data : {uId:document.frm["email"].value},
 				success : function(data) {
-					alert(data.value);
-					if (data.value=="a") {
-						$("#emailcheck").text("머머");
-					
+					alert(request.getAttribute("idcheck"));
+					if (request.getAttribute("idcheck")!=null) {
+						$("#emailcheck").text("중복");
+						count++;
 					} else {
 						
-						$("#emailcheck").text("이이");
-						count++;
+						$("#emailcheck").text("안중복");
+						
 					}
 				},
 				error : function(error) {
 					alert(error.statusText);
 				}
-			}); 
+			});  */
     	  if(count!=0){
     		  return false;
     	  }else{
     		  return true;
     	  } 
       }
-      
-
-			
-
-	
-     
       
     </script>
 

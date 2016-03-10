@@ -17,7 +17,7 @@ public class DoJoinController implements Controller {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String returnURL = "/home.jsp";
-		
+		int result=0;
 		MemberDAOImpl dao = new MemberDAOImpl();
 		Member vo = new Member();
 		
@@ -26,10 +26,13 @@ public class DoJoinController implements Controller {
 		vo.setUPW(request.getParameter("pw"));
 
 		try {
-			dao.doJoin(vo);
+			result=dao.doJoin(vo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		if(result==0){
+			returnURL="/user/register.jsp";
 		}
 
 		return returnURL;

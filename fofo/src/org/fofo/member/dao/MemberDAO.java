@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MemberDAO {
 	
-	public void doJoin(Member vo) throws Exception;
+	public int doJoin(Member vo) throws Exception;
 	
 	public Member doLogin(Member vo) throws Exception;
 	

@@ -10,6 +10,7 @@ import org.fofo.freeboard.controller.ModifyViewBoardController;
 import org.fofo.freeboard.controller.RemoveBoardController;
 import org.fofo.freecomment.controller.AddCommentController;
 import org.fofo.freecomment.controller.RemoveCommentController;
+import org.fofo.member.controller.DoIdCheckController;
 import org.fofo.member.controller.DoJoinController;
 import org.fofo.member.controller.DoLoginController;
 import org.fofo.member.controller.DoLogoutController;
@@ -48,7 +49,7 @@ public class HandlerMapping {
 		mappings.put("/doLogout.do", new DoLogoutController());
 		mappings.put("/doLogin.do", new DoLoginController());
 		mappings.put("/doLogout.do", new DoLogoutController());
-
+		mappings.put("/idCheck.do", new DoIdCheckController());
 //		mappings.put("/project.do", new ProjectController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
 		
