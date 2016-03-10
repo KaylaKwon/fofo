@@ -13,6 +13,7 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
 <script src="../resources/js/project.js"></script>
+<script src="../resources/summernote-master/lang/summernote-ko-KR.js"></script>
 
 <div class="content-wrapper">
 
@@ -44,34 +45,19 @@
 				<div role="tabpanel" class="tab-pane active in" id="tab1">
 					<div id="projectContent">
 					
-						<ul id="blockList" class="list-unstyled draggableList">
-							
+						<ul id="blockList" class="list-unstyled draggableList blockUnsortable">
 							<li class="panel panel-info">
 							
-								<div class="block">
+								<!-- <div class="block">
 									<div class="blockMover"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
 									<div class="blockContent"><p>hihi</p></div>
 									<input class="btn btn-warning editBlockBtn" type="button" value="수정">
 									<input class="btn btn-success endEditBlockBtn" type="button" value="완료" style="display: none;">
 									<input class="btn btn-danger delBlockBtn" type="button" value="삭제">
-								</div>
-								<!-- <div class="block">
-									<div id="summernote"></div>
-									<input class="btn btn-warning" type="button" value="수정">
-									<input class="btn btn-danger" type="button" value="삭제">
 								</div> -->
+								
 							</li>
 						</ul>
-						
-						<!-- <div class="block">
-							<div id="summernote">init</div>
-							<input class="btn btn-warning" type="button" value="수정">
-							<input class="btn btn-danger" type="button" value="삭제">
-						</div> -->
-
-						
-						
-						
 						
 						<div id="addBlock" class="table-hover">
 							블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>

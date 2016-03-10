@@ -14,6 +14,11 @@ $(document).ready(function() {
 	
 	listEditableFlag = 0;	// 0: unavailable, 1: available
 	
+	$("#blockList").sortable({
+		cancel:".blockUnsortable"
+	});
+	
+	
 	/* 블록 추가 기능 */
 	$('#addBlock').click(function(e) {
 		
@@ -113,30 +118,49 @@ $(document).on('click', '.endEditBlockBtn', function(){
 
 /* 블록 순서 수정 */
 function editBlockOrder($this){
-	console.log("editable");
 	listEditableFlag = 1;
 	$('.editBlockBtn').attr("disabled","disabled");
 	$('.endEditBlockBtn').attr("disabled","disabled");
 	$('.delBlockBtn').attr("disabled","disabled");
 	
-	$('#blockList').sortable();
+//	$('#blockList').sortable();
+	$('#blockList').removeClass("blockUnsortable");
+	
 	$this.hide();
 	$('#endEditBlockOrder').show();
 }
-
 function editBlockListUpdate(){
-	$('#blockList').sortable();
+	$('.editBlockBtn').attr("disabled","disabled");
+	$('.endEditBlockBtn').attr("disabled","disabled");
+	$('.delBlockBtn').attr("disabled","disabled");
+	
+//	$('#blockList').sortable();
+	
+	
 }
 
 /* 블록 순서 수정 완료 */
 function endEditBlockOrder($this){
 	listEditableFlag = 0;
-	$('#blockList').sortable({
-		items: "li:not(*)"
-	});
+	$('.editBlockBtn').removeAttr( "disabled" );
+	$('.endEditBlockBtn').removeAttr( "disabled" );
+	$('.delBlockBtn').removeAttr( "disabled" );
+	
+	/*$('#blockList').sortable({
+		cancel: '.nosort'
+	});*/
+	/*$("#blockList").sortable({
+	    sort: function() {
+	            return false;
+	    }
+	});*/
+	
+	$('#blockList').addClass("blockUnsortable");
+	
 	$this.hide();
 	$('#editBlockOrder').show();
 }
+
 
 /* 블록 내용 수정 */
 function setEditMode($editBtn) {
