@@ -133,8 +133,8 @@
     		  $("#emailcheck").css("color","red");
     		  count++;
     		  
-    	  }/* 
-    	   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    	  }
+    	   /* var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		    if( re.test(document.frm["email"].value)){
 		    	$("#emailcheck").text("");
 	    		  $("#email").css("border","1px solid #66cc33");
@@ -144,8 +144,8 @@
 	    		  $("#emailcheck").text("Please Check your email");
 	    		  $("#emailcheck").css("color","red");
 	    		  count++;
-		    }  */
-		     $.ajax({
+		    }   */
+		      $.ajax({
 				url : "../idCheck.do",
 				type : "post",
 				data : {uId:document.frm["email"].value},
@@ -163,7 +163,7 @@
 				error : function(error) {
 					alert(error.statusText);
 				}
-			});
+			}); 
     	  if(count!=0){
     		  return false;
     	  }else{

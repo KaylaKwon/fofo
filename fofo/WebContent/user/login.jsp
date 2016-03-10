@@ -35,6 +35,16 @@
 		            <input type="password" name="pw" class="form-control" placeholder="Password">
 		            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		          </div>
+		          <%if(request.getAttribute("error")!=null){
+		          	%>
+		          <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+               	Invalid Email or Password
+              </div>
+		          <%} %>
+		          
+		          
 		          <div class="row">
 		            <div class="col-xs-8">
 		              <div class="checkbox icheck">
@@ -77,6 +87,7 @@
           increaseArea: '20%' // optional
         });
       });
+      $("#error").css("color","red");
     </script>
     </div>
   </body>
