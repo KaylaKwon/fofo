@@ -108,13 +108,16 @@ jQuery(document).ready(function() {
 
 
 $(document).on('click', '.editBlockBtn', function(){ 
-	setEditMode($(this));
+	setEditBlockMode($(this));
 });
 
 $(document).on('click', '.endEditBlockBtn', function(){ 
-	endEditMode($(this));
+	endEditBlockMode($(this));
 });
 
+$(document).on('click', '.delBlockBtn', function(){
+	delBlock($(this));
+});
 
 /* 블록 순서 수정 */
 function editBlockOrder($this){
@@ -135,8 +138,6 @@ function editBlockListUpdate(){
 	$('.delBlockBtn').attr("disabled","disabled");
 	
 //	$('#blockList').sortable();
-	
-	
 }
 
 /* 블록 순서 수정 완료 */
@@ -162,8 +163,12 @@ function endEditBlockOrder($this){
 }
 
 
+
+
+
+
 /* 블록 내용 수정 */
-function setEditMode($editBtn) {
+function setEditBlockMode($editBtn) {
 	
 	var endEditBtn = $editBtn.siblings(".endEditBlockBtn");
 	
@@ -189,7 +194,7 @@ function setEditMode($editBtn) {
 }
 
 /* 블록 내용 수정 완료 */
-function endEditMode($endEditBtn){
+function endEditBlockMode($endEditBtn){
 	var content = $(".summernote").summernote('code');
 	var noteEditor = $endEditBtn.siblings(".note-editor");
 	noteEditor.remove();
@@ -206,5 +211,12 @@ function endEditMode($endEditBtn){
 	
 	$endEditBtn.hide();
 	editBtn.show();
+}
+
+/* 블록 삭제 */
+function delBlock($delBtn){
+	var block = $delBtn.parent().parent();
+	console.log(block);
+	block.remove();
 }
 

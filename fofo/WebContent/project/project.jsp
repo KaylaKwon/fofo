@@ -3,17 +3,14 @@
 
 <link href="../resources/css/project.css" rel="stylesheet" type="text/css" />
 	
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
 
 
 <%@ include file="../include/header.jsp"%>
 <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>  -->
 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
-<script src="../resources/js/project.js"></script>
-<script src="../resources/summernote-master/lang/summernote-ko-KR.js"></script>
+
 
 <div class="content-wrapper">
 
@@ -22,7 +19,7 @@
 		<h1>프로젝트 편집</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li><a href="#">Formss</a></li>
+			<li><a href="#">Forms</a></li>
 			<li class="active">General Elements</li>
 		</ol>
 	</section>
@@ -46,17 +43,15 @@
 					<div id="projectContent">
 					
 						<ul id="blockList" class="list-unstyled draggableList blockUnsortable">
-							<li class="panel panel-info">
-							
-								<!-- <div class="block">
+							<!-- <li class="panel panel-info">
+								<div class="block">
 									<div class="blockMover"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
 									<div class="blockContent"><p>hihi</p></div>
 									<input class="btn btn-warning editBlockBtn" type="button" value="수정">
 									<input class="btn btn-success endEditBlockBtn" type="button" value="완료" style="display: none;">
 									<input class="btn btn-danger delBlockBtn" type="button" value="삭제">
-								</div> -->
-								
-							</li>
+								</div>
+							</li> -->
 						</ul>
 						
 						<div id="addBlock" class="table-hover">
@@ -92,8 +87,13 @@
 	</ul> -->
 </div>
 <!-- //floatMenu -->
+
+
+
+<!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> -->
+<script src="../resources/js/project.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+<script src="../resources/summernote-master/lang/summernote-ko-KR.js"></script>
+
 <%@ include file="../include/footer.jsp"%>
 
-<script>
-	
-</script>
