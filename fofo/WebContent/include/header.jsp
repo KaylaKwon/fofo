@@ -20,10 +20,15 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
   </head>
       <!-- jQuery 2.1.4 -->
-    <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <script src="scripts/jquery-1.6.2.min.js"></script>
+    <!-- <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="scripts/jquery-1.6.2.min.js"></script> -->
+    
     
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">

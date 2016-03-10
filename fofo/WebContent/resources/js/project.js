@@ -35,7 +35,7 @@ $(document).ready(function() {
 				+ '<input class="btn btn-danger delBlockBtn" type="button" value="삭제">'
 				+ '</div></li>').appendTo('#blockList');
 		
-		if(listEditableFlag){
+		if(listEditableFlag == 1){
 			editBlockListUpdate();
 		}
 		
@@ -91,14 +91,16 @@ jQuery(document).ready(function() {
 	
 	
 	$("#editBlockOrder").click(function(e){
-		editBlockList($(this));
+		editBlockOrder($(this));
 	});
 	
 	$("#endEditBlockOrder").click(function(e){
-		endEditBlockList($(this));
+		endEditBlockOrder($(this));
 	});
 
 });
+
+
 
 $(document).on('click', '.editBlockBtn', function(){ 
 	setEditMode($(this));
@@ -109,9 +111,9 @@ $(document).on('click', '.endEditBlockBtn', function(){
 });
 
 
-
 /* 블록 순서 수정 */
-function editBlockList($this){
+function editBlockOrder($this){
+	console.log("editable");
 	listEditableFlag = 1;
 	$('.editBlockBtn').attr("disabled","disabled");
 	$('.endEditBlockBtn').attr("disabled","disabled");
@@ -127,7 +129,7 @@ function editBlockListUpdate(){
 }
 
 /* 블록 순서 수정 완료 */
-function endEditBlockList($this){
+function endEditBlockOrder($this){
 	listEditableFlag = 0;
 	$('#blockList').sortable({
 		items: "li:not(*)"
@@ -138,7 +140,6 @@ function endEditBlockList($this){
 
 /* 블록 내용 수정 */
 function setEditMode($editBtn) {
-	console.log($editBtn);
 	
 	var endEditBtn = $editBtn.siblings(".endEditBlockBtn");
 	
