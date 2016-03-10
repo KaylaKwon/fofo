@@ -38,14 +38,15 @@ public class FreeCommentDAO {
 			JDBCUtil.close(stmt, conn);
 		}
 	}
-	public void doUpdateBoard(FreeComment freecomment){
+	public void doUpdateComment(FreeComment freecomment){
 			
 			Connection conn = null;
 			PreparedStatement stmt = null;
 			try{
 				conn = JDBCUtil.getConnection();
 				stmt = conn.prepareStatement(updateCommentSQL);
-				stmt.setString(2, freecomment.getfCommentContent());
+				stmt.setString(1, freecomment.getfCommentContent());
+				stmt.setInt(2, freecomment.getfCommentId());
 				int cnt = stmt.executeUpdate();
 				if(cnt == 1){
 					System.out.println("updateBoard success");
