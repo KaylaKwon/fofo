@@ -1,7 +1,8 @@
-package org.fofo.board.controller;
+package org.fofo.freecomment.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +11,7 @@ import org.fofo.board.dao.FreeBoardDAO;
 import org.fofo.board.vo.FreePost;
 import org.fofo.common.Controller;
 
-public class ModifyBoardController implements Controller {
+public class GetBoardController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -19,13 +20,12 @@ public class ModifyBoardController implements Controller {
 		FreeBoardDAO dao = new FreeBoardDAO();
 		FreePost freepost = new FreePost();
 		
-		freepost.setfPostId(Integer.parseInt(request.getParameter("fpostid")));
-		freepost.setfPostTitle(request.getParameter("title"));
-		freepost.setfPostContent(request.getParameter("content"));
-		freepost.setfTags(request.getParameter("tags"));
+		freepost.setfPostId(Integer.parseInt(request.getParameter("fPostId")));
+		dao.doGetBoard(freepost);
 		
-		dao.doUpdateBoard(freepost);
+		request.setAttribute("freepost", freepost);
 		
-		return "/freeboard.do";
+		return "/freeboard/read.jsp";
 	}
+
 }
