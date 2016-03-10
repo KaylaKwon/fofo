@@ -22,32 +22,42 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public void doJoin(Member vo) throws Exception {
+	public int doJoin(Member vo) throws Exception {
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		System.out.println("vo ->"+vo.getUName()+vo.getUEmail()+vo.getUPW());
-		
-		try{
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(doJoinSQL);
-			stmt.setString(1, vo.getUName());
-			stmt.setString(2, vo.getUEmail());
-			stmt.setString(3, vo.getUPW());
-			
-			int cnt = stmt.executeUpdate();	
-			if(cnt == 1){
-				System.out.println("joining had successed");
-			}else{
-				System.out.println("joining had failed");
+		int result=0;
+		int joinResult=0;
+		result=doIdCheck(vo);
+		if(result==1){
+			try{
+				
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(doJoinSQL);
+				stmt.setString(1, vo.getUName());
+				stmt.setString(2, vo.getUEmail());
+				stmt.setString(3, vo.getUPW());
+				
+				int cnt = stmt.executeUpdate();	
+				if(cnt == 1){
+					System.out.println("joining had successed");
+				}else{
+					System.out.println("joining had failed");
+				}
+				
+			}catch(SQLException e){
+				System.out.println("joining occured an ERROR");
+				e.printStackTrace();
+			}finally{
+				JDBCUtil.close(stmt, conn);
 			}
-			
-		}catch(SQLException e){
-			System.out.println("joining occured an ERROR");
-			e.printStackTrace();
-		}finally{
-			JDBCUtil.close(stmt, conn);
+			joinResult=1;
+		}else{
+			System.out.println("??");
+		
 		}
+		return joinResult;
 
 	}
 
@@ -84,23 +94,27 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public void doIdCheck(Member vo) throws Exception {
+	public int doIdCheck(Member vo) throws Exception {
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		
+		int result=0;
 		try{
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(doJoinSQL);
-			stmt.setString(1, vo.getUName());
-			stmt.setString(2, vo.getUEmail());
-			stmt.setString(3, vo.getUPW());
+			stmt = conn.prepareStatement(doIdCheckSQL);
+			stmt.setString(1, vo.getUEmail());
 			
-			int cnt = stmt.executeUpdate();	
-			if(cnt == 1){
-				System.out.println("joining had successed");
+			
+			ResultSet cnt = stmt.executeQuery();	
+			if(cnt.next()){
+				
+					System.out.println("중복입니다");
+					result=-1;
+				
 			}else{
-				System.out.println("joining had failed");
+				System.out.println("안중복입니다");
+
+				result=1;
 			}
 			
 		}catch(SQLException e){
@@ -108,7 +122,7 @@ public class MemberDAOImpl implements MemberDAO{
 		}finally{
 			JDBCUtil.close(stmt, conn);
 		}
-
+		return result;
 	}
 
 	@Override

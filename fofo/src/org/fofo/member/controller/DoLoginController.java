@@ -34,9 +34,12 @@ public class DoLoginController implements Controller {
 		}
 		if(vo.getUName()!= null){
 			//세션
-			//HttpSession session = request.getSession();
-			//session.setAttribute("name", vo.getUName());
+			HttpSession session = request.getSession();
+			session.setAttribute("name", vo.getUName());
 			System.out.println("login!");
+		}else{
+			request.setAttribute("error", "Invalid email or password");
+			returnURL="/user/login.jsp";
 		}
 		return returnURL;
 	}

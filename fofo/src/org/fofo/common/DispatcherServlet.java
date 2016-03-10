@@ -32,12 +32,9 @@ public class DispatcherServlet extends HttpServlet {
 			returnURL = controller.handleRequest(request, response);
 		}
 		
-		if("/user/login.jsp".equals(returnURL)){
-			response.sendRedirect("/user/login.jsp");
-		}else{
 			RequestDispatcher dispatcher = request.getRequestDispatcher(returnURL);
 			dispatcher.forward(request, response);
-		}
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
