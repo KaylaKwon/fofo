@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,7 +12,6 @@
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link href="/resources/dist/css/AdminLTE.css" rel="stylesheet" type="text/css" />
     <link href="/resources/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-    
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,20 +20,10 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-    
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
-    
   </head>
       <!-- jQuery 2.1.4 -->
-    
-    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script> -->
-    <!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
-    
-    
+    <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="scripts/jquery-1.6.2.min.js"></script>
     
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
@@ -59,6 +47,10 @@
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+              <%if(session.getAttribute("name")==null){ %>
+                  
+                  <%}else{%>
+                  
               <!-- Messages: style can be found in dropdown.less-->
               <li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -251,7 +243,11 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="/resources/dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <span class="hidden-xs">
+                  
+                <%=session.getAttribute("name")%>
+          
+                  </span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -289,8 +285,9 @@
               <li>
                 <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
               </li>
+              <%} %>
             </ul>
-          </div>
+          </div>        
         </nav>
       </header>
       <!-- Left side column. contains the logo and sidebar -->
@@ -309,21 +306,47 @@
     <ul class="sidebar-menu">
          
          <!--   <li class="header">MAIN NAVIGATION</li>  --> 
+ 			
+ 			 <%
+				if(session.getAttribute("name")==null){
+			%>  
+			<br>
  			<br>
- 			<br>
-          	<li align="center"><a href = "http://localhost:8282/user/login.jsp">
+					<li align="center"><a href = "http://localhost:8282/user/login.jsp">
           		<i class = "glyphicon glyphicon-ice-lolly"></i>
           		<span>로그인</span>
           	</a></li>
           	<li align="center"><a href = "http://localhost:8282/user/register.jsp">
           		<i class = "glyphicon glyphicon-user"></i>
           		<span>회원가입</span>
-          	</a>
-          </li>
+          	</a></li>
+          	</br>
           </br>
+          	
+          	<%}else{//세션 아이디가 로그인 중이면
+          	%>
+          	<br>
+ 			<br>
+					<li align="center"><a href = "../doLogout.do">
+          		<i class = "glyphicon glyphicon-user"></i>
+          		<span>로그아웃</span>
+          	</a></li>
+          	</br>
           </br>
+			
+			<%} %>
+          
      <li class ="header" align = "center">MAIN MENU</li>
-   	  		</br>
+   	  	<%
+ 			 if(session.getAttribute("name")!=null){ %>
+          
+   	  		<li>
+              <a href="/user/profile.jsp">
+              <span class="glyphicons glyphicons-notes-2"></span>
+                <i class="fa fa-edit"></i> <span>My page</span>
+                <small class="label pull-right bg-yellow">1</small>
+              </a>
+            </li>
            <li class="treeview">
               <a href="#">
                 <i class="fa fa-files-o"></i>
@@ -338,7 +361,7 @@
               </ul>
             </li>
               <li>
-              <a href="project.do">
+              <a href="getProjectEditor.do">
                 <i class="fa fa-th"></i> <span>프로젝트</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
@@ -349,6 +372,9 @@
                 <small class="label pull-right bg-red">3</small>
               </a>
             </li>
+            
+              <%} %>
+            
              <li class="treeview">
               <a href="/freeboard.do">
                 <i class="fa fa-dashboard"></i> <span>커뮤니티</span> <i class="fa fa-angle-left pull-right"></i>
