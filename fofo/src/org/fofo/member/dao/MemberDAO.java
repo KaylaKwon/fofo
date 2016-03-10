@@ -10,7 +10,7 @@ public interface MemberDAO {
 	
 	public Member doLogin(Member vo) throws Exception;
 	
-	public void doIdCheck(Member vo) throws Exception;
+	public int doIdCheck(Member vo) throws Exception;
 	
 	public void doLeave(Member vo) throws Exception;
 	

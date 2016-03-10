@@ -14,8 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/MemberDispatcherServlet")
 public class DispatcherServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+	private static final long serialVersionUID = 1L;  
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();
@@ -50,5 +49,4 @@ public class DispatcherServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}
-
 }

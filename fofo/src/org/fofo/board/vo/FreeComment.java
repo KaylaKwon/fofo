@@ -8,11 +8,12 @@ public class FreeComment implements Serializable {
 	
 	private int fCommentId;
 	private int fPostId;
-	private int UserId;
+	private int boardId;
+	private int userId;
 	private String uProfileImg;
 	private String fcommentDate;
 	private String fCommentContent;
-	private int fCommentNum;
+	private int fCLikeNum;
 
 	public FreeComment() {
 		// TODO Auto-generated constructor stub
@@ -34,12 +35,20 @@ public class FreeComment implements Serializable {
 		this.fPostId = fPostId;
 	}
 
+	public int getBoardId() {
+		return boardId;
+	}
+
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
+	}
+
 	public int getUserId() {
-		return UserId;
+		return userId;
 	}
 
 	public void setUserId(int userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
 
 	public String getuProfileImg() {
@@ -66,19 +75,18 @@ public class FreeComment implements Serializable {
 		this.fCommentContent = fCommentContent;
 	}
 
-	public int getfCommentNum() {
-		return fCommentNum;
+	public int getfCLikeNum() {
+		return fCLikeNum;
 	}
 
-	public void setfCommentNum(int fCommentNum) {
-		this.fCommentNum = fCommentNum;
+	public void setfCLikeNum(int fCLikeNum) {
+		this.fCLikeNum = fCLikeNum;
 	}
 
 	@Override
 	public String toString() {
-		return "FreeComment [fCommentId=" + fCommentId + ", fPostId=" + fPostId + ", UserId=" + UserId
-				+ ", uProfileImg=" + uProfileImg + ", fcommentDate=" + fcommentDate + ", fCommentContent="
-				+ fCommentContent + ", fCommentNum=" + fCommentNum + "]";
+		return "FreeComment [fCommentId=" + fCommentId + ", fPostId=" + fPostId + ", boardId=" + boardId + ", userId="
+				+ userId + ", uProfileImg=" + uProfileImg + ", fcommentDate=" + fcommentDate + ", fCommentContent="
+				+ fCommentContent + ", fCLikeNum=" + fCLikeNum + "]";
 	}
-
 }

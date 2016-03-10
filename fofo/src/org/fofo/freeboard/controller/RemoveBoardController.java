@@ -1,4 +1,4 @@
-package org.fofo.board.controller;
+package org.fofo.freeboard.controller;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import org.fofo.board.dao.FreeBoardDAO;
 import org.fofo.board.vo.FreePost;
 import org.fofo.common.Controller;
 
-public class GetBoardController implements Controller {
+public class RemoveBoardController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -21,11 +21,9 @@ public class GetBoardController implements Controller {
 		FreePost freepost = new FreePost();
 		
 		freepost.setfPostId(Integer.parseInt(request.getParameter("fPostId")));
-		dao.doGetBoard(freepost);
+		dao.doDeleteBoard(freepost);
 		
-		request.setAttribute("freepost", freepost);
-		
-		return "/freeboard/read.jsp";
+		return "/freeboard.do";
 	}
 
 }
