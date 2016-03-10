@@ -3,8 +3,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ include file="../include/header.jsp" %>
-
-
+<script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' // optional
+        });
+      });
+    /*   function joinCheck(){
+    	  if(!document.frm.pw.value.equals(document.frm.pw2.value)){
+    		  alert("pw check");
+    		  frm.pw.focus();
+    		  return false;
+    	  }
+    	  if(document.frm.name.value==""){
+    		alert("name check");
+    		frm.name.focus();
+    		return false;
+    	  }
+    	  return true;
+      } */
+    </script>
  <body class="hold-transition register-page">
   <div class="wrapper">
   <div class="content-wrapper">
@@ -26,21 +46,23 @@
 
       <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
-        <form action="../../index.html" method="post">
+       
+       
+        <form action="../doJoin.do" method="post" name="frm">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="Full name">
+            <input type="text" class="form-control" placeholder="Full name" name="name">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Email">
+            <input type="email" class="form-control" placeholder="Email" name="email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Password" name="pw">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Retype password">
+            <input type="password" class="form-control" placeholder="Retype password" name="pw2">
             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
           </div>
           <div class="row">
@@ -52,7 +74,7 @@
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat" onclick="return joinCheck()">Register</button>
             </div><!-- /.col -->
           </div>
         </form>
@@ -74,15 +96,7 @@
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="../../plugins/iCheck/icheck.min.js"></script>
-    <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
-    </script>
+    
     </div>
   </body>
 

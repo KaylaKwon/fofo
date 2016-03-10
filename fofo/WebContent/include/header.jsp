@@ -13,6 +13,7 @@
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link href="/resources/dist/css/AdminLTE.css" rel="stylesheet" type="text/css" />
     <link href="/resources/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,10 +22,20 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
+    
   </head>
       <!-- jQuery 2.1.4 -->
-    <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <script src="scripts/jquery-1.6.2.min.js"></script>
+    
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script> -->
+    <!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
+    
+    
     
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
@@ -327,7 +338,7 @@
               </ul>
             </li>
               <li>
-              <a href="getProjectEditor.do">
+              <a href="project.do">
                 <i class="fa fa-th"></i> <span>프로젝트</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
