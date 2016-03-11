@@ -4,6 +4,8 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <title>AdminLTE 2 | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
@@ -27,16 +29,17 @@
     
     <script src="../resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script src="../resources/plugins/jQueryUI/jquery-ui-1.10.3.min.js"></script>
-  	<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-  	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
-  	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-  	
-  	
+    
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="../resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- FastClick -->
+    <script src="../resources/plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../resources/dist/js/app.min.js" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../resources/dist/js/demo.js" type="text/javascript"></script>
     
   </head>
-      <!-- jQuery 2.1.4 -->
-    <!-- <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <script src="scripts/jquery-1.6.2.min.js"></script> -->
     
     
   <body class="skin-blue sidebar-mini">

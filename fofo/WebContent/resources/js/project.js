@@ -1,64 +1,34 @@
 /**
+ * Writer 		: Kyoung-ah Kwon
  * 
  */
-
-/*
-$(function () {
-	
-	
-	
-});*/
 
 
 $(document).ready(function() {
 	
 	listEditableFlag = 0;	// 0: unavailable, 1: available
 	
-	$("#blockList").sortable({
+	$(".blockList").sortable({
 		cancel:".blockUnsortable"
 	});
 	
 	
-	/* 블록 추가 기능 */
-	$('#addBlock').click(function(e) {
-		
-		var blockList = document.getElementById("blockList");	
-		
-		/*$('<li class="panel panel-info">'
-				+ '<div class="block">'
-				+ '<div class="summernote"></div> '
-				+ '<input class="btn btn-warning" type="button" value="수정">'
-				+ '<input class="btn btn-danger" type="button" value="삭제">'
-				+ '</div></li>').appendTo('#blockList');*/
-		
-		$('<li class="panel panel-info">'
-				+ '<div class="block">'
-				+ '<div class="blockMover"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>'
-				+ '<div class="blockContent"><p></p></div>'
-				+ '<input class="btn btn-warning editBlockBtn" type="button" value="수정">'
-				+ '<input class="btn btn-success endEditBlockBtn" type="button" value="완료" style="display: none;">'
-				+ '<input class="btn btn-danger delBlockBtn" type="button" value="삭제">'
-				+ '</div></li>').appendTo('#blockList');
-		
-		if(listEditableFlag == 1){
-			editBlockListUpdate();
-		}
-		
-	});	
-
-	
-	
-	
 	/* 탭 추가 기능 */
-	$('#btnProjectTabAdd').click(function (e) {
+/*	$('#btnProjectTabAdd').click(function (e) {
 	  	var nextTab = $('#projectTab li').size()+1;
 		
 		var projectTab = document.getElementById("projectTab");
 	  	$('<li role="presentation"><a href="#tab'+nextTab+'" aria-controls="tab'+nextTab+'" role="tab" data-toggle="tab">Tab '+nextTab+'</a></li>').insertBefore('#liProjectTabAdd');
-	  	$('<div role="tabpanel" class="tab-pane fade" id="tab'+nextTab+'">tab' +nextTab+' content</div>').appendTo('.projectTab-content');
+	  	$('<div role="tabpanel" class="tab-pane fade" id="tab'+ nextTab + '">'
+	  			+ '<div id="projectContent">'
+				+ '<ul class="blockList list-unstyled draggableList blockUnsortable"></ul>'
+				+ '<div class="table-hover addBlock">'
+				+ '블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>'
+				+ '</div></div>'
+	  			+ '</div>').appendTo('.projectTab-content');
 	  	$('#projectTab a:last').tab('show');
 //	  	$('#projectTab a:nth-last-child(1)').tab('show');	//자잘한 에러
-	});
+	});*/
 
 	
 	
@@ -81,18 +51,10 @@ $(document).ready(function() {
 
 jQuery(document).ready(function() {
 	
-//	$('#blockList').sortable();
-	
-	
-	
-	
-/*	$('.editBlockBtn').click(function(e){
-		setEditMode($(this));
+	$("#loadProjectBtn").click(function(e){
+		var projectName = $("#loadProjectName").val();
+		addTab(projectName);
 	});
-	
-	$('.endEditBlockBtn').click(function(e){
-		endEditMode($(this));
-	});*/
 	
 	
 	$("#editBlockOrder").click(function(e){
@@ -103,6 +65,18 @@ jQuery(document).ready(function() {
 		endEditBlockOrder($(this));
 	});
 
+});
+
+$(document).on('click', '#btnProjectTabAdd', function(){
+	$('#loadProjectModal').on('shown.bs.modal', function () {
+//		  $('#myInput').focus()
+	})
+//	addTab();
+});
+
+
+$(document).on('click', '.addBlock', function(){
+	addBlock($(this));
 });
 
 
@@ -119,15 +93,78 @@ $(document).on('click', '.delBlockBtn', function(){
 	delBlock($(this));
 });
 
+
+/* 새 탭 추가 기능  */
+function addTab(projectName){
+	var nextTab = $('#projectTab li').size()+1;
+	
+	var projectTab = document.getElementById("projectTab");
+  	$('<li role="presentation"><a href="#'+projectName+'" aria-controls="'+projectName+'" role="tab" data-toggle="tab">'+projectName+'</a></li>').insertBefore('#liProjectTabAdd');
+  	
+  	if(listEditableFlag == 1){
+  		$('<div role="tabpanel" class="tab-pane fade" id="'+ projectName + '">'
+  	  			+ '<div id="projectContent">'
+  				+ '<ul class="blockList list-unstyled draggableList"></ul>'
+  				+ '<div class="table-hover addBlock">'
+  				+ '블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>'
+  				+ '</div></div>'
+  	  			+ '</div>').appendTo('.projectTab-content');
+	}else{
+		$('<div role="tabpanel" class="tab-pane fade" id="'+ projectName + '">'
+	  			+ '<div id="projectContent">'
+				+ '<ul class="blockList list-unstyled draggableList blockUnsortable"></ul>'
+				+ '<div class="table-hover addBlock">'
+				+ '블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>'
+				+ '</div></div>'
+	  			+ '</div>').appendTo('.projectTab-content');
+	}
+  	$("#loadProjectName").val('');
+  	
+  	$('#projectTab a:last').tab('show');
+//  	$('#projectTab a:nth-last-child(1)').tab('show');	//자잘한 에러
+  	
+  	$(".blockList").sortable({
+		cancel:".blockUnsortable"
+	});
+}
+
+
+
+/* 블록 추가 */
+function addBlock($addBlock){
+//	var blockList = document.getElementById("blockList");	
+	var blockList = $addBlock.siblings(".blockList");
+	
+	
+	$('<li class="panel panel-info">'
+			+ '<div class="block">'
+			+ '<div class="blockMover"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>'
+			+ '<div class="blockContent"><p></p></div>'
+			+ '<input class="btn btn-warning editBlockBtn" type="button" value="수정">'
+			+ '<input class="btn btn-success endEditBlockBtn" type="button" value="완료" style="display: none;">'
+			+ '<input class="btn btn-danger delBlockBtn" type="button" value="삭제">'
+			+ '</div></li>').appendTo(blockList);
+	
+	if(listEditableFlag == 1){
+		editBlockListUpdate();
+	}
+}
+
+
+
 /* 블록 순서 수정 */
 function editBlockOrder($this){
+	/*var projectTabContent = document.getElementById("projectTabContent");
+	var activeTab = $(projectTabContent).children('.tab-pane.active.in');
+	var blockList = $(activeTab).children('#projectContent').children('.blockList');*/
+	
 	listEditableFlag = 1;
-	$('.editBlockBtn').attr("disabled","disabled");
+	$('.editBlockBtn').attr("disabled","disabled");		//열려있는 탭에 대해서만 하도록 변경? or not?
 	$('.endEditBlockBtn').attr("disabled","disabled");
 	$('.delBlockBtn').attr("disabled","disabled");
 	
-//	$('#blockList').sortable();
-	$('#blockList').removeClass("blockUnsortable");
+//	blockList.removeClass("blockUnsortable");
+	$('.blockList').removeClass("blockUnsortable");
 	
 	$this.hide();
 	$('#endEditBlockOrder').show();
@@ -137,26 +174,21 @@ function editBlockListUpdate(){
 	$('.endEditBlockBtn').attr("disabled","disabled");
 	$('.delBlockBtn').attr("disabled","disabled");
 	
-//	$('#blockList').sortable();
 }
 
 /* 블록 순서 수정 완료 */
 function endEditBlockOrder($this){
+	/*var projectTabContent = document.getElementById("projectTabContent");
+	var activeTab = $(projectTabContent).children('.tab-pane.active.in');
+	var blockList = $(activeTab).children('#projectContent').children('.blockList');*/
+	
 	listEditableFlag = 0;
 	$('.editBlockBtn').removeAttr( "disabled" );
 	$('.endEditBlockBtn').removeAttr( "disabled" );
 	$('.delBlockBtn').removeAttr( "disabled" );
 	
-	/*$('#blockList').sortable({
-		cancel: '.nosort'
-	});*/
-	/*$("#blockList").sortable({
-	    sort: function() {
-	            return false;
-	    }
-	});*/
-	
-	$('#blockList').addClass("blockUnsortable");
+//	blockList.addClass("blockUnsortable");
+	$('.blockList').addClass("blockUnsortable");
 	
 	$this.hide();
 	$('#editBlockOrder').show();
@@ -179,8 +211,7 @@ function setEditBlockMode($editBtn) {
 	editor.insertBefore($editBtn);	 
 	
 	var summernote = $editBtn.siblings(".summernote");
-//	summernote.summernote();
-//	$('.summernote').summernote();
+	
 	/* 에디터 초기 설정 */
 	summernote.summernote({
 		lang : 'ko-KR' // default: 'en-US'
@@ -198,7 +229,6 @@ function endEditBlockMode($endEditBtn){
 	var content = $(".summernote").summernote('code');
 	var noteEditor = $endEditBtn.siblings(".note-editor");
 	noteEditor.remove();
-//	$('.note-editor').remove();
 	
 	var editBtn = $endEditBtn.siblings(".editBlockBtn");
 	
@@ -207,7 +237,6 @@ function endEditBlockMode($endEditBtn){
 	
 	var summernote = $endEditBtn.siblings(".summernote");
 	summernote.remove();
-//	$('.summernote').remove();
 	
 	$endEditBtn.hide();
 	editBtn.show();

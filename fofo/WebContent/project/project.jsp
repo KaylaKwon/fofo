@@ -32,34 +32,25 @@
 			<!-- Nav tabs -->
 			<ul id="projectTab" class="nav nav-tabs" role="tablist">
 				<li role="presentation" ><a href="#tab1" role="tab" aria-controls="tab1" data-toggle="tab">기본</a></li>
-				<li id="liProjectTabAdd"><a href="#newTab"
-					id="btnProjectTabAdd" role="tab">+</a></li>
+				<li id="liProjectTabAdd">
+					<a id="btnProjectTabAdd" role="tab" data-toggle="modal" data-target="#loadProjectModal">+</a>
+				</li>
 			</ul>
 
 			<!-- Tab panes -->
-			<div class="projectTab-content tab-content" onload="loader()">
+			<div id="projectTabContent" class="projectTab-content tab-content" onload="loader()">
 
 				<div role="tabpanel" class="tab-pane active in" id="tab1">
 					<div id="projectContent">
 					
-						<ul id="blockList" class="list-unstyled draggableList blockUnsortable">
-							<!-- <li class="panel panel-info">
-								<div class="block">
-									<div class="blockMover"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
-									<div class="blockContent"><p>hihi</p></div>
-									<input class="btn btn-warning editBlockBtn" type="button" value="수정">
-									<input class="btn btn-success endEditBlockBtn" type="button" value="완료" style="display: none;">
-									<input class="btn btn-danger delBlockBtn" type="button" value="삭제">
-								</div>
-							</li> -->
+						<ul class="blockList list-unstyled draggableList blockUnsortable">
+						<!-- blocks here -->
 						</ul>
 						
-						<div id="addBlock" class="table-hover">
+						<div class="table-hover addBlock">
 							블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</div>
 					</div>
-
-
 
 
 				</div>
@@ -86,7 +77,38 @@
 		<li><a href="#">menu5</a></li>
 	</ul> -->
 </div>
-<!-- //floatMenu -->
+<!-- floatMenu -->
+
+
+
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button> -->
+<!-- load project modal -->
+<div id="loadProjectModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">프로젝트 불러오기</h4>
+      </div>
+      <div class="modal-body">
+      
+        <div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1">load할 프로젝트 이름</span>
+		  <input id="loadProjectName" type="text" class="form-control" placeholder="project name" aria-describedby="basic-addon1">
+		</div>
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="loadProjectBtn" data-dismiss="modal" type="button" class="btn btn-primary">Load</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- load project modal -->
+
+
 
 
 
