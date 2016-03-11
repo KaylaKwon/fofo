@@ -9,8 +9,13 @@ import org.fofo.freeboard.controller.ModifyBoardController;
 import org.fofo.freeboard.controller.ModifyViewBoardController;
 import org.fofo.freeboard.controller.RemoveBoardController;
 import org.fofo.freecomment.controller.AddCommentController;
+import org.fofo.freecomment.controller.ModifyCommentController;
+import org.fofo.freecomment.controller.ModifyViewCommentController;
 import org.fofo.freecomment.controller.RemoveCommentController;
+<<<<<<< HEAD
+=======
 import org.fofo.member.controller.DoIdCheckController;
+>>>>>>> df9f479ff9855935c1c56190ca088abf42edafe2
 import org.fofo.member.controller.DoJoinController;
 import org.fofo.member.controller.DoLoginController;
 import org.fofo.member.controller.DoLogoutController;
@@ -31,7 +36,10 @@ public class HandlerMapping {
 		mappings.put("/freeboard.do", new GetBoardListController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
 //		mappings.put("/getProjectEditor.do", new GetProjectEditorController());
+<<<<<<< HEAD
+=======
 
+>>>>>>> df9f479ff9855935c1c56190ca088abf42edafe2
 		mappings.put("/getfreeboard.do", new GetBoardController());
 		mappings.put("/addfreeboard.do", new AddBoardController());
 		mappings.put("/modifyfreeboard.do", new ModifyBoardController());
@@ -39,17 +47,24 @@ public class HandlerMapping {
 		mappings.put("/modifyviewfreeboard.do", new ModifyViewBoardController());
 		mappings.put("/addfreecomment.do", new AddCommentController());
 		mappings.put("/removefreecomment.do", new RemoveCommentController());
+		mappings.put("/modifyviewfreecomment.do", new ModifyViewCommentController());
+		mappings.put("/modifyfreecomment.do", new ModifyCommentController());
 		mappings.put("/addProjectList.do", new AddProjectController());
+<<<<<<< HEAD
+=======
 
 		
+>>>>>>> df9f479ff9855935c1c56190ca088abf42edafe2
 //		mappings.put("/addProjectList.do", new AddProjectController());
 		mappings.put("/project.do", new GetProjectEditorController());
-		
 		mappings.put("/doJoin.do", new DoJoinController());
 		mappings.put("/doLogout.do", new DoLogoutController());
 		mappings.put("/doLogin.do", new DoLoginController());
+<<<<<<< HEAD
+=======
 		mappings.put("/doLogout.do", new DoLogoutController());
 		mappings.put("/idCheck.do", new DoIdCheckController());
+>>>>>>> df9f479ff9855935c1c56190ca088abf42edafe2
 //		mappings.put("/project.do", new ProjectController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
 		

@@ -35,22 +35,22 @@
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Writer</label>
-					<input type="text" name='postTitle' class="form-control" value="${freepost.userId}" readonly="readonly">
+					<input type="text" name='userId' class="form-control" value="${freepost.userId}" readonly="readonly">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">Content</label>
-					<textarea class="form-control" name="postContent" rows="3" readonly="readonly">${freepost.fPostContent}</textarea>
+					<textarea class="form-control" name="fPostContent" rows="3" readonly="readonly">${freepost.fPostContent}</textarea>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Tags</label>
-					<input type="text" name='postTitle' class="form-control" value="${freepost.fTags}" readonly="readonly">
+					<input type="text" name='fTags' class="form-control" value="${freepost.fTags}" readonly="readonly">
 				</div>
 			</div>
 			
 			<div class="box-footer">
-				<a href = "/modifyviewfreeboard.do?fPostId=${freepost.fPostId}"><button type="submit" class="btn btn-warning">Modify</button></a>
-				<a href = "/removefreeboard.do?fPostId=${freepost.fPostId}"><button type="submit" class="btn btn-danger">REMOVE</button></a>
-				<a href = "/freeboard.do"><button type="submit" class="btn btn-primary">LIST ALL</button></a>
+				<button id="ModifyPost" type="submit" class="btn btn-warning">Modify</button>
+				<button id="RemovePost" type="submit" class="btn btn-danger">REMOVE</button>
+				<button id="listAll" type="submit" class="btn btn-primary">LIST ALL</button>
 			</div>
 		</div>
 	</div>
@@ -67,7 +67,7 @@
 			<Input class="form-control" type="text" placeholder="COMMENT TEXT" name="fCommentContent">
 		</div>
 		<div class="body-footer">
-			<button type="submit" class="btn btn-primary">ADD COMMENT</button>
+			<button id="addcomment" type="submit" class="btn btn-primary">ADD COMMENT</button>
 		</div>
 	</form>
 	</div>
@@ -79,15 +79,37 @@
 			<li class="replyLi">
 			<i class="fa fa-comments bg-blue"></i>
 				<div class="timeline-item">
-					<span class="time">
+				<c:choose>
+					<c:when test="${freecomment.fCommentId == fCommentId}">
+						<% System.out.println("modify_comment_movement success"); %>
+						<form role="comt" action="post">
+							<input type="hidden" name="fPostId" value="${freepost.fPostId}">
+							<input type="hidden" name="fCommentId" value="${freepost.fCommentId}">
+							<span class="time">
+								<i class="fa fa-clock-o"></i>${freecomment.fcommentDate}
+							</span>
+							<h3 class="timeline-header"><strong>${freecomment.fCommentId}</strong>- ${freecomment.userId}</h3>
+							<div class="timeline-body">
+							<input class="form-control" type="text" id="fCommentContent" name="fCommentContent" value="${freecomment.fCommentContent}"></div>
+							<div class="timeline-footer">
+								<a id="savebtn" class="btn btn-primary btn-xs">Save</a>
+								<a id="cancelbtn" class="btn btn-danger btn-xs">Cancel</a>
+							</div>
+						</form>
+					</c:when>
+					<c:otherwise>
+						<% //System.out.println("modify_comment_movement fail"); %>
+						<span class="time">
 						<i class="fa fa-clock-o"></i>${freecomment.fcommentDate}
-					</span>
-					<h3 class="timeline-header"><strong>${freecomment.fCommentId}</strong>- ${freecomment.userId}</h3>
-					<div class="timeline-body">${freecomment.fCommentContent}</div>
-					<div class="timeline-footer">
-						<a class="btn btn-primary btn-xs">Modify</a>
-						<a class="btn btn-danger btn-xs" href="/removefreecomment.do?fCommentId=${freecomment.fCommentId}&fPostId=${freepost.fPostId}">Delete</a>
-					</div>
+						</span>
+						<h3 class="timeline-header"><strong>${freecomment.fCommentId}</strong>- ${freecomment.userId}</h3>
+						<div class="timeline-body">${fmComtId}${freecomment.fCommentContent}</div>
+						<div class="timeline-footer">
+							<a class="btn btn-primary btn-xs" href="/modifyviewfreecomment.do?fPostId=${freepost.fPostId}&fCommentId=${freecomment.fCommentId}">Modify</a>
+							<a class="btn btn-danger btn-xs" href="/removefreecomment.do?fCommentId=${freecomment.fCommentId}&fPostId=${freepost.fPostId}">Delete</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
 				</div>
 			</li>
 		</c:forEach>
@@ -95,3 +117,42 @@
 	</section>
 </div>
 <%@ include file="../include/footer.jsp" %>
+
+
+<script>
+$(document).ready(function(){
+	var formObj = $("form[role = 'form']");
+	console.log(formObj);
+	
+	$("#ModifyPost").on("click", function(){
+		formObj.attr("action", "/modifyviewfreeboard.do");
+		formObj.attr("method", "post");
+		formObj.submit();
+	});
+	
+	$("#RemovePost").on("click", function(){
+		formObj.attr("action", "/removefreeboard.do");
+		formObj.attr("method", "post");
+		formObj.submit();
+	});
+	$("#ListAll").on("click", function(){
+		self.location = "/freeboard.do";
+	});
+	
+	var formObj2 = $("form[role = 'comt']");
+	console.log(formObj2);
+	
+	$("savebtn").on("click", function(){
+		formObj2.attr("action", "/modifyfreecomment.do");
+		formObj2.attr("method", "post");
+		formObj2.submit();
+	});
+	
+	$("cancelbtn").on("click", function(){
+		formObj2.attr("action", "/getfreeboard.do");
+		formObj2.attr("method", "post");
+		formObj2.submit();
+	});
+});
+
+</script>
