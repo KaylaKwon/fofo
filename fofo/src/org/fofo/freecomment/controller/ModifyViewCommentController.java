@@ -23,9 +23,9 @@ public class ModifyViewCommentController implements Controller {
 		
 		request.setCharacterEncoding("utf-8");
 		freecomment.setfPostId(Integer.parseInt(request.getParameter("fPostId")));
-		freecomment.setfCommentId(Integer.parseInt(request.getParameter("fCommentId")));
+		freecomment.setfCommentId(Integer.parseInt(request.getParameter("fmodifyCId")));
 		
-		request.setAttribute("fCommentId", freecomment.getfCommentId());
+		request.setAttribute("fmodifyCId", freecomment.getfCommentId());
 		request.setAttribute("fPostId", freecomment.getfPostId());
 		
 		return "/getfreeboard.do";

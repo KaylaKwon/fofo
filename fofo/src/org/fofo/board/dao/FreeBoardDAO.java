@@ -131,6 +131,7 @@ public class FreeBoardDAO {
 		}
 		//System.out.println("리스트정보 : " + list);
 		return list;
+		
 	}
 	
 	public void doAddBoard(FreePost freepost){
