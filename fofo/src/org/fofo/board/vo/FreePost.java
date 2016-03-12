@@ -89,7 +89,7 @@ public class FreePost implements Serializable {
 	public String getfPostTitle() {
 		return fPostTitle;
 	}
-
+	
 	public void setfPostTitle(String fPostTitle) {
 		this.fPostTitle = fPostTitle;
 	}

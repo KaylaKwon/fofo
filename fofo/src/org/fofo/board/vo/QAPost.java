@@ -6,28 +6,28 @@ public class QAPost implements Serializable {
 
 	private static final long serialVersionUID = -4022161635202540887L;
 	
-	private int fPostId;
+	private int qaPostId;
 	private int BoardId;
 	private int UserId;
-	private int fHitNum;
-	private int fRecommendNum;
-	private int fCommentNum;
-	private int fBookmarkNum;
-	private String fPostDate;
-	private String fPostTitle;
-	private String fPostContent;
-	private String fTags;
+	private int qaHitNum;
+	private int qaRecommendNum;
+	private int qaCommentNum;
+	private int qaBookmarkNum;
+	private String qaPostDate;
+	private String qaPostTitle;
+	private String qaPostContent;
+	private String qaTags;
 
 	public QAPost() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getfPostId() {
-		return fPostId;
+	public int getqaPostId() {
+		return qaPostId;
 	}
 
-	public void setfPostId(int fPostId) {
-		this.fPostId = fPostId;
+	public void setqaPostId(int qaPostId) {
+		this.qaPostId = qaPostId;
 	}
 
 	public int getBoardId() {
@@ -46,76 +46,76 @@ public class QAPost implements Serializable {
 		UserId = userId;
 	}
 
-	public int getfHitNum() {
-		return fHitNum;
+	public int getqaHitNum() {
+		return qaHitNum;
 	}
 
-	public void setfHitNum(int fHitNum) {
-		this.fHitNum = fHitNum;
+	public void setqaHitNum(int qaHitNum) {
+		this.qaHitNum = qaHitNum;
 	}
 
-	public int getfRecommendNum() {
-		return fRecommendNum;
+	public int getqaRecommendNum() {
+		return qaRecommendNum;
 	}
 
-	public void setfRecommendNum(int fRecommendNum) {
-		this.fRecommendNum = fRecommendNum;
+	public void setqaRecommendNum(int qaRecommendNum) {
+		this.qaRecommendNum = qaRecommendNum;
 	}
 
-	public int getfCommentNum() {
-		return fCommentNum;
+	public int getqaCommentNum() {
+		return qaCommentNum;
 	}
 
-	public void setfCommentNum(int fCommentNum) {
-		this.fCommentNum = fCommentNum;
+	public void setqaCommentNum(int qaCommentNum) {
+		this.qaCommentNum = qaCommentNum;
 	}
 
-	public int getfBookmarkNum() {
-		return fBookmarkNum;
+	public int getqaBookmarkNum() {
+		return qaBookmarkNum;
 	}
 
-	public void setfBookmarkNum(int fBookmarkNum) {
-		this.fBookmarkNum = fBookmarkNum;
+	public void setqaBookmarkNum(int qaBookmarkNum) {
+		this.qaBookmarkNum = qaBookmarkNum;
 	}
 
-	public String getfPostDate() {
-		return fPostDate;
+	public String getqaPostDate() {
+		return qaPostDate;
 	}
 
-	public void setfPostDate(String fPostDate) {
-		this.fPostDate = fPostDate;
+	public void setqaPostDate(String qaPostDate) {
+		this.qaPostDate = qaPostDate;
 	}
 
-	public String getfPostTitle() {
-		return fPostTitle;
+	public String getqaPostTitle() {
+		return qaPostTitle;
 	}
 
-	public void setfPostTitle(String fPostTitle) {
-		this.fPostTitle = fPostTitle;
+	public void setqaPostTitle(String qaPostTitle) {
+		this.qaPostTitle = qaPostTitle;
 	}
 
-	public String getfPostContent() {
-		return fPostContent;
+	public String getqaPostContent() {
+		return qaPostContent;
 	}
 
-	public void setfPostContent(String fPostContent) {
-		this.fPostContent = fPostContent;
+	public void setqaPostContent(String qaPostContent) {
+		this.qaPostContent = qaPostContent;
 	}
 
-	public String getfTags() {
-		return fTags;
+	public String getqaTags() {
+		return qaTags;
 	}
 
-	public void setfTags(String fTags) {
-		this.fTags = fTags;
+	public void setqaTags(String qaTags) {
+		this.qaTags = qaTags;
 	}
 
 	@Override
 	public String toString() {
-		return "FreePost [fPostId=" + fPostId + ", BoardId=" + BoardId + ", UserId=" + UserId + ", fHitNum=" + fHitNum
-				+ ", fRecommendNum=" + fRecommendNum + ", fCommentNum=" + fCommentNum + ", fBookmarkNum=" + fBookmarkNum
-				+ ", fPostDate=" + fPostDate + ", fPostTitle=" + fPostTitle + ", fPostContent=" + fPostContent
-				+ ", fTags=" + fTags + "]";
+		return "FreePost [qaPostId=" + qaPostId + ", BoardId=" + BoardId + ", UserId=" + UserId + ", qaHitNum=" + qaHitNum
+				+ ", qaRecommendNum=" + qaRecommendNum + ", qaCommentNum=" + qaCommentNum + ", qaBookmarkNum=" + qaBookmarkNum
+				+ ", qaPostDate=" + qaPostDate + ", qaPostTitle=" + qaPostTitle + ", qaPostContent=" + qaPostContent
+				+ ", qaTags=" + qaTags + "]";
 	}
 
 }

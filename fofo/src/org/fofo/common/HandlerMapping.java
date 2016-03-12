@@ -18,6 +18,9 @@ import org.fofo.member.controller.DoLoginController;
 import org.fofo.member.controller.DoLogoutController;
 import org.fofo.project.controller.AddProjectController;
 import org.fofo.project.controller.GetProjectEditorController;
+import org.fofo.qaboard.controller.AddQABoardController;
+import org.fofo.qaboard.controller.GetQABoardController;
+import org.fofo.qaboard.controller.GetQABoardListController;
 
 
 public class HandlerMapping {
@@ -40,6 +43,9 @@ public class HandlerMapping {
 		mappings.put("/modifyfreeboard.do", new ModifyBoardController());
 		mappings.put("/removefreeboard.do", new RemoveBoardController());
 		mappings.put("/modifyviewfreeboard.do", new ModifyViewBoardController());
+		mappings.put("/qaboard.do", new GetQABoardListController());
+		mappings.put("/getqaboard.do", new GetQABoardController());
+		mappings.put("/addqaboard.do", new AddQABoardController());
 		
 		mappings.put("/addfreecomment.do", new AddCommentController());
 		mappings.put("/removefreecomment.do", new RemoveCommentController());

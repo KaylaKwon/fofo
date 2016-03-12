@@ -398,7 +398,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="/freeboard.do"><i class="fa fa-circle-o"></i> 공지사항</a></li>
-                <li><a href="/freeboard.do"><i class="fa fa-circle-o"></i> 지식인</a></li>
+                <li><a href="/qaboard.do"><i class="fa fa-circle-o"></i> Q&A</a></li>
                 <li><a href="/freeboard.do"><i class="fa fa-circle-o"></i> 자유게시판</a></li>
               </ul>
             </li>
