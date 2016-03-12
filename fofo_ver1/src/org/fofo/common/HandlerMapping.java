@@ -45,16 +45,13 @@ public class HandlerMapping {
 		mappings.put("/removefreecomment.do", new RemoveCommentController());
 		mappings.put("/modifyviewfreecomment.do", new ModifyViewCommentController());
 		mappings.put("/modifyfreecomment.do", new ModifyCommentController());
-<<<<<<< HEAD:fofo/src/org/fofo/common/HandlerMapping.java
 		mappings.put("/addProjectList.do", new AddProjectController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
-=======
 		
 		
 		
 		/* Project */
 		mappings.put("/addProject.do", new AddProjectController());
->>>>>>> 86a5fdb6efa03dc546c5036b6329f681ec1c09a8:fofo_ver1/src/org/fofo/common/HandlerMapping.java
 		mappings.put("/project.do", new GetProjectEditorController());
 		
 		
