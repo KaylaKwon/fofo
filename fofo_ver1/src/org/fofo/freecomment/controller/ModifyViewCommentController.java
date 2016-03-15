@@ -20,6 +20,7 @@ public class ModifyViewCommentController implements Controller {
 			throws ServletException, IOException {
 		
 		FreeComment freecomment = new FreeComment();
+		System.out.println("ModifyViewCommentController로 들어왔다");
 		
 		request.setCharacterEncoding("utf-8");
 		freecomment.setfPostId(Integer.parseInt(request.getParameter("fPostId")));
@@ -27,6 +28,8 @@ public class ModifyViewCommentController implements Controller {
 		
 		request.setAttribute("fmodifyCId", freecomment.getfCommentId());
 		request.setAttribute("fPostId", freecomment.getfPostId());
+		
+		System.out.println("fmodifyCId능 " + freecomment.getfCommentId() + "이다");
 		
 		return "/getfreeboard.do";
 	}
