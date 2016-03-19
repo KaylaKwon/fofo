@@ -18,6 +18,7 @@ import org.fofo.member.controller.DoLoginController;
 import org.fofo.member.controller.DoLogoutController;
 import org.fofo.project.controller.AddProjectController;
 import org.fofo.project.controller.GetProjectEditorController;
+import org.fofo.project.controller.LoadProjectListController;
 
 
 public class HandlerMapping {
@@ -52,6 +53,7 @@ public class HandlerMapping {
 		
 		/* Project */
 		mappings.put("/addProject.do", new AddProjectController());
+		mappings.put("/loadProjectList.do", new LoadProjectListController());
 		mappings.put("/project.do", new GetProjectEditorController());
 		
 		

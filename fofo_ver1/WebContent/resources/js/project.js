@@ -31,11 +31,26 @@ $(document).ready(function() {
 
 jQuery(document).ready(function() {
 	
-	$("#loadProjectBtn").click(function(e){
-		var projectName = $("#addProjectName").val();
-		addNewProject(projectName);
+	$("#addProjectBtn").click(function(e){
+		var name = $("#addProjectName").val();
+		
+		$.post("addProject.do",
+			{
+				projectName: name
+			}	
+		);
+		addNewProject(name);
 	});
 	
+	$("#btnProjectTabAdd").click(function(e){
+		var uid = 123;
+		
+		$.post("loadProjectList.do",
+			{
+				userId: uid
+			}
+		);
+	});
 	
 	$("#editBlockOrder").click(function(e){
 		editBlockOrder($(this));
@@ -46,6 +61,7 @@ jQuery(document).ready(function() {
 	});
 
 });
+	
 
 $(document).on('click', '#btnProjectTabAdd', function(){
 	$('#loadProjectModal').on('shown.bs.modal', function () {
@@ -79,7 +95,11 @@ function addNewProject(projectName){
 	var nextTab = $('#projectTab li').size()+1;
 	
 	var projectTab = document.getElementById("projectTab");
-  	$('<li role="presentation"><a href="#'+projectName+'" aria-controls="'+projectName+'" role="tab" data-toggle="tab">'+projectName+'</a></li>').insertBefore('#liProjectTabAdd');
+  	$('<li role="presentation">'
+  			+'<a href="#'+projectName+'" aria-controls="'+projectName+'" role="tab" data-toggle="tab">'
+  			+projectName
+  			+' <span class="closeTab glyphicon glyphicon-remove" aria-hidden="true"></span>'
+  			+'</a></li>').insertBefore('#liProjectTabAdd');
   	
   	if(listEditableFlag == 1){
   		$('<div role="tabpanel" class="tab-pane fade" id="'+ projectName + '">'
