@@ -89,6 +89,15 @@ $(document).on('click', '.delBlockBtn', function(){
 	delBlock($(this));
 });
 
+$(document).on('click', '.closeTab', function(){
+	closeTab($(this));
+});
+
+
+function closeTab($closeBtn){
+	
+}
+
 
 /* Add new project */
 function addNewProject(projectName){
