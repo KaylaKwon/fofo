@@ -1,6 +1,6 @@
-<%@ page import="org.fofo.board.vo.FreePost"%>
+<%@ page import="org.fofo.board.vo.NoticePost"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="org.fofo.board.dao.FreeBoardDAO"%>
+<%@ page import="org.fofo.board.dao.NoticeBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -10,25 +10,25 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">      <h1>
-        Free Board
+        Notice Board
         <small>View</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="/home.jsp"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="/freeboard.do">Community</a></li>
-        <li class="active">Free Board</li>
+        <li><a href="/noticeboard.do">Community</a></li>
+        <li class="active">notice Board</li>
       </ol>
       <br>
     </section>
     <section class="content">
     <div class = "box box-primary">
 	    <div class="box-header">
-	    	<h3 class="box-title">Free Board</h3>
+	    	<h3 class="box-title">notice Board</h3>
 	    </div>
 		<div class="box-body pad table-responsive">
 			<table>
 		    	<tr>
-			    	<th><a href = "/freeboard/write.jsp"><button class="btn bg-purple margin">Write</button></a></th>
+			    	<th><a href = "/noticeboard/write.jsp"><button class="btn bg-purple margin">Write</button></a></th>
 			    	<th style="width: 820px"></th>
 				    <th><div class="btn-group">
 				    	<button type="button" class="btn bg-purple">recent</button>
@@ -46,13 +46,13 @@
 					<th style="width: 40px">VIEWCNT</th>
 				</tr>
 				
-				<c:forEach items="${list}" var="freepost">
+				<c:forEach items="${list}" var="noticepost">
 					<tr>
-						<td>${freepost.fPostId}</td>
-						<td><a href='/getfreeboard.do?fPostId=${freepost.fPostId}'>${freepost.fPostTitle}</a></td>
-						<td>${freepost.userId}</td>
-						<td>${freepost.fPostDate}</td>
-						<td><span class="badge bg-red">${freepost.fHitNum }</span></td>
+						<td>${noticepost.nPostId}</td>
+						<td><a href='/getnoticeboard.do?nPostId=${noticepost.nPostId}'>${noticepost.nPostTitle}</a></td>
+						<td>${noticepost.userId}</td>
+						<td>${noticepost.nPostDate}</td>
+						<td><span class="badge bg-red">${noticepost.nHitNum }</span></td>
 					</tr>
 				</c:forEach>
 			</table>
