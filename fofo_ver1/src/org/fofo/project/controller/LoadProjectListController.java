@@ -28,7 +28,8 @@ public class LoadProjectListController implements Controller{
 			ArrayList<Project> list = dao.doListAll(member);
 
 			request.setAttribute("project", list);
-			request.setAttribute("hi", list.size());
+			
+			request.setAttribute("hi", "zzzzzz");
 			
 		}catch(Exception e){
 			

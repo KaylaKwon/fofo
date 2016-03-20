@@ -2,31 +2,49 @@ package org.fofo.common;
 
 import java.util.HashMap;
 
-import org.fofo.freeboard.controller.AddfBoardController;
+
+import org.fofo.freeboard.controller.*;
+import org.fofo.freecomment.controller.*;
+
+import org.fofo.noticeboard.controller.*;
+import org.fofo.noticecomment.controller.*;
+
+import org.fofo.member.controller.*;
+
+import org.fofo.project.controller.*;
+
+/*import org.fofo.freeboard.controller.AddfBoardController;
 import org.fofo.freeboard.controller.GetfBoardController;
 import org.fofo.freeboard.controller.GetfBoardListController;
 import org.fofo.freeboard.controller.ModifyfBoardController;
 import org.fofo.freeboard.controller.ModifyViewfBoardController;
-import org.fofo.freeboard.controller.RemovefBoardController;
-import org.fofo.freecomment.controller.AddfCommentController;
+import org.fofo.freeboard.controller.RemovefBoardController;*/
+
+/*import org.fofo.freecomment.controller.AddfCommentController;
 import org.fofo.freecomment.controller.ModifyfCommentController;
-import org.fofo.freecomment.controller.RemovefCommentController;
-import org.fofo.member.controller.DoIdCheckController;
-import org.fofo.member.controller.DoJoinController;
-import org.fofo.member.controller.DoLoginController;
-import org.fofo.member.controller.DoLogoutController;
-import org.fofo.noticeboard.controller.AddnBoardController;
+import org.fofo.freecomment.controller.RemovefCommentController;*/
+
+/*import org.fofo.noticeboard.controller.AddnBoardController;
 import org.fofo.noticeboard.controller.GetnBoardController;
 import org.fofo.noticeboard.controller.GetnBoardListController;
 import org.fofo.noticeboard.controller.ModifyViewnBoardController;
 import org.fofo.noticeboard.controller.ModifynBoardController;
-import org.fofo.noticeboard.controller.RemovenBoardController;
-import org.fofo.noticecomment.controller.AddnCommentController;
+import org.fofo.noticeboard.controller.RemovenBoardController;*/
+
+/*import org.fofo.noticecomment.controller.AddnCommentController;
 import org.fofo.noticecomment.controller.ModifynCommentController;
-import org.fofo.noticecomment.controller.RemovenCommentController;
-import org.fofo.project.controller.AddProjectController;
+import org.fofo.noticecomment.controller.RemovenCommentController;*/
+
+/*import org.fofo.member.controller.DoIdCheckController;
+import org.fofo.member.controller.DoJoinController;
+import org.fofo.member.controller.DoLoginController;
+import org.fofo.member.controller.DoLogoutController;*/
+
+/*import org.fofo.project.controller.AddProjectController;
 import org.fofo.project.controller.GetProjectEditorController;
-import org.fofo.project.controller.LoadProjectListController;
+import org.fofo.project.controller.LoadProjectListController;*/
+
+
 
 
 public class HandlerMapping {
@@ -70,7 +88,7 @@ public class HandlerMapping {
 		mappings.put("/addProject.do", new AddProjectController());
 		mappings.put("/loadProjectList.do", new LoadProjectListController());
 		mappings.put("/project.do", new GetProjectEditorController());
-		mappings.put("/addProjectList.do", new AddProjectController());
+//		mappings.put("/addProjectList.do", new AddProjectController());
 		
 		
 		/* Member */

@@ -25,6 +25,8 @@ public class AddProjectController implements Controller{
 		
 		project.setProjectName(request.getParameter("projectName"));
 		
+		request.setAttribute("hi", "zzzz");
+		
 		try {
 			dao.doAddProject(project);
 		} catch (Exception e) {

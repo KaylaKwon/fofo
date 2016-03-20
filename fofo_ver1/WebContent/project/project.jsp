@@ -2,9 +2,11 @@
 <%@ page import="org.fofo.project.vo.Project" %>
 <%@ page import="org.fofo.project.dao.ProjectDAOImpl" %>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%-- <%@ taglib dynamic-attributes="dynamicAttr" %> --%>
 
 <link href="../resources/css/project.css" rel="stylesheet" type="text/css" />
 	
@@ -28,9 +30,24 @@
 			<li class="active">General Elements</li>
 		</ol>
 	</section>
+	
+	
+	
+	<table border="1" cellpadding="0" cellspacing="0" width="700">
+		<tr>
+			<th bgcolor="orange" width="100">번호</th>
+			<th bgcolor="orange" width="200">제목</th>
+		</tr>
+		<c:forEach var="project" items="${ list }">
+			<tr>					
+				<td>${ project.projectName }</td>
+				<td>${ project.lastUpdate }</td>
+			</tr>
+		</c:forEach>
+	</table>
 
-
-
+		
+	
 	<!-- Main Content -->
 	<div class="projectContent">
 		<div role="tabpanel">
@@ -78,7 +95,8 @@
 <div id="addTabModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	    <div class="modal-content">
-	    
+	    	
+	    	
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        	<h4 class="modal-title" id="myModalLabel">프로젝트 불러오기</h4>
@@ -89,8 +107,11 @@
 	      		<input id="method" type="text" name="method" value="addNewProject" style="display: none;">
 	      	
 				<div class="modal-body">
+					abc
+						
+					def
 		      		<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Add할 프로젝트 이름</span>
+						<span class="input-group-addon" id="basic-addon1">Add할 프로젝트 이름 </span>
 						<input id="addProjectName" type="text" name="addProjectName" class="form-control" placeholder="project name" aria-describedby="basic-addon1">
 						<span class="input-group-btn">
 				  			<button id="addProjectBtn" data-dismiss="modal" type="submit" class="btn btn-primary">Add</button>
