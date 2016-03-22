@@ -36,9 +36,15 @@ public class GetProjectEditorController implements Controller{
 
 		member.setUserId(123);
 		try{
-			ArrayList<Project> list = dao.doListAll(member);
+//			ArrayList<Project> list = dao.doListAll(member);
 
-			request.setAttribute("project", list);
+//			request.setAttribute("projectList", list);
+			
+			/*for(Project i : list){
+				System.out.println(i.getProjectName());
+			}*/
+			
+//			request.setAttribute("test", "this is test");
 			
 		}catch(Exception e){
 			

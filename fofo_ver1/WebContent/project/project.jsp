@@ -2,9 +2,9 @@
 <%@ page import="org.fofo.project.vo.Project" %>
 <%@ page import="org.fofo.project.dao.ProjectDAOImpl" %>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <%-- <%@ taglib dynamic-attributes="dynamicAttr" %> --%>
 
@@ -32,24 +32,38 @@
 	</section>
 	
 	
-	
-	<table border="1" cellpadding="0" cellspacing="0" width="700">
-		<tr>
-			<th bgcolor="orange" width="100">번호</th>
-			<th bgcolor="orange" width="200">제목</th>
-		</tr>
-		<c:forEach var="project" items="${ list }">
-			<tr>					
-				<td>${ project.projectName }</td>
-				<td>${ project.lastUpdate }</td>
-			</tr>
-		</c:forEach>
-	</table>
 
 		
 	
 	<!-- Main Content -->
 	<div class="projectContent">
+	
+<%-- 		<% ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("projectList"); 
+			
+			/* for(Project i : list){
+				System.out.println("hehe :" + i.getProjectName());
+			} */
+			
+			System.out.println("hey->" + list.get(0).getProjectName());
+			String s = list.get(0).getProjectName();
+		%> --%>
+		
+		
+		
+		<%-- <table border="1" cellpadding="0" cellspacing="0" width="700">
+			<tr>
+				<th bgcolor="orange" width="100">아아</th>
+				<th bgcolor="orange" width="200">제목</th>
+			</tr>
+			<c:forEach var="project" items="${projectList}">
+				<tr>					
+					<td>${ project.getProjectName() }</td>
+					<td>${ project.getLastUpdate() }</td>
+				</tr>
+			</c:forEach>
+		</table> --%>
+		
+	
 		<div role="tabpanel">
 
 			<!-- Nav tabs -->
@@ -103,26 +117,60 @@
 	      	</div>
 	
 	      
-			<form method="post">
+			
 	      		<input id="method" type="text" name="method" value="addNewProject" style="display: none;">
 	      	
 				<div class="modal-body">
-					abc
+					<div id="projectListTestDiv">
+					<% ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("projectList"); 
+			
+						for(Project i : list){
+							System.out.println("hehe :" + i.getProjectName());
+						}
 						
-					def
-		      		<div class="input-group">
+						/* System.out.println("hey->" + list.get(0).getProjectName());
+						String s = list.get(0).getProjectName(); */
+					%>
+					
+					</div>
+					<div id="projectListTable">
+						<table border="1" cellpadding="0" cellspacing="0" width="500">
+							<tr>
+								<th bgcolor="orange" width="100">제목</th>
+								<th bgcolor="orange" width="200">최근 수정일</th>
+							</tr>
+							<c:forEach var="project" items="${ projectList }">
+								<tr>					
+									<td>${ project.getProjectName() }</td>
+									<td>${ project.getLastUpdate() }</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+					
+					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">Add할 프로젝트 이름 </span>
-						<input id="addProjectName" type="text" name="addProjectName" class="form-control" placeholder="project name" aria-describedby="basic-addon1">
+						<input id="loadProjectName" type="text" name="loadProjectName" class="form-control" placeholder="project name" aria-describedby="basic-addon1">
 						<span class="input-group-btn">
-				  			<button id="addProjectBtn" data-dismiss="modal" type="submit" class="btn btn-primary">Add</button>
+				  			<button id="loadProjectBtn" class="btn btn-primary">Load</button>
 	      				</span>
 					</div>
+				
+					<form method="post">
+			      		<div class="input-group">
+							<span class="input-group-addon" id="basic-addon2">Add할 프로젝트 이름 </span>
+							<input id="addProjectName" type="text" name="addProjectName" class="form-control" placeholder="project name" aria-describedby="basic-addon1">
+							<span class="input-group-btn">
+					  			<button id="addProjectBtn" data-dismiss="modal" type="submit" class="btn btn-primary">Add</button>
+		      				</span>
+						</div>
+					</form>
 				</div>
 		      
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
-			</form>
+			
 			
 		</div>
 	</div>

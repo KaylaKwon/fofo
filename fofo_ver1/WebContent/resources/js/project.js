@@ -31,6 +31,10 @@ $(document).ready(function() {
 
 jQuery(document).ready(function() {
 	
+	$("#loadProjectBtn").click(function(e){
+		
+	});
+	
 	$("#addProjectBtn").click(function(e){
 		var name = $("#addProjectName").val();
 		
@@ -42,6 +46,7 @@ jQuery(document).ready(function() {
 		addNewProject(name);
 	});
 	
+	
 	$("#btnProjectTabAdd").click(function(e){
 		var uid = 123;
 		
@@ -50,6 +55,42 @@ jQuery(document).ready(function() {
 				userId: uid
 			}
 		);
+		
+		$.ajax({
+	          type: 'post'
+	        , url: '../../project/projectList.jsp'
+	        , dataType : 'html'
+	        , success: function(data) {
+	        	$("#projectListTable").html(data);
+	          }
+		});
+		
+		
+		
+		
+		
+		/*$.ajax({
+			type: 'POST',
+			url: "loadProjectList.do",
+			data: { list: "list" }
+		}).done(function(result){
+			alert("hi~~");
+			console.log(result);
+		});*/
+
+//		alert("not yet projectList.jsp");
+		
+		/*$.ajax({
+	          type: 'post'
+	        , url: '../../project/projectList.jsp'
+	        , dataType : 'jsp'
+	        , success: function(data) {
+//	        	$("#addTabModal").html(data);
+	        	alert("call projectList.jsp");
+	          }
+		});*/
+		
+		
 	});
 	
 	$("#editBlockOrder").click(function(e){
