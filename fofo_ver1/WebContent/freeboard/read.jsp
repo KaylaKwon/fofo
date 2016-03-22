@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <%@ include file="../include/header.jsp"%>
 
 <div class="content-wrapper">
@@ -25,7 +23,7 @@
 	    </div>
 		<div class="box-body pad table-responsive">
 			<form role="gpost" method="post">
-				<input type="hidden" name="fPostId" value="${freepost.fPostId}">
+				<input type="hidden" name="fPostId" id="fPostId" value="${freepost.fPostId}">
 			</form>
 			
 			<div class="box-body">
@@ -54,121 +52,52 @@
 		</div>
 	</div>
 	<div class = "box box-success" >
-		<form role="addcomt">
-			<input class="hidden" name="fPostId" value="${freepost.fPostId}">
-		    <div class="box-header">
-		    	<h3 class="box-title">Add new comment</h3>
-		    </div>
-			<div class="box-body">
-				<label for="exampleInputEmail1">Writer</label>
-				<input class="form-control" type="text" placeholder="USER ID" name="userId">
-				<label for="exampleInputEmail1">Comment Text</label>
-				<Input class="form-control" type="text" placeholder="COMMENT TEXT" name="fCommentContent">
-			</div>
-			<div class="body-footer">
-				<button id="addcomment" type="submit" class="btn btn-primary">ADD COMMENT</button>
-			</div>
+	    <div class="box-header">
+	    	<h3 class="box-title">Add new comment</h3>
+	    </div>
+		<form class="box-body" role="addcomt">
+			<input type="hidden" name="fPostId" id="fPostId" value="${freepost.fPostId}">
+			<label for="exampleInputEmail1">Writer</label>
+			<input class="form-control" type="text" placeholder="USER ID" name="userId" id="userId">
+			<label for="exampleInputEmail1">Comment Text</label>
+			<input class="form-control" type="text" placeholder="COMMENT TEXT" name="fCommentContent" id="fCommentContent">
 		</form>
+		<div class="body-footer">
+			<button id="addcomment" class="btn btn-primary">ADD COMMENT</button>
+		</div>
 	</div>
 	<ul class="timeline">
 		<li class="time-label" id="commentDiv"><span class="bg-green">Comment List</span></li>
 		<c:forEach items="${clist}" var="freecomment">
 			<li class="replyLi">
-			<i class="fa fa-comments bg-blue"></i>
-				<form class="timeline-item" role="comt" method="post">
-					<input type="hidden" name="fPostId" value="${freepost.fPostId}">
-					<c:choose>
-						<c:when test="${freecomment.fCommentId == fmodifyCId}">
-							<% System.out.println("modify_comment_movement success"); %>
-								<span class="time">
-									<i class="fa fa-clock-o"></i>${freecomment.fcommentDate}
-								</span>
-								<h3 class="timeline-header"><strong>${freecomment.fCommentId}</strong>- ${freecomment.userId}</h3>
-								<div class="timeline-body">
-								<input class="form-control" type="text" id="fCommentContent" name="fCommentContent" value="${freecomment.fCommentContent}"></div>
-								<input type="hidden" name="fCommentId" value="${freecomment.fCommentId}">
-								<input type="hidden" name="fmodifyCId" value="">
-								<div class="timeline-footer">
-									<button id="saveCbtn" type="submit" class="btn btn-primary btn-xs">Save</button>
-									<button id="cancelCbtn" type="submit" class="btn btn-danger btn-xs">Cancel</button>
-								</div>
-						</c:when>
-						<c:otherwise>
-							<% //System.out.println("modify_comment_movement fail"); %>
-							<span class="time">
-							<i class="fa fa-clock-o"></i>${freecomment.fcommentDate}
-							</span>
-							<h3 class="timeline-header"><strong>${freecomment.fCommentId}</strong>- ${freecomment.userId}</h3>
-							<div class="timeline-body">${freecomment.fCommentContent}</div>
-							<input type="hidden" name="fCommentId" value="${freecomment.fCommentId}">
-							<input type="hidden" name="fmodifyCId" value="${freecomment.fCommentId}">
-							<div class="timeline-footer">
-								<button id="modifyCbtn" type="submit" class="btn btn-primary btn-xs">Modify</button>
-								<button id="removeCbtn" type="submit" class="btn btn-danger btn-xs">Delete</button>
-							</div>
-						</c:otherwise>
-					</c:choose>
-				</form>
+				<i class="fa fa-comments bg-blue"></i>
+				<div class="timeline-item">
+					<% //System.out.println("modify_comment_movement fail"); %>
+					<span class="time">
+					<i class="fa fa-clock-o"></i>${freecomment.fcommentDate}
+					</span>
+					<h3 class="timeline-header"><strong>${freecomment.fCommentId}</strong>- ${freecomment.userId}</h3>
+					<div class="timeline-body">
+						<p class = "fCommentContent_b" id="fCommentContent_b">${freecomment.fCommentContent}</p>
+						<input class = "fCommentContent_m" type="text" id="fCommentContent_m" value="${freecomment.fCommentContent}" style="display: none;">
+						<input type="hidden" name="fCommentId" id="fCommentId" value="${freecomment.fCommentId}">
+						<input type="hidden" name="fPostId" id="fPostId" value="${freepost.fPostId}">
+					</div>
+					<div class="timeline-footer">
+						<input id="modifyCbtn" type="button" class="btn btn-primary btn-xs modifyCbtn" value="Modify">
+						<input id="removeCbtn" type="button" class="btn btn-danger btn-xs removeCbtn" value="Delete">
+						<input id="saveCbtn" type="button" class="btn btn-primary btn-xs saveCbtn" value="Save" style="display: none;">
+						<input id="cancelCbtn" type="button" class="btn btn-danger btn-xs cancelCbtn" value="Cancel" style="display: none;">
+					</div>
+				</div>
 			</li>
 		</c:forEach>
 	</ul>
 	</section>
 </div>
+
 <%@ include file="../include/footer.jsp" %>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="../resources/js/freeboard.js"></script>
 
-<script>
-$(document).ready(function(){
-	var formObj = $("form[role = 'gpost']");
-	console.log(formObj);
-	
-	$("#ModifyPost").on("click", function(){
-		formObj.attr("action", "/modifyviewfreeboard.do");
-		formObj.attr("method", "post");
-		formObj.submit();
-	});
-	
-	$("#RemovePost").on("click", function(){
-		formObj.attr("action", "/removefreeboard.do");
-		formObj.attr("method", "post");
-		formObj.submit();
-	});
-	
-	var formObj3 = $("form[role = 'addcomt']");
-	console.log(formObj3);
-	
-	$("#addcomment").on("click", function(){
-		formObj3.attr("action", "/addfreecomment.do");
-		formObj3.attr("method", "post");
-		formObj3.submit();
-	});
-	
-	var formObj2 = $("form[role = 'comt']");
-	console.log(formObj2);
-	
-	$("#saveCbtn").on("click", function(){
-		formObj2.attr("action", "/modifyfreecomment.do");
-		formObj2.attr("method", "post");
-		formObj2.submit();
-	});
-	
-	$("#cancelCbtn").on("click", function(){
-		formObj2.attr("action", "/getfreeboard.do");
-		formObj2.attr("method", "post");
-		formObj2.submit();
-	});
-	
-	$("#modifyCbtn").on("click", function(){
-		formObj2.attr("action", "/modifyviewfreecomment.do");
-		formObj2.attr("method", "post");
-		formObj2.submit();
-	});
-	
-	$("#removeCbtn").on("click", function(){
-		formObj2.attr("action", "/removefreecomment.do");
-		formObj2.attr("method", "post");
-		formObj2.submit();
-	});
-});
-
-</script>

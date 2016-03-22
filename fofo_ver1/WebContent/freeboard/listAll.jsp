@@ -15,7 +15,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="/home.jsp"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="/freeboard/listall.jsp">Community</a></li>
+        <li><a href="/freeboard.do">Community</a></li>
         <li class="active">Free Board</li>
       </ol>
       <br>
@@ -61,12 +61,4 @@
 	</section>
 </div>
 
-
 <%@ include file="../include/footer.jsp"%>
-
-<script>
-	var result = '${msg}';
-	if(result == 'SUCCESS'){
-		alert("처리 완료");
-	}
-</script>

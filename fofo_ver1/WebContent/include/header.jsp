@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -393,12 +394,17 @@
               <%} %>
             
              <li class="treeview">
-              <a href="/freeboard.do">
-                <i class="fa fa-dashboard"></i> <span>커뮤니티</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
+             	<a href="#">
+                	<i class="fa fa-dashboard"></i> <span>커뮤니티</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
               <ul class="treeview-menu">
+<<<<<<< HEAD
                 <li><a href="/freeboard.do"><i class="fa fa-circle-o"></i> 공지사항</a></li>
                 <li><a href="/qaboard.do"><i class="fa fa-circle-o"></i> Q&A</a></li>
+=======
+                <li><a href="/noticeboard.do"><i class="fa fa-circle-o"></i> 공지사항</a></li>
+                <li><a href="/freeboard.do"><i class="fa fa-circle-o"></i> 지식인</a></li>
+>>>>>>> d742e2c5ef1b4497ef8e98ca29cd1bb1f8fb3dee
                 <li><a href="/freeboard.do"><i class="fa fa-circle-o"></i> 자유게시판</a></li>
               </ul>
             </li>

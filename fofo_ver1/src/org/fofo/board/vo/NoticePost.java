@@ -6,28 +6,28 @@ public class NoticePost implements Serializable {
 
 	private static final long serialVersionUID = -4022161635202540887L;
 	
-	private int fPostId;
+	private int nPostId;
 	private int BoardId;
 	private int UserId;
-	private int fHitNum;
-	private int fRecommendNum;
-	private int fCommentNum;
-	private int fBookmarkNum;
-	private String fPostDate;
-	private String fPostTitle;
-	private String fPostContent;
-	private String fTags;
+	private int nHitNum;
+	private int nRecommendNum;
+	private int nCommentNum;
+	private int nBookmarkNum;
+	private String nPostDate;
+	private String nPostTitle;
+	private String nPostContent;
+	private String nTags;
 
 	public NoticePost() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getfPostId() {
-		return fPostId;
+	public int getnPostId() {
+		return nPostId;
 	}
 
-	public void setfPostId(int fPostId) {
-		this.fPostId = fPostId;
+	public void setnPostId(int nPostId) {
+		this.nPostId = nPostId;
 	}
 
 	public int getBoardId() {
@@ -46,76 +46,76 @@ public class NoticePost implements Serializable {
 		UserId = userId;
 	}
 
-	public int getfHitNum() {
-		return fHitNum;
+	public int getnHitNum() {
+		return nHitNum;
 	}
 
-	public void setfHitNum(int fHitNum) {
-		this.fHitNum = fHitNum;
+	public void setnHitNum(int nHitNum) {
+		this.nHitNum = nHitNum;
 	}
 
-	public int getfRecommendNum() {
-		return fRecommendNum;
+	public int getnRecommendNum() {
+		return nRecommendNum;
 	}
 
-	public void setfRecommendNum(int fRecommendNum) {
-		this.fRecommendNum = fRecommendNum;
+	public void setnRecommendNum(int nRecommendNum) {
+		this.nRecommendNum = nRecommendNum;
 	}
 
-	public int getfCommentNum() {
-		return fCommentNum;
+	public int getnCommentNum() {
+		return nCommentNum;
 	}
 
-	public void setfCommentNum(int fCommentNum) {
-		this.fCommentNum = fCommentNum;
+	public void setnCommentNum(int nCommentNum) {
+		this.nCommentNum = nCommentNum;
 	}
 
-	public int getfBookmarkNum() {
-		return fBookmarkNum;
+	public int getnBookmarkNum() {
+		return nBookmarkNum;
 	}
 
-	public void setfBookmarkNum(int fBookmarkNum) {
-		this.fBookmarkNum = fBookmarkNum;
+	public void setnBookmarkNum(int nBookmarkNum) {
+		this.nBookmarkNum = nBookmarkNum;
 	}
 
-	public String getfPostDate() {
-		return fPostDate;
+	public String getnPostDate() {
+		return nPostDate;
 	}
 
-	public void setfPostDate(String fPostDate) {
-		this.fPostDate = fPostDate;
+	public void setnPostDate(String nPostDate) {
+		this.nPostDate = nPostDate;
 	}
 
-	public String getfPostTitle() {
-		return fPostTitle;
+	public String getnPostTitle() {
+		return nPostTitle;
 	}
 
-	public void setfPostTitle(String fPostTitle) {
-		this.fPostTitle = fPostTitle;
+	public void setnPostTitle(String nPostTitle) {
+		this.nPostTitle = nPostTitle;
 	}
 
-	public String getfPostContent() {
-		return fPostContent;
+	public String getnPostContent() {
+		return nPostContent;
 	}
 
-	public void setfPostContent(String fPostContent) {
-		this.fPostContent = fPostContent;
+	public void setnPostContent(String nPostContent) {
+		this.nPostContent = nPostContent;
 	}
 
-	public String getfTags() {
-		return fTags;
+	public String getnTags() {
+		return nTags;
 	}
 
-	public void setfTags(String fTags) {
-		this.fTags = fTags;
+	public void setnTags(String fTags) {
+		this.nTags = fTags;
 	}
 
 	@Override
 	public String toString() {
-		return "FreePost [fPostId=" + fPostId + ", BoardId=" + BoardId + ", UserId=" + UserId + ", fHitNum=" + fHitNum
-				+ ", fRecommendNum=" + fRecommendNum + ", fCommentNum=" + fCommentNum + ", fBookmarkNum=" + fBookmarkNum
-				+ ", fPostDate=" + fPostDate + ", fPostTitle=" + fPostTitle + ", fPostContent=" + fPostContent
-				+ ", fTags=" + fTags + "]";
+		return "NoticePost [nPostId=" + nPostId + ", BoardId=" + BoardId + ", UserId=" + UserId + ", nHitNum=" + nHitNum
+				+ ", nRecommendNum=" + nRecommendNum + ", nCommentNum=" + nCommentNum + ", nBookmarkNum=" + nBookmarkNum
+				+ ", nPostDate=" + nPostDate + ", nPostTitle=" + nPostTitle + ", nPostContent=" + nPostContent
+				+ ", nTags=" + nTags + "]";
 	}
 
 }
