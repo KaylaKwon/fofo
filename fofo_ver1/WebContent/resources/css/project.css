@@ -54,3 +54,24 @@
 	background-color: #d0d0d0;
 }
 
+.triangle {
+	display : inline - block;
+	width : 0;
+	height : 0;
+	border-style : solid;
+	border-width : 30px;
+}
+
+.triangle.up {
+	border-color : transparent transparent #0054FF transparent;
+}
+
+.triangle.down {
+	border-color : #0054FF transparent transparent transparent;
+}
+
+.vote-box {
+	width : 100px;
+	height : 104px;
+}
+
