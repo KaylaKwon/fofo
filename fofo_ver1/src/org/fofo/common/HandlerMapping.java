@@ -15,6 +15,8 @@ import org.fofo.member.controller.DoIdCheckController;
 import org.fofo.member.controller.DoJoinController;
 import org.fofo.member.controller.DoLoginController;
 import org.fofo.member.controller.DoLogoutController;
+import org.fofo.message.controller.GetMessageController;
+import org.fofo.message.controller.GetMessageListController;
 import org.fofo.noticeboard.controller.AddnBoardController;
 import org.fofo.noticeboard.controller.GetnBoardController;
 import org.fofo.noticeboard.controller.GetnBoardListController;
@@ -80,6 +82,9 @@ public class HandlerMapping {
 //		mappings.put("/project.do", new ProjectController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
 		
+		/* Message */
+		mappings.put("/message.do", new GetMessageListController());
+		mappings.put("/readmessage.do", new GetMessageController());
 	}
 	
 	public Controller getController(String path){

@@ -16,6 +16,7 @@ public class NoticeBoardDAO {
 	private static String getBoardSQL = "select * from noticepost where nPostId = ?";
 	private static String countBoardSQL = "update noticepost set nhitNum = nhitNum + 1 where nPostId = ?";
 	private static String updateBoardSQL = "update noticepost set nPostTitle = ?, nPostContent = ?, ntags = ? where nPostId = ?";
+	private static String deleteCommentSQL = "delete from noticecomment where nPostId = ?";
 	private static String deleteBoardSQL = "delete from noticepost where nPostId = ?";
 	
 	public void doDeleteBoard(NoticePost noticepost){
@@ -23,6 +24,11 @@ public class NoticeBoardDAO {
 		PreparedStatement stmt = null;
 		try{
 			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(deleteCommentSQL);
+			stmt.setInt(1, noticepost.getnPostId());
+			stmt.executeUpdate();
+			stmt.clearParameters();
+			
 			stmt = conn.prepareStatement(deleteBoardSQL);
 			stmt.setInt(1, noticepost.getnPostId());
 			int cnt = stmt.executeUpdate();
