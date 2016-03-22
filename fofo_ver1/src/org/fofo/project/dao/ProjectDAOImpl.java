@@ -2,17 +2,23 @@ package org.fofo.project.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.fofo.project.vo.Project;
+
 import org.fofo.common.JDBCUtil;
+import org.fofo.member.vo.Member;
 
 public class ProjectDAOImpl implements ProjectDAO {
 
 	private static String addProjectSQL = "INSERT into project (userId , projectName, createDate, lastUpdate)"
 									+"VALUES (123, ?, now(), now());";
 
+	private static String loadProjectListSQL = "SELECT projectName, lastUpdate "
+												+"FROM project "
+												+"WHERE userId = ?;";
 	
 	public ProjectDAOImpl() {
 		// TODO Auto-generated constructor stub
@@ -56,9 +62,39 @@ public class ProjectDAOImpl implements ProjectDAO {
 	}
 
 	@Override
-	public ArrayList<Project> doListAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Project> doListAll(Member member) throws Exception {
+		
+		ArrayList<Project> list = new ArrayList<Project>();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+		Project project = null;
+		try{
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(loadProjectListSQL);
+			
+			stmt.setInt(1, 123);
+			
+			rst = stmt.executeQuery();	
+			
+			while(rst.next()){
+				project = new Project();
+				project.setProjectName(rst.getString("projectName"));
+				project.setLastUpdate(rst.getString("lastUpdate"));
+				
+//				System.out.println(project.getProjectName());
+				
+				list.add(project);
+				
+			}
+					
+		}catch(SQLException e){
+			System.out.println("failed: " + e);
+		}finally{
+			JDBCUtil.close(stmt, conn);
+		}
+		return list;
+		
 	}
 
 }

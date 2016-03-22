@@ -23,29 +23,16 @@ public class AddProjectController implements Controller{
 		
 		request.setCharacterEncoding("utf-8");
 		
+		project.setProjectName(request.getParameter("projectName"));
 		
+//		request.setAttribute("hi", "zzzz");
 		
-		String method = request.getParameter("method");
-		System.out.println("method: " + method);
-		if("addNewProject".equals(method)){
-			System.out.println("get project editor controller");
-		}
-		
-		
-		
-		
-		
-//		project.setProjectName(request.getParameter("addProjectName"));
-//		project.setUserId(Integer.parseInt(request.getParameter("userId")));
-//		project.setUserId(Integer.parseInt(request.getParameter("userId")));
-//		System.out.println("projectName in controller" + project.getProjectName());
-		
-/*		try {
+		try {
 			dao.doAddProject(project);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 
 		return returnURL;
 	}

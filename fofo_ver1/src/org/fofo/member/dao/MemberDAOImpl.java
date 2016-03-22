@@ -75,7 +75,7 @@ public class MemberDAOImpl implements MemberDAO{
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
 				if(cnt.getString("uPW")!=null&&cnt.getString("uPW").equals(pw)){
-					//일치하면
+					//�쇱튂�섎㈃
 					vo.setUName(cnt.getString("uName"));
 					System.out.println("Login had successed ");
 				
@@ -108,11 +108,11 @@ public class MemberDAOImpl implements MemberDAO{
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
 				
-					System.out.println("중복입니다");
+					System.out.println("중복입니다.");
 					result=-1;
 				
 			}else{
-				System.out.println("안중복입니다");
+				System.out.println("중복이 아닙니다.");
 
 				result=1;
 			}

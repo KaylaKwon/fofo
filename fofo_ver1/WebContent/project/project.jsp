@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="org.fofo.project.vo.Project" %>
+<%@ page import="org.fofo.project.dao.ProjectDAOImpl" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link href="../resources/css/project.css" rel="stylesheet" type="text/css" />
 	
@@ -9,7 +13,6 @@
 
 <%@ include file="../include/header.jsp"%>
 <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>  -->
-
 
 
 <div class="content-wrapper">
@@ -23,36 +26,68 @@
 			<li class="active">General Elements</li>
 		</ol>
 	</section>
-
+	
+	
 
 	<!-- Main Content -->
 	<div class="projectContent">
+	
+		<% ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("projectList");
+			
+			/* for(Project i : list){
+				System.out.println("hehe :" + i.getProjectName());
+			} */
+			
+			/* System.out.println("hey->" + list.get(0).getProjectName());
+			String s = list.get(0).getProjectName(); */
+		%>
+		
+	
 		<div role="tabpanel">
 
 			<!-- Nav tabs -->
 			<ul id="projectTab" class="nav nav-tabs" role="tablist">
 				<!-- <li role="presentation" ><a href="#tab1" role="tab" aria-controls="tab1" data-toggle="tab">기본</a></li> -->
-				<li id="liProjectTabAdd">
-					<a id="btnProjectTabAdd" role="tab" data-toggle="modal" data-target="#loadProjectModal">+</a>
+				<li role="presentation" id="liProjectTabAdd">
+					<a id="btnProjectTabAdd" href="#newTab" aria-controls="newTab" role="tab" data-toggle="tab">
+						new Tab
+					</a>
+					<!-- <a id="btnProjectTabAdd" role="tab" data-toggle="modal" data-target="#addTabModal">+</a> -->
 				</li>
 			</ul>
 
 			<!-- Tab panes -->
 			<div id="projectTabContent" class="projectTab-content tab-content" onload="loader()">
-
-				<!-- <div role="tabpanel" class="tab-pane active in" id="tab1">
-					<div id="projectContent">
-					
-						<ul class="blockList list-unstyled draggableList blockUnsortable">
+				<div role="tabpanel" class="tab-pane fade" id="newTab">
+  					<div id="projectContent">
+						<ul class="blockList list-unstyled draggableList"></ul>
 						
-						</ul>
-						<div class="table-hover addBlock">
-							블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-						</div>
+						
+						
+						
+						<table border="1" cellpadding="0" cellspacing="0" width="600">
+							<tr>
+								<th bgcolor="orange" width="200">프로젝트 이름</th>
+								<th bgcolor="orange" width="250">최근 수정일시</th>
+								<th bgcolor="orange" width="150">기능</th>
+							</tr>
+							<c:forEach var="project" items="${projectList}">
+								<tr>					
+									<td class="listProjectName">${ project.getProjectName() }</td>
+									<td class="listLastUpdate">${ project.getLastUpdate() }</td>
+									<td>
+										<button class="btn btn-primary loadProjectBtn" type="submit">Load</button>
+										<button class="btn btn-danger deleteProjectBtn" type="submit">Delete</button>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+						
+						
 					</div>
-				</div> -->
-
+  				</div>
 			</div>
+			
 		</div>
 	</div>
 
@@ -81,32 +116,84 @@
 
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button> -->
 <!-- load project modal -->
-<div id="loadProjectModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">프로젝트 불러오기</h4>
-      </div>
-      <form action="../addProject.do" method="post">
-      		<input id="method" type="text" name="method" value="addNewProject" style="display: none;">
-      	
-	      <div class="modal-body">
-	      	<div class="input-group">
-			  <span class="input-group-addon" id="basic-addon1">add할 프로젝트 이름</span>
-			  <input id="addProjectName" type="text" name="addProjectName" class="form-control" placeholder="project name" aria-describedby="basic-addon1">
-			  
-			</div>
-		  </div>
+<div id="addTabModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	    <div class="modal-content">
+	    	
+	    	
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        	<h4 class="modal-title" id="myModalLabel">프로젝트 불러오기</h4>
+	      	</div>
+	
 	      
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button id="loadProjectBtn" data-dismiss="modal" type="submit" class="btn btn-primary">Load</button>
-	      </div>
-      
-      </form>
-    </div>
-  </div>
+			
+	      		<input id="method" type="text" name="method" value="addNewProject" style="display: none;">
+	      	
+				<div class="modal-body">
+					<div id="projectListTestDiv">
+					<% 
+						/* ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("projectList");
+					
+						for(Project i : list){
+							System.out.println("hehe :" + i.getProjectName());
+						} */
+						
+						/* System.out.println("hey->" + list.get(0).getProjectName());
+						String s = list.get(0).getProjectName(); */
+						
+						/* String t = (String)request.getAttribute("test");
+						System.out.println("tab add btn clicked " + t);
+						String s = "gigi"; */
+						
+						/* System.out.println("hey->" + list.get(0).getProjectName());
+						String s = list.get(0).getProjectName();
+						
+						 */
+					%>
+					
+					</div>
+					<%-- <div id="projectListTable" style="height:200px; overflow:auto">
+						<table border="1" cellpadding="0" cellspacing="0" width="450">
+							<tr>
+								<th bgcolor="orange" width="140">name</th>
+								<th bgcolor="orange" width="260">update</th>
+								<th bgcolor="orange" width="50">do</th>
+							</tr>
+							<c:forEach var="project" items="${ projectList }">
+								<tr>					
+									<td class="listProjectName">${ project.getProjectName() }</td>
+									<td class="listLastUpdate">${ project.getLastUpdate() }</td>
+									<td><button class="btn btn-primary loadProjectBtn" data-dismiss="modal" type="submit">Load</button></td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div> --%>
+					
+					<!-- <div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Add할 프로젝트 이름 </span>
+						<input id="loadProjectName" type="text" name="loadProjectName" class="form-control" placeholder="project name" aria-describedby="basic-addon1">
+						
+					</div> -->
+				
+					<form method="post">
+			      		<div class="input-group">
+							<span class="input-group-addon" id="basic-addon2">Add할 프로젝트 이름 </span>
+							<input id="addProjectName" type="text" name="addProjectName" class="form-control" placeholder="project name" aria-describedby="basic-addon1">
+							<span class="input-group-btn">
+					  			<button id="addProjectBtn" data-dismiss="modal" type="submit" class="btn btn-primary">Add</button>
+		      				</span>
+						</div>
+					</form>
+				</div>
+		      
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			
+			
+		</div>
+	</div>
 </div>
 <!-- load project modal -->
 

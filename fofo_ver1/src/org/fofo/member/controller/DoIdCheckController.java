@@ -24,7 +24,7 @@ public class DoIdCheckController implements Controller {
 	
 		vo.setUEmail(request.getParameter("uId"));
 		
-		System.out.println("ë°›ì€ê²ƒ"+request.getParameter("uId"));
+		System.out.println("¹ŞÀº°Í"+request.getParameter("uId"));
 		try {
 			result=dao.doIdCheck(vo);
 		} catch (Exception e) {
