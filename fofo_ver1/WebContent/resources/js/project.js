@@ -7,6 +7,7 @@
 $(document).ready(function() {
 	
 	listEditableFlag = 0;	// 0: unavailable, 1: available
+	nTabNum = 0;
 	
 	$(".blockList").sortable({
 		cancel:".blockUnsortable"
@@ -31,10 +32,6 @@ $(document).ready(function() {
 
 jQuery(document).ready(function() {
 	
-	$("#loadProjectBtn").click(function(e){
-		
-	});
-	
 	$("#addProjectBtn").click(function(e){
 		var name = $("#addProjectName").val();
 		
@@ -44,53 +41,6 @@ jQuery(document).ready(function() {
 			}	
 		);
 		addNewProject(name);
-	});
-	
-	
-	$("#btnProjectTabAdd").click(function(e){
-		var uid = 123;
-		
-		$.post("loadProjectList.do",
-			{
-				userId: uid
-			}
-		);
-		
-		$.ajax({
-	          type: 'post'
-	        , url: '../../project/projectList.jsp'
-	        , dataType : 'html'
-	        , success: function(data) {
-	        	$("#projectListTable").html(data);
-	          }
-		});
-		
-		
-		
-		
-		
-		/*$.ajax({
-			type: 'POST',
-			url: "loadProjectList.do",
-			data: { list: "list" }
-		}).done(function(result){
-			alert("hi~~");
-			console.log(result);
-		});*/
-
-//		alert("not yet projectList.jsp");
-		
-		/*$.ajax({
-	          type: 'post'
-	        , url: '../../project/projectList.jsp'
-	        , dataType : 'jsp'
-	        , success: function(data) {
-//	        	$("#addTabModal").html(data);
-	        	alert("call projectList.jsp");
-	          }
-		});*/
-		
-		
 	});
 	
 	$("#editBlockOrder").click(function(e){
@@ -105,17 +55,40 @@ jQuery(document).ready(function() {
 	
 
 $(document).on('click', '#btnProjectTabAdd', function(){
-	$('#loadProjectModal').on('shown.bs.modal', function () {
+	
+	
+	/*$('#loadProjectModal').on('shown.bs.modal', function () {
+		var uid = 123;
+		
+		$.post("loadProjectList.do",
+			{
+				userId: uid
+			}
+		);
 //		  $('#myInput').focus()
 	})
-//	addTab();
+	
+	addNewTab();*/
 });
+
+$(document).on('click', '.loadProjectBtn', function(e){
+	loadProject($(this));
+});
+
+function loadProject($loadBtn){
+	var name = $loadBtn.parent().siblings(".listProjectName").html();
+	var update = $loadBtn.parent().siblings(".listLastUpdate").html();
+	
+	alert("name: " + name + "\nupdate: " + update);
+	
+	
+	
+}
 
 
 $(document).on('click', '.addBlock', function(){
 	addBlock($(this));
 });
-
 
 
 $(document).on('click', '.editBlockBtn', function(){ 
@@ -138,6 +111,7 @@ $(document).on('click', '.closeTab', function(){
 function closeTab($closeBtn){
 	
 }
+
 
 
 /* Add new project */
@@ -182,9 +156,7 @@ function addNewProject(projectName){
 
 /* Add new block */
 function addBlock($addBlock){
-//	var blockList = document.getElementById("blockList");	
 	var blockList = $addBlock.siblings(".blockList");
-	
 	
 	$('<li class="panel panel-info">'
 			+ '<div class="block">'
@@ -204,16 +176,12 @@ function addBlock($addBlock){
 
 /* Edit Block Order */
 function editBlockOrder($this){
-	/*var projectTabContent = document.getElementById("projectTabContent");
-	var activeTab = $(projectTabContent).children('.tab-pane.active.in');
-	var blockList = $(activeTab).children('#projectContent').children('.blockList');*/
 	
 	listEditableFlag = 1;
 	$('.editBlockBtn').attr("disabled","disabled");		//열려있는 탭에 대해서만 하도록 변경? or not?
 	$('.endEditBlockBtn').attr("disabled","disabled");
 	$('.delBlockBtn').attr("disabled","disabled");
 	
-//	blockList.removeClass("blockUnsortable");
 	$('.blockList').removeClass("blockUnsortable");
 	
 	$this.hide();
@@ -224,27 +192,21 @@ function editBlockListUpdate(){
 	$('.editBlockBtn').attr("disabled","disabled");
 	$('.endEditBlockBtn').attr("disabled","disabled");
 	$('.delBlockBtn').attr("disabled","disabled");
-	
 }
 
 /* End editing block order */
 function endEditBlockOrder($this){
-	/*var projectTabContent = document.getElementById("projectTabContent");
-	var activeTab = $(projectTabContent).children('.tab-pane.active.in');
-	var blockList = $(activeTab).children('#projectContent').children('.blockList');*/
 	
 	listEditableFlag = 0;
 	$('.editBlockBtn').removeAttr( "disabled" );
 	$('.endEditBlockBtn').removeAttr( "disabled" );
 	$('.delBlockBtn').removeAttr( "disabled" );
 	
-//	blockList.addClass("blockUnsortable");
 	$('.blockList').addClass("blockUnsortable");
 	
 	$this.hide();
 	$('#editBlockOrder').show();
 }
-
 
 
 

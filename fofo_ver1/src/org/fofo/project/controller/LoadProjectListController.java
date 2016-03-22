@@ -34,7 +34,7 @@ public class LoadProjectListController implements Controller{
 			}*/
 			
 			request.setAttribute("test", "this is test");
-			
+			System.out.println("ff");
 			
 		}catch(Exception e){
 			

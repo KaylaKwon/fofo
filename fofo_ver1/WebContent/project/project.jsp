@@ -5,9 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-<%-- <%@ taglib dynamic-attributes="dynamicAttr" %> --%>
-
 <link href="../resources/css/project.css" rel="stylesheet" type="text/css" />
 	
 <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> -->
@@ -16,7 +13,6 @@
 
 <%@ include file="../include/header.jsp"%>
 <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>  -->
-
 
 
 <div class="content-wrapper">
@@ -33,35 +29,18 @@
 	
 	
 
-		
-	
 	<!-- Main Content -->
 	<div class="projectContent">
 	
-<%-- 		<% ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("projectList"); 
+		<% ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("projectList");
 			
 			/* for(Project i : list){
 				System.out.println("hehe :" + i.getProjectName());
 			} */
 			
-			System.out.println("hey->" + list.get(0).getProjectName());
-			String s = list.get(0).getProjectName();
-		%> --%>
-		
-		
-		
-		<%-- <table border="1" cellpadding="0" cellspacing="0" width="700">
-			<tr>
-				<th bgcolor="orange" width="100">아아</th>
-				<th bgcolor="orange" width="200">제목</th>
-			</tr>
-			<c:forEach var="project" items="${projectList}">
-				<tr>					
-					<td>${ project.getProjectName() }</td>
-					<td>${ project.getLastUpdate() }</td>
-				</tr>
-			</c:forEach>
-		</table> --%>
+			/* System.out.println("hey->" + list.get(0).getProjectName());
+			String s = list.get(0).getProjectName(); */
+		%>
 		
 	
 		<div role="tabpanel">
@@ -69,15 +48,46 @@
 			<!-- Nav tabs -->
 			<ul id="projectTab" class="nav nav-tabs" role="tablist">
 				<!-- <li role="presentation" ><a href="#tab1" role="tab" aria-controls="tab1" data-toggle="tab">기본</a></li> -->
-				<li id="liProjectTabAdd">
-					<a id="btnProjectTabAdd" role="tab" data-toggle="modal" data-target="#addTabModal">+</a>
+				<li role="presentation" id="liProjectTabAdd">
+					<a id="btnProjectTabAdd" href="#newTab" aria-controls="newTab" role="tab" data-toggle="tab">
+						new Tab
+					</a>
+					<!-- <a id="btnProjectTabAdd" role="tab" data-toggle="modal" data-target="#addTabModal">+</a> -->
 				</li>
 			</ul>
 
 			<!-- Tab panes -->
 			<div id="projectTabContent" class="projectTab-content tab-content" onload="loader()">
-
+				<div role="tabpanel" class="tab-pane fade" id="newTab">
+  					<div id="projectContent">
+						<ul class="blockList list-unstyled draggableList"></ul>
+						
+						
+						
+						
+						<table border="1" cellpadding="0" cellspacing="0" width="600">
+							<tr>
+								<th bgcolor="orange" width="200">프로젝트 이름</th>
+								<th bgcolor="orange" width="250">최근 수정일시</th>
+								<th bgcolor="orange" width="150">기능</th>
+							</tr>
+							<c:forEach var="project" items="${projectList}">
+								<tr>					
+									<td class="listProjectName">${ project.getProjectName() }</td>
+									<td class="listLastUpdate">${ project.getLastUpdate() }</td>
+									<td>
+										<button class="btn btn-primary loadProjectBtn" type="submit">Load</button>
+										<button class="btn btn-danger deleteProjectBtn" type="submit">Delete</button>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+						
+						
+					</div>
+  				</div>
 			</div>
+			
 		</div>
 	</div>
 
@@ -122,39 +132,49 @@
 	      	
 				<div class="modal-body">
 					<div id="projectListTestDiv">
-					<% ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("projectList"); 
-			
+					<% 
+						/* ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("projectList");
+					
 						for(Project i : list){
 							System.out.println("hehe :" + i.getProjectName());
-						}
+						} */
 						
 						/* System.out.println("hey->" + list.get(0).getProjectName());
 						String s = list.get(0).getProjectName(); */
+						
+						/* String t = (String)request.getAttribute("test");
+						System.out.println("tab add btn clicked " + t);
+						String s = "gigi"; */
+						
+						/* System.out.println("hey->" + list.get(0).getProjectName());
+						String s = list.get(0).getProjectName();
+						
+						 */
 					%>
 					
 					</div>
-					<div id="projectListTable">
-						<table border="1" cellpadding="0" cellspacing="0" width="500">
+					<%-- <div id="projectListTable" style="height:200px; overflow:auto">
+						<table border="1" cellpadding="0" cellspacing="0" width="450">
 							<tr>
-								<th bgcolor="orange" width="100">제목</th>
-								<th bgcolor="orange" width="200">최근 수정일</th>
+								<th bgcolor="orange" width="140">name</th>
+								<th bgcolor="orange" width="260">update</th>
+								<th bgcolor="orange" width="50">do</th>
 							</tr>
 							<c:forEach var="project" items="${ projectList }">
 								<tr>					
-									<td>${ project.getProjectName() }</td>
-									<td>${ project.getLastUpdate() }</td>
+									<td class="listProjectName">${ project.getProjectName() }</td>
+									<td class="listLastUpdate">${ project.getLastUpdate() }</td>
+									<td><button class="btn btn-primary loadProjectBtn" data-dismiss="modal" type="submit">Load</button></td>
 								</tr>
 							</c:forEach>
 						</table>
-					</div>
+					</div> --%>
 					
-					<div class="input-group">
+					<!-- <div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">Add할 프로젝트 이름 </span>
 						<input id="loadProjectName" type="text" name="loadProjectName" class="form-control" placeholder="project name" aria-describedby="basic-addon1">
-						<span class="input-group-btn">
-				  			<button id="loadProjectBtn" class="btn btn-primary">Load</button>
-	      				</span>
-					</div>
+						
+					</div> -->
 				
 					<form method="post">
 			      		<div class="input-group">

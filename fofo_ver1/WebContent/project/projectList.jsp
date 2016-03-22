@@ -4,6 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.ArrayList"%>
 
+<%-- <%
+	String s = (String)request.getAttribute("test");
+	System.out.println("here?" + s);
+
+%> --%>
 <table border="1" cellpadding="0" cellspacing="0" width="700">
 		<tr>
 			<th bgcolor="orange" width="100">프로젝트 이름</th>
@@ -11,8 +16,8 @@
 		</tr>
 		<c:forEach var="project" items="${ projectList }">
 			<tr>					
-				<td>${ project.projectName }</td>
-				<td>${ project.lastUpdate }</td>
+				<td>${ project.getProjectName() }</td>
+				<td>${ project.getLastUpdate() }</td>
 			</tr>
 		</c:forEach>
 </table>
