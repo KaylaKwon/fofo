@@ -1,7 +1,6 @@
 package org.fofo.project.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,20 +20,26 @@ public class LoadProjectListController implements Controller{
 		String returnURL = "/project/project.jsp";
 		
 		ProjectDAOImpl dao = new ProjectDAOImpl();
+		
+		Project project = new Project();
 		Member member = new Member();
 
 		member.setUserId(123);
 		try{
-			ArrayList<Project> list = dao.doListAll(member);
+			
+			project = dao.doGetProjectContent(project, member);
+
+			request.setAttribute("projectContent", project.getProjectContent());
+			
+			System.out.println("selected project content: " + project.getProjectContent());
+			/*ArrayList<Project> list = dao.doListAll(member);
 
 			request.setAttribute("projectList", list);
 			
-			/*for(Project i : list){
+			for(Project i : list){
 				System.out.println(i.getProjectName());
 			}*/
-			
-			request.setAttribute("test", "this is test");
-			System.out.println("ff");
+
 			
 		}catch(Exception e){
 			

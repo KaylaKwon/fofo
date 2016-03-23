@@ -81,7 +81,17 @@ function loadProject($loadBtn){
 	
 	alert("name: " + name + "\nupdate: " + update);
 	
+	$.post("loadProjectList.do",
+		{
+			userId: uid
+		}
+	);
 	
+	addTabWithMyProject();
+	
+}
+
+function addTabWithMyProject(){
 	
 }
 
