@@ -16,6 +16,7 @@ public class FreeBoardDAO {
 	private static String getBoardSQL = "select * from freepost where fPostId = ?";
 	private static String countBoardSQL = "update freepost set fhitNum = fhitNum + 1 where fPostId = ?";
 	private static String updateBoardSQL = "update freepost set fpostTitle = ?, fpostContent = ?, ftags = ? where fPostId = ?";
+	private static String deleteCommentSQL = "delete from freecomment where fPostId = ?";
 	private static String deleteBoardSQL = "delete from freepost where fPostId = ?";
 	
 	public void doDeleteBoard(FreePost freepost){
@@ -23,6 +24,11 @@ public class FreeBoardDAO {
 		PreparedStatement stmt = null;
 		try{
 			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(deleteCommentSQL);
+			stmt.setInt(1, freepost.getfPostId());
+			stmt.executeUpdate();
+			stmt.clearParameters();
+			
 			stmt = conn.prepareStatement(deleteBoardSQL);
 			stmt.setInt(1, freepost.getfPostId());
 			int cnt = stmt.executeUpdate();
