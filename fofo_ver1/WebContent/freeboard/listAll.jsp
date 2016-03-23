@@ -9,8 +9,8 @@
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">      <h1>
-        Free Board
+    <section class="content-header">
+	  <h1> Free Board
         <small>View</small>
       </h1>
       <ol class="breadcrumb">
