@@ -45,7 +45,7 @@
 		              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> ${message.getSendDate()}</small>
 		              ${message.getSuserId()}
 		              <input type="hidden" id="SuserId" name="SuserId" value="${message.getSuserId()}">
-		              <input type="hidden" id="RuserId" name="RuserId" value=<%=session.getAttribute("userId")%>>
+		              <input type="hidden" id="RuserId" name="RuserId" value="1234">
 		            </a>
 		            ${message.getmContent()}
 		          </p>

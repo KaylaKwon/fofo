@@ -37,7 +37,7 @@
             <div class="direct-chat-messages">
             <c:forEach items="${mlist}" var="message">
               <c:choose>
-              	<c:when test="${RuserId==session.getAttribute('userId')}">
+              	<c:when test="${RuserId=='1234'}">
 	              <!-- Message. Default to the left -->
 	              <div class="direct-chat-msg">
 	                <div class="direct-chat-info clearfix">
@@ -54,7 +54,7 @@
 	              <!-- Message to the right -->
 	              <div class="direct-chat-msg right">
 	                <div class="direct-chat-info clearfix">
-	                  <span class="direct-chat-name pull-right">session.getAttribute("name")</span>
+	                  <span class="direct-chat-name pull-right"><%session.getAttribute("name");%></span>
 	                  <span class="direct-chat-timestamp pull-left">${message.getSendDate()}</span>
 	                </div><!-- /.direct-chat-info -->
 	                <img class="direct-chat-img" src="resources/dist/img/user3-128x128.jpg" alt="message user image"><!-- /.direct-chat-img -->

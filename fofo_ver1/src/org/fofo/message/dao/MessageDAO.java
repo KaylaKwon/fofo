@@ -56,7 +56,6 @@ public class MessageDAO {
 				message.setmContent(rst.getString("mContent"));
 				message.setSendDate(rst.getString("SendDate"));
 				message.setReadorNot(rst.getBoolean("ReadorNot"));
-				message.setReceiveDate(rst.getString("ReceiveDate"));
 				list.add(message);
 			}
 		}catch(SQLException e){
