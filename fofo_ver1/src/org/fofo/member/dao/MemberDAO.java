@@ -14,6 +14,6 @@ public interface MemberDAO {
 	
 	public void doLeave(Member vo) throws Exception;
 	
-	public List<Member> listAll() throws Exception;
+	public Member listAll(Member vo) throws Exception;
 	
 }

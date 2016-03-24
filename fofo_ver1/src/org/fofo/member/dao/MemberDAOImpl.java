@@ -1,22 +1,23 @@
 package org.fofo.member.dao;
 
-import java.util.List;
-
 import org.fofo.member.vo.Member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.fofo.common.JDBCUtil;
 
 public class MemberDAOImpl implements MemberDAO{
 	
-	private static String doJoinSQL = "INSERT INTO user(uName,z uEmail, uPW) VALUES(?, ?, ?)";
+	private static String doJoinSQL = "INSERT INTO user(uName, uEmail, uPw, uJoinDate) VALUES(?, ?, ?, ?)";
 	private static String doLoginSQL = "SELECT * FROM user WHERE uEmail = ?";
 
 	private static String doIdCheckSQL = "SELECT * FROM user WHERE uEmail = ?";
+
+	private static String doListAllSQL = "SELECT * FROM user WHERE uEmail = ?";
 	public MemberDAOImpl() {
 		// TODO Auto-generated constructor stub
 	}
@@ -26,18 +27,21 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		System.out.println("vo ->"+vo.getUName()+vo.getUEmail()+vo.getUPW());
 		int result=0;
 		int joinResult=0;
 		result=doIdCheck(vo);
+		Date dNow = new Date( );
+		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+		System.out.println("Current Date: " + ft.format(dNow));
+	
 		if(result==1){
 			try{
-				
 				conn = JDBCUtil.getConnection();
 				stmt = conn.prepareStatement(doJoinSQL);
 				stmt.setString(1, vo.getUName());
 				stmt.setString(2, vo.getUEmail());
 				stmt.setString(3, vo.getUPW());
+				stmt.setString(4,ft.format(dNow));
 				
 				int cnt = stmt.executeUpdate();	
 				if(cnt == 1){
@@ -74,10 +78,10 @@ public class MemberDAOImpl implements MemberDAO{
 			String pw=vo.getUPW();
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
-				if(cnt.getString("uPW")!=null&&cnt.getString("uPW").equals(pw)){
-					//占쎌눘�뒄占쎌꼶�늺
+				if(cnt.getString("uPw")!=null&&cnt.getString("uPw").equals(pw)){
+					//일치하면
 					vo.setUName(cnt.getString("uName"));
-					vo.setUserId(Integer.getInteger(cnt.getString("userId")));
+					vo.setUserId(cnt.getInt("uId"));
 					System.out.println("Login had successed ");
 				
 				}else{
@@ -109,11 +113,11 @@ public class MemberDAOImpl implements MemberDAO{
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
 				
-					System.out.println("以묐났�엯�땲�떎.");
+					System.out.println("중복");
 					result=-1;
 				
 			}else{
-				System.out.println("以묐났�씠 �븘�떃�땲�떎.");
+				System.out.println("안중복");
 
 				result=1;
 			}
@@ -133,9 +137,43 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public List<Member> listAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Member listAll(Member vo) throws Exception {
+		// TODO Auto-generated method stub\
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet cnt=null;
+		System.out.println("listall실행");
+		try{
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(doListAllSQL);
+			stmt.setString(1, vo.getUEmail());
+			cnt = stmt.executeQuery();	
+			
+			if(cnt.next()){
+
+				vo.setUEmail(cnt.getString("uEmail"));
+				vo.setUName(cnt.getString("uName"));
+				vo.setUNickname(cnt.getString("uNickname"));
+				vo.setUBirth(cnt.getString("uBirth"));
+				vo.setUSchoolIds(cnt.getString("uSchoolIds"));
+				vo.setUSchoolNum(cnt.getInt("uSkillNum"));
+				vo.setUCareerIds(cnt.getString("uCareerIds"));
+				vo.setUAwardNum(cnt.getInt("uAwardNum"));
+				vo.setUAwardIds(cnt.getString("uAwardIds"));
+				vo.setULanguageNum(cnt.getInt("uLanguageNum"));
+				vo.setULanguageIds(cnt.getString("uLanguageIds"));
+				//겟 리스트
+				//스쿨,경력 ... 리스트 받아
+			}
+			
+			
+		}catch(SQLException e){
+			System.out.println("ListAll occured an ERROR");
+		}finally{
+			JDBCUtil.close(stmt, conn);
+		}
+		
+		return vo;
 	}
 
 

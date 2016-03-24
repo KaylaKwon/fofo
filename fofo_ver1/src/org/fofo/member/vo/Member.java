@@ -10,7 +10,7 @@ public class Member {
 	
 	private String uNickname;
 	private String uName;
-	private Date uBirth;
+	private String uBirth;
 	
 	private Date uJoinDate;
 	private String uSort;
@@ -45,7 +45,7 @@ public class Member {
 	
 	public String getUNickname(){	return uNickname;	}
 	public String getUName(){		return uName;	}
-	public Date getUBirth(){		return uBirth;	}
+	public String getUBirth(){		return uBirth;	}
 	
 	public Date getUJoinDate(){		return uJoinDate;	}
 	public String getUSort(){		return uSort;	}
@@ -79,7 +79,7 @@ public class Member {
 	
 	public void setUNickname(String uNickname){	this.uNickname = uNickname;	}
 	public void setUName(String uName){			this.uName = uName;	}
-	public void setUBirth(Date uBirth){			this.uBirth = uBirth;	}
+	public void setUBirth(String uBirth){			this.uBirth = uBirth;	}
 	
 	public void setUJoinDate(Date uJoinDate){		this.uJoinDate = uJoinDate;	}
 	public void setUSort(String uSort){				this.uSort = uSort;	}
