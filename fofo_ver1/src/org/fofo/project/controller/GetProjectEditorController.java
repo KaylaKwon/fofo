@@ -44,7 +44,7 @@ public class GetProjectEditorController implements Controller{
 				System.out.println(i.getProjectName());
 			}*/
 			
-			request.setAttribute("test", "this is test2");
+//			request.setAttribute("test", "this is test2");
 			
 		}catch(Exception e){
 			

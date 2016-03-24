@@ -11,9 +11,9 @@ import org.fofo.member.vo.Member;
 import org.fofo.project.dao.ProjectDAOImpl;
 import org.fofo.project.vo.Project;
 
+public class LoadProjectContentController implements Controller{
 
-public class LoadProjectListController implements Controller{
-	
+
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

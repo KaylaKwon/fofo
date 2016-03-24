@@ -20,9 +20,41 @@ public class ProjectDAOImpl implements ProjectDAO {
 												+"FROM project "
 												+"WHERE userId = ?;";
 	
+	private static String loadProjectContentSQL = "SELECT projectContent "
+												+"FROM project"
+												+"WHERE userId = ?, projectName = ?;";
+	
 	public ProjectDAOImpl() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public Project doGetProjectContent(Project project, Member member) throws Exception {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+		
+		Project pjt = null;
+		try{
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(loadProjectContentSQL);
+			
+			stmt.setInt(1, member.getUserId());
+			stmt.setString(2, project.getProjectName());
+			
+			rst = stmt.executeQuery();
+			
+			pjt = new Project();
+			pjt.setProjectContent(rst.getString("projectContent"));
+			
+		}catch(SQLException e){
+			System.out.println("adding project occured an ERROR");
+		}finally{
+			JDBCUtil.close(stmt, conn);
+		}
+		return pjt;
+	}
+	
 
 	@Override
 	public void doAddProject(Project project) throws Exception {
@@ -96,5 +128,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 		return list;
 		
 	}
+
+	
 
 }

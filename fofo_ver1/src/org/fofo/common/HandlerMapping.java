@@ -9,13 +9,20 @@ import org.fofo.freecomment.controller.*;
 import org.fofo.noticeboard.controller.*;
 import org.fofo.noticecomment.controller.*;
 
+import org.fofo.qaboard.controller.*;
+
 import org.fofo.member.controller.*;
 import org.fofo.message.controller.*;
 import org.fofo.project.controller.*;
 
+<<<<<<< HEAD
 import org.fofo.qaboard.controller.AddQABoardController;
 import org.fofo.qaboard.controller.GetQABoardListController;
 import org.fofo.qaboard.controller.GetQABoardController;
+=======
+import org.fofo.message.controller.*;
+
+>>>>>>> 984e40e3930ab4c2a79fd4ec70b57fc8da58f6ad
 
 public class HandlerMapping {
 
@@ -40,6 +47,10 @@ public class HandlerMapping {
 		mappings.put("/qaboard.do", new GetQABoardListController());
 		mappings.put("/addqaboard.do", new AddQABoardController());
 		mappings.put("/getqaboard.do", new GetQABoardController());
+<<<<<<< HEAD
+=======
+
+>>>>>>> 984e40e3930ab4c2a79fd4ec70b57fc8da58f6ad
 		/* Free Board */
 		mappings.put("/freeboard.do", new GetfBoardListController());
 		mappings.put("/getfreeboard.do", new GetfBoardController());

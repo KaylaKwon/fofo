@@ -12,5 +12,7 @@ public interface ProjectDAO {
 	public void doDeleteProject(Project project) throws Exception;
 	
 	public ArrayList<Project> doListAll(Member member) throws Exception;
+	
+	public Project doGetProjectContent(Project project, Member member) throws Exception;
 
 }
