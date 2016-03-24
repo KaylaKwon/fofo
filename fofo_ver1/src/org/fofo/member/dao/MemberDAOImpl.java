@@ -13,7 +13,7 @@ import org.fofo.common.JDBCUtil;
 
 public class MemberDAOImpl implements MemberDAO{
 	
-	private static String doJoinSQL = "INSERT INTO user(uName, uEmail, uPW) VALUES(?, ?, ?)";
+	private static String doJoinSQL = "INSERT INTO user(uName,z uEmail, uPW) VALUES(?, ?, ?)";
 	private static String doLoginSQL = "SELECT * FROM user WHERE uEmail = ?";
 
 	private static String doIdCheckSQL = "SELECT * FROM user WHERE uEmail = ?";
@@ -75,8 +75,9 @@ public class MemberDAOImpl implements MemberDAO{
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
 				if(cnt.getString("uPW")!=null&&cnt.getString("uPW").equals(pw)){
-					//�쇱튂�섎㈃
+					//占쎌눘�뒄占쎌꼶�늺
 					vo.setUName(cnt.getString("uName"));
+					vo.setUserId(Integer.getInteger(cnt.getString("userId")));
 					System.out.println("Login had successed ");
 				
 				}else{
@@ -108,11 +109,11 @@ public class MemberDAOImpl implements MemberDAO{
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
 				
-					System.out.println("중복입니다.");
+					System.out.println("以묐났�엯�땲�떎.");
 					result=-1;
 				
 			}else{
-				System.out.println("중복이 아닙니다.");
+				System.out.println("以묐났�씠 �븘�떃�땲�떎.");
 
 				result=1;
 			}

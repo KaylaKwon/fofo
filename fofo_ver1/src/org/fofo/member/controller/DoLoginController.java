@@ -33,7 +33,7 @@ public class DoLoginController implements Controller {
 			e.printStackTrace();
 		}
 		if(vo.getUName()!= null){
-			//세션
+			//�꽭�뀡
 			HttpSession session = request.getSession();
 			session.setAttribute("name", vo.getUName());
 			System.out.println("login!");

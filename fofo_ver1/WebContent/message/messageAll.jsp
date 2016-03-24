@@ -34,19 +34,24 @@
 	        </div>
 	      </div>
 	      <div class="box-body chat" id="chat-box">
+	      
+	        <form role='readm' method="post">
 	        <c:forEach items="${list}" var="message">
 		        <!-- chat item -->
 		        <div class="item">
 		          <img src="/resources/dist/img/user4-128x128.jpg" alt="user image" class="online">
 		          <p class="message">
-		            <a href="message/messageRead.jsp" class="name">
+		            <a href="#" class="name">
 		              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> ${message.getSendDate()}</small>
 		              ${message.getSuserId()}
+		              <input type="hidden" id="SuserId" name="SuserId" value="${message.getSuserId()}">
+		              <input type="hidden" id="RuserId" name="RuserId" value=<%=session.getAttribute("userId")%>>
 		            </a>
 		            ${message.getmContent()}
 		          </p>
 		        </div><!-- /.item -->
 	        </c:forEach>
+	        </form>
 	      </div><!-- /.chat -->
 	      <div class="box-footer">
 	        <div class="input-group">
@@ -63,7 +68,7 @@
 <%@ include file="../include/footer.jsp"%>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="../resources/js/freeboard.js"></script>
+<script src="../resources/js/message.js"></script>
 
 
 <%-- <div class="box-body chat" id="chat-box">

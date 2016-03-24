@@ -20,11 +20,17 @@ public class GetMessageController implements Controller {
 		MessageDAO dao = new MessageDAO();
 		Message message = new Message();
 		
-		int SuserId = Integer.parseInt(request.getParameter("SuserId"));
-		ArrayList<Message> mlist = dao.doGetMessage(SuserId);
+		System.out.println("보낸이 : "+request.getParameter("SuserId"));
+		System.out.println("받은이 : "+request.getParameter("RuserId"));
 		
+		message.setSuserId(Integer.parseInt(request.getParameter("SuserId")));
+		message.setRuserId(Integer.parseInt(request.getParameter("RuserId")));
+		ArrayList<Message> mlist = dao.doGetMessage(message.getSuserId(), message.getRuserId());
+
 		request.setAttribute("mlist", mlist);
-		request.setAttribute("SuserId", SuserId);
+		request.setAttribute("SuserId", message.getSuserId());
+		request.setAttribute("RuserId", message.getRuserId());
+		//request.setAttribute("RuserId", message.getRuserId());
 		
 		return "/message/messageRead.jsp";
 	}

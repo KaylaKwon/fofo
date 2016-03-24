@@ -10,10 +10,10 @@ import org.fofo.message.vo.Message;
 
 public class MessageDAO {
 
-	private static String sendMessageSQL = "insert into message (boardID, fpostTitle, userID, fpostContent, ftags) values(1, ?, ?, ?, ?)";
+	private static String sendMessageSQL = "insert into message (SuserId, RuserId, mContent, ReadorNot) values(?, ?, ?, true);";
 	//private static String listMessageSQL = "select * from message order by fpostdate desc";
 	private static String listMessageSQL = "select SuserId, mContent, SendDate from message where (SuserId, SendDate) in (select SuserId, MAX(SendDate) from message group by SuserId) order by SendDate desc";
-	private static String getMessageSQL = "select * from message where SuserId = ? order by SendDate desc";
+	private static String getMessageSQL = "select * from message where SuserId = ? or RuserId = ? order by SendDate desc";
 	private static String deleteMessageSQL = "delete from message where SuserId = ?";
 	
 	public void doDeleteBoard(Message message){
@@ -36,7 +36,8 @@ public class MessageDAO {
 		}
 	}
 	
-	public ArrayList<Message> doGetMessage(int SuserId){
+	public ArrayList<Message> doGetMessage(int SuId, int RuId){
+		
 		ArrayList<Message> list = new ArrayList<Message>();
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -45,13 +46,17 @@ public class MessageDAO {
 		try{
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(getMessageSQL);
-			stmt.setInt(1, SuserId);
+			stmt.setInt(1, SuId);
+			stmt.setInt(2, RuId);
 			rst = stmt.executeQuery();
 			while(rst.next()){
 				message = new Message();
-				message.setSuserId(rst.getInt("SuserId"));
+				message.setSuserId(rst.getInt("RuserId"));
+				message.setRuserId(rst.getInt("SuserId"));
 				message.setmContent(rst.getString("mContent"));
 				message.setSendDate(rst.getString("SendDate"));
+				message.setReadorNot(rst.getBoolean("ReadorNot"));
+				message.setReceiveDate(rst.getString("ReceiveDate"));
 				list.add(message);
 			}
 		}catch(SQLException e){
@@ -59,12 +64,13 @@ public class MessageDAO {
 		}finally{
 			JDBCUtil.close(rst, stmt, conn);
 		}
+		System.out.println(""+message.getSuserId()+"와의 메시지불러오기 성공");
 		return list;
 	}
 		
 	public ArrayList<Message> doListMessage(){
-		ArrayList<Message> list = new ArrayList<Message>();
 		
+		ArrayList<Message> list = new ArrayList<Message>();
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
