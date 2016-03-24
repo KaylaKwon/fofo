@@ -73,6 +73,8 @@ public class HandlerMapping {
 		mappings.put("/doLogin.do", new DoLoginController());
 		mappings.put("/doLogout.do", new DoLogoutController());
 		mappings.put("/idCheck.do", new DoIdCheckController());
+		mappings.put("/editProfile.do", new EditProfileController());
+		mappings.put("/listAll.do", new ListAllController());
 //		mappings.put("/project.do", new ProjectController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
 		

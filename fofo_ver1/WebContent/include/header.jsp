@@ -359,7 +359,7 @@
  			 if(session.getAttribute("name")!=null){ %>
           
    	  		<li>
-              <a href="/user/profile.jsp">
+              <a href="../listAll.do">
               <span class="glyphicons glyphicons-notes-2"></span>
                 <i class="fa fa-edit"></i> <span>My page</span>
                 <small class="label pull-right bg-yellow">1</small>
