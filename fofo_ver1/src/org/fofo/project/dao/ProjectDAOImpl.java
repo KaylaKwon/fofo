@@ -15,6 +15,10 @@ public class ProjectDAOImpl implements ProjectDAO {
 
 	private static String addProjectSQL = "INSERT into project (userId , projectName, createDate, lastUpdate)"
 									+"VALUES (123, ?, now(), now());";
+	
+	private static String deleteProjectSQL = "DELETE "
+											+"FROM project "
+											+"WHERE projectId = ?;";
 
 	private static String loadProjectListSQL = "SELECT projectId, projectName, lastUpdate "
 												+"FROM project "
@@ -135,8 +139,27 @@ public class ProjectDAOImpl implements ProjectDAO {
 
 	@Override
 	public void doDeleteProject(Project project) throws Exception {
-		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement stmt = null;
 		
+		try{
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(deleteProjectSQL);
+			stmt.setInt(1, project.getProjectId());
+			
+			int cnt = stmt.executeUpdate();
+			
+			if(cnt == 1){
+				System.out.println("removing project had completed");
+			}else{
+				System.out.println("removing project had failed");
+			}
+			
+		}catch(SQLException e){
+			System.out.println("<dao> removing project occured an ERROR");
+		}finally{
+			JDBCUtil.close(stmt, conn);
+		}
 	}
 
 	@Override

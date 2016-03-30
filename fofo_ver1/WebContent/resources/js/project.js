@@ -28,12 +28,19 @@ $(document).ready(function() {
 //	}); 
 	// ]]>
 	
+	
+	
+	
 });
 
 jQuery(document).ready(function() {
 	
+	var uid = 123;
+	
+	
+	
 	$("#addProjectBtn").click(function(e){
-		var name = $("#addProjectName").val();
+		var name = $("#newProjectName").val();
 		
 		$.post("addProject.do",
 			{
@@ -69,41 +76,60 @@ jQuery(document).ready(function() {
 	
 	
 });
+
+
 	
 
-$(document).on('click', '#btnProjectTabAdd', function(){
+/*$(document).on('click', '#btnProjectTabAdd', function(){
 
-});
+});*/
 
 $(document).on('click', '.loadProjectBtn', function(e){
 	loadProjectContent($(this));
 });
 
+$(document).on('click', '.deleteProjectBtn', function(e){
+	deleteProject($(this));
+});
 
-function loadProjectContent($loadBtn){
-	var pId = $loadBtn.parent().siblings(".listProjectId").html();
-	var name = $loadBtn.parent().siblings(".listProjectName").html();
-//	var update = $loadBtn.parent().siblings(".listLastUpdate").html();
-	
-//	alert("name: " + name + "\nupdate: " + update);
-	
-	var uid = 123;
-	
-	
-	
-	var tParam = "hi";
-	
-	$.post("loadProjectContent.do",
-		{
-			projectId: pId
-		}, function(data){
-//			alert(data);
-			addTabWithMyProject(name, pId, data);
-		}
-	);
 
+
+
+$(document).on('click', '.addBlock', function(){
+	addBlock($(this));
+});
+
+
+$(document).on('click', '.editBlockBtn', function(){ 
+	setEditBlockMode($(this));
+});
+
+$(document).on('click', '.endEditBlockBtn', function(){ 
+	endEditBlockMode($(this));
+});
+
+$(document).on('click', '.delBlockBtn', function(){
+	delBlock($(this));
+});
+
+$(document).on('click', '.closeTab', function(){
+	closeTab($(this));
+});
+
+
+
+/* ============================== Tab Control ============================== */
+
+function closeTab($closeBtn){
+	var targetTab = $closeBtn.parent().parent();
+	var targetContent = $closeBtn.parent().attr('href');
+	
+//	alert(parent);
+	$(targetContent).remove();
+	targetTab.remove();
 }
 
+/* load project and add it to the tab */
 function addTabWithMyProject($projectName, pId, data){
 	var nextTab = $('#projectTab li').size()+1;
 	var tabId = "LoadedMyProject_" + $projectName;
@@ -112,7 +138,7 @@ function addTabWithMyProject($projectName, pId, data){
   	$('<li role="presentation">'
   			+'<a href="#'+tabId+'" aria-controls="'+tabId+'" role="tab" data-toggle="tab">'
   			+$projectName
-  			+' <span class="closeTab glyphicon glyphicon-remove" aria-hidden="true"></span>'
+  			+' <span class="closeTab glyphicon glyphicon-remove" ></span>'
   			+'<input class="hiddenProjectId" type="text" name="projectId" value="'+ pId +'" style="display: none;">'
   			+'</a></li>').insertBefore('#liProjectTabAdd');
   	
@@ -158,38 +184,10 @@ function addTabWithMyProject($projectName, pId, data){
   	
   	
   	/* add real content in tab */
-  	
-  	
 }
 
 
-$(document).on('click', '.addBlock', function(){
-	addBlock($(this));
-});
-
-
-$(document).on('click', '.editBlockBtn', function(){ 
-	setEditBlockMode($(this));
-});
-
-$(document).on('click', '.endEditBlockBtn', function(){ 
-	endEditBlockMode($(this));
-});
-
-$(document).on('click', '.delBlockBtn', function(){
-	delBlock($(this));
-});
-
-$(document).on('click', '.closeTab', function(){
-	closeTab($(this));
-});
-
-
-function closeTab($closeBtn){
-	
-}
-
-
+/* ============================== Project Control ============================== */
 
 /* Add new project */
 function addNewProject(projectName){
@@ -227,9 +225,68 @@ function addNewProject(projectName){
   	$(".blockList").sortable({
 		cancel:".blockUnsortable"
 	});
+  	
+  	/* 프로젝트 리스트 업데이트*/
+  	var uid = 123;
+	$.post("loadProjectList.do",
+		{
+			userId : uid
+		}, function(data){
+			updateMyProjectList(data);
+		}
+	);
 }
 
 
+function loadProjectContent($loadBtn){
+	var pId = $loadBtn.parent().siblings(".listProjectId").html();
+	var name = $loadBtn.parent().siblings(".listProjectName").html();
+//	var update = $loadBtn.parent().siblings(".listLastUpdate").html();
+	
+//	alert("name: " + name + "\nupdate: " + update);
+	
+//	var uid = 123;
+	
+	$.post("loadProjectContent.do",
+		{
+			projectId: pId
+		}, function(data){
+//			alert(data);
+			addTabWithMyProject(name, pId, data);
+		}
+	);
+
+}
+
+/* 삭제하고 난 다음에도 갖다 쓸 수 ㅇ있도록 고치기 */
+function updateMyProjectList(data){
+	var listPlace = $("#projectListDiv");//document.getElementById("projectListDiv");
+	$("#projectListDiv").html("");
+
+	$(data).appendTo(listPlace);
+}
+
+
+function deleteProject($deleteBtn){
+	var pId = $deleteBtn.parent().siblings(".listProjectId").html();
+	var name = $deleteBtn.parent().siblings(".listProjectName").html();
+//	var update = $loadBtn.parent().siblings(".listLastUpdate").html();
+	
+//	alert("name: " + name + "\nupdate: " + update);
+	
+//	var pId = 123;
+	
+	$.post("deleteProject.do",
+		{
+			projectId: pId
+		}, function(data){
+			updateMyProjectList(data);
+		}
+	);
+
+}
+
+/* ============================== Block Control ============================== */
 
 /* Add new block */
 function addBlock($addBlock){
@@ -284,8 +341,6 @@ function endEditBlockOrder($this){
 	$this.hide();
 	$('#editBlockOrder').show();
 }
-
-
 
 
 

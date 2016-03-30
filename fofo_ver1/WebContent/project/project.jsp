@@ -51,28 +51,35 @@
   					<div class="projectContent">
 						<ul class="blockList list-unstyled draggableList"></ul>
 						
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">Add할 프로젝트 이름 </span>
+							<input id="newProjectName" type="text" name="newProjectName" class="form-control" placeholder="project name" aria-describedby="basic-addon1">
+							<span class="input-group-btn">
+					        	<button id="addProjectBtn" class="btn btn-success" type="button">ADD!</button>
+					      	</span>
+						</div>
 						
-						
-						
-						<%-- <table border="1" cellpadding="0" cellspacing="0" width="650">
-							<tr>
-								<th width="50">고유 번호</th>
-								<th bgcolor="orange" width="200">프로젝트 이름</th>
-								<th bgcolor="orange" width="250">최근 수정일시</th>
-								<th bgcolor="orange" width="150">기능</th>
-							</tr>
-							<c:forEach var="project" items="${projectList}">
+						<div id="projectListDiv">
+							<table border="1" cellpadding="0" cellspacing="0" width="650">
 								<tr>
-									<th class="listProjectId">${ project.projectId }</th>					
-									<td class="listProjectName">${ project.projectName }</td>
-									<td class="listLastUpdate">${ project.lastUpdate }</td>
-									<td>
-										<button class="btn btn-primary loadProjectBtn" type="submit">Load</button>
-										<button class="btn btn-danger deleteProjectBtn" type="submit">Delete</button>
-									</td>
+									<th width="50">고유 번호</th>
+									<th bgcolor="orange" width="200">프로젝트 이름</th>
+									<th bgcolor="orange" width="250">최근 수정일시</th>
+									<th bgcolor="orange" width="150">기능</th>
 								</tr>
-							</c:forEach>
-						</table> --%>
+								<c:forEach var="project" items="${projectList}">
+									<tr>
+										<th class="listProjectId">${ project.projectId }</th>					
+										<td class="listProjectName">${ project.projectName }</td>
+										<td class="listLastUpdate">${ project.lastUpdate }</td>
+										<td>
+											<button class="btn btn-primary loadProjectBtn" type="submit">Load</button>
+											<button class="btn btn-danger deleteProjectBtn" type="submit">Delete</button>
+										</td>
+									</tr>
+								</c:forEach>
+							</table>
+						</div>
 						
 						
 					</div>
@@ -106,7 +113,7 @@
 
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button> -->
 <!-- load project modal -->
-<div id="addTabModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<%-- <div id="addTabModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	    <div class="modal-content">
 	    	
@@ -121,11 +128,8 @@
 	      		<input id="method" type="text" name="method" value="addNewProject" style="display: none;">
 	      	
 				<div class="modal-body">
-					<div id="projectListTestDiv">
-
 					
-					</div>
-					<%-- <div id="projectListTable" style="height:200px; overflow:auto">
+					<div id="projectListTable" style="height:200px; overflow:auto">
 						<table border="1" cellpadding="0" cellspacing="0" width="450">
 							<tr>
 								<th bgcolor="orange" width="140">name</th>
@@ -140,7 +144,7 @@
 								</tr>
 							</c:forEach>
 						</table>
-					</div> --%>
+					</div>
 					
 					<!-- <div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">Add할 프로젝트 이름 </span>
@@ -166,7 +170,7 @@
 			
 		</div>
 	</div>
-</div>
+</div> --%>
 <!-- load project modal -->
 
 
