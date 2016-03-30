@@ -272,7 +272,7 @@
                   <li class="user-header">
                     <img src="/resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                     <p>
-                      Alexander Pierce - Web Developer
+                      <%=session.getAttribute("userId")%> - Web Developer
                       <small>Member since Nov. 2012</small>
                     </p>
                   </li>
@@ -359,7 +359,7 @@
  			 if(session.getAttribute("name")!=null){ %>
           
    	  		<li>
-              <a href="/user/profile.jsp">
+              <a href="../listAll.do">
               <span class="glyphicons glyphicons-notes-2"></span>
                 <i class="fa fa-edit"></i> <span>My page</span>
                 <small class="label pull-right bg-yellow">1</small>

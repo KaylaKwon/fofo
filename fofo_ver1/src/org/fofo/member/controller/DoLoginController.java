@@ -22,7 +22,6 @@ public class DoLoginController implements Controller {
 		MemberDAOImpl dao = new MemberDAOImpl();
 		Member vo = new Member();
 		
-		System.out.println("vo - > "+request.getParameter("email")+request.getParameter("pw"));
 		vo.setUEmail(request.getParameter("email"));
 		vo.setUPW(request.getParameter("pw"));
 		
@@ -36,6 +35,8 @@ public class DoLoginController implements Controller {
 			//세션
 			HttpSession session = request.getSession();
 			session.setAttribute("name", vo.getUName());
+			session.setAttribute("email", vo.getUEmail());
+			session.setAttribute("uid", vo.getUserId());
 			System.out.println("login!");
 		}else{
 			request.setAttribute("error", "Invalid email or password");

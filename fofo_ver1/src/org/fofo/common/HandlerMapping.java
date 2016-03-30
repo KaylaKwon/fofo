@@ -1,22 +1,15 @@
 package org.fofo.common;
 
 import java.util.HashMap;
-
-
 import org.fofo.freeboard.controller.*;
 import org.fofo.freecomment.controller.*;
-
 import org.fofo.noticeboard.controller.*;
 import org.fofo.noticecomment.controller.*;
-
 import org.fofo.qaboard.controller.*;
 
 import org.fofo.member.controller.*;
-
 import org.fofo.project.controller.*;
-
 import org.fofo.message.controller.*;
-
 
 public class HandlerMapping {
 
@@ -41,7 +34,6 @@ public class HandlerMapping {
 		mappings.put("/qaboard.do", new GetQABoardListController());
 		mappings.put("/addqaboard.do", new AddQABoardController());
 		mappings.put("/getqaboard.do", new GetQABoardController());
-
 		/* Free Board */
 		mappings.put("/freeboard.do", new GetfBoardListController());
 		mappings.put("/getfreeboard.do", new GetfBoardController());
@@ -83,6 +75,8 @@ public class HandlerMapping {
 		mappings.put("/doLogin.do", new DoLoginController());
 		mappings.put("/doLogout.do", new DoLogoutController());
 		mappings.put("/idCheck.do", new DoIdCheckController());
+		mappings.put("/editProfile.do", new EditProfileController());
+		mappings.put("/listAll.do", new ListAllController());
 //		mappings.put("/project.do", new ProjectController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
 		

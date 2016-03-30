@@ -1,10 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="org.fofo.member.vo.Member" %>
+<%@ page import="org.fofo.member.dao.MemberDAOImpl" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ include file="../include/header.jsp" %>
 
 <body class="hold-transition login-page">
-  <div class="wrapper">
+ 
   <div class="content-wrapper">
   	<!-- Content Header (Page header) -->
         <section class="content-header">
@@ -16,26 +20,24 @@
             <li class="active">Profile</li>
           </ol>
         </section>
-        
-        <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    
+  
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
         <!-- left column -->
         <div class="col-md-6">
+        <!-- profile form -->
 			<div class="box box-primary">
             	<div class="box-header with-border">
               		<h3 class="box-title">Profile</h3>
             	</div>
-              <form role="form">
+           <form action="/user/editProfile.jsp" method="post" name="frm">
                 <!-- text input -->
                 <div class="box-body">
                 
                 	
+               	  <input type="hidden" name="from" value="profile">
 	                <div class="form-group">
 	                
 	                  <label for="exampleInputFile">Image</label>
@@ -55,33 +57,51 @@
 	                	HmDUe6Ab5Jl63eV1xFtCXlm0xsH+pZYgyiZTEqo1n2gaJ6HS9+b9Ieo1risvydRAyvWUQe+A1boKXzSzW
 	                	skaZhM6NfRr+0aj0Wg0/hN+APmaGv2nJYnFAAAAAElFTkSuQmCC" width="100">
 	                
-	                  <input type="file" id="exampleInputFile">
-	                  <p class="help-block">Example block-level help text here.</p>
 	                </div>
-	                
-	                <div class="form-group">
-	                  <label for="name">Full name</label>
-	                  <input type="text" class="form-control" placeholder="Enter ..." id="">
-	                </div>
-	                
-           		   <div class="form-group">
-	                	<label>Date of birth</label>
-		                <div class="input-group">
-	                 		 <div class="input-group-addon">
-	                 	  		 <i class="fa fa-calendar"></i>
-	                		 </div>
-	                  		 <input type="text" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'"  data-mask>
-	                  		 <!-- 이거 수정 -->
-	               		</div>
-               		</div>
-	                
-	                 <div class="form-group">
-	                  <label for="name">School</label>
-	                  <input type="text" class="form-control" placeholder="Enter ..." id="">
-	                </div>
-	               
-	              
-	                
+					
+	                		
+	                <ul class="list-group list-group-unbordered">
+		                <li class="list-group-item">
+		                  	
+						
+						  <label>Email</label>
+							<br>
+								<p>${data.getUEmail()}</p>
+								
+							<label>Full name</label>
+							<br>
+			                  	<p>${data.getUName()}</p>
+			                  
+			                <label>Nickname</label>
+							<br>
+								<p>${data.getUNickname()}</p>
+		                
+		                    <label>Date of birth</label>
+							<br>
+								<p>${data.getUBirth()}</p>
+		                
+		               </li>
+		                 <li class="list-group-item">
+		                 <label>학교</label>
+		                 ${data.getUSchoolIds()}
+		                 </li>
+		                  <li class="list-group-item">
+		                 <label>경력</label>
+		                 ${data.getUCareerIds()}
+		                 </li>
+		                  <li class="list-group-item">
+		                 <label>스킬</label>
+		                 ${data.getUSkillIds()}
+		                 </li>
+		                   <li class="list-group-item">
+		                 <label>수상 내역</label>
+		                 ${data.getUAwardIds()}
+		                 </li>
+		                   <li class="list-group-item">
+		                 <label>구사 언어</label>
+		                 ${data.getULanguageIds()}
+		                 </li>
+              		</ul>
 	                <div class="col-xs-4">
           			    <button type="submit" class="btn btn-primary btn-block btn-flat">Edit</button>
          			</div><!-- /.col -->
@@ -92,21 +112,19 @@
             </div>
             <!-- /.box-primary -->
           </div>
-          <!-- /.col-md-6 -->
-        </div>
-        <!--row -->
+          <!-- /.col-md-6 left-->
+          </div>
+          <!-- right column -->
+         <!-- /.right column -->
+     
      
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 	
-    
-<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-
-<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
     <script>
+    
       $(function () {
         $('input').iCheck({
           checkboxClass: 'icheckbox_square-blue',
@@ -114,15 +132,14 @@
           increaseArea: '20%' // optional
         });
       });
-      $(function () {
-       
-        //Datemask dd/mm/yyyy
-        $("[data-mask]").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
       
+      $(function () {
+        //Datemask dd/mm/yyyy
+        $("[data-mask]").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});      
       });
+      
     </script>
-    </div>
-    </div>
+    
   </body>
 
 <%@ include file="../include/footer.jsp" %>
