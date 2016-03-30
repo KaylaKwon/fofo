@@ -51,48 +51,115 @@ jQuery(document).ready(function() {
 		endEditBlockOrder($(this));
 	});
 
+	$("#saveThisProject").click(function(e){
+		var activeTab = document.getElementById("projectTab").getElementsByClassName("active")[0];
+		var pId = activeTab.getElementsByClassName("hiddenProjectId")[0].value;
+		
+		var selectedTab = document.getElementsByClassName("tab-pane fade active in")[0];
+		var content = selectedTab.getElementsByClassName("blockList")[0].innerHTML;
+		
+		$.post("updateThisProject.do",
+			{
+				projectId: pId,
+				projectContent: content
+			}
+		);
+		
+	});
+	
+	
 });
 	
 
 $(document).on('click', '#btnProjectTabAdd', function(){
-	
-	
-	/*$('#loadProjectModal').on('shown.bs.modal', function () {
-		var uid = 123;
-		
-		$.post("loadProjectList.do",
-			{
-				userId: uid
-			}
-		);
-//		  $('#myInput').focus()
-	})
-	
-	addNewTab();*/
+
 });
 
 $(document).on('click', '.loadProjectBtn', function(e){
-	loadProject($(this));
+	loadProjectContent($(this));
 });
 
-function loadProject($loadBtn){
+
+function loadProjectContent($loadBtn){
+	var pId = $loadBtn.parent().siblings(".listProjectId").html();
 	var name = $loadBtn.parent().siblings(".listProjectName").html();
-	var update = $loadBtn.parent().siblings(".listLastUpdate").html();
+//	var update = $loadBtn.parent().siblings(".listLastUpdate").html();
 	
-	alert("name: " + name + "\nupdate: " + update);
+//	alert("name: " + name + "\nupdate: " + update);
 	
-	$.post("loadProjectList.do",
+	var uid = 123;
+	
+	
+	
+	var tParam = "hi";
+	
+	$.post("loadProjectContent.do",
 		{
-			userId: uid
+			projectId: pId
+		}, function(data){
+//			alert(data);
+			addTabWithMyProject(name, pId, data);
 		}
 	);
-	
-	addTabWithMyProject();
-	
+
 }
 
-function addTabWithMyProject(){
+function addTabWithMyProject($projectName, pId, data){
+	var nextTab = $('#projectTab li').size()+1;
+	var tabId = "LoadedMyProject_" + $projectName;
+	var projectTab = document.getElementById("projectTab");
 	
+  	$('<li role="presentation">'
+  			+'<a href="#'+tabId+'" aria-controls="'+tabId+'" role="tab" data-toggle="tab">'
+  			+$projectName
+  			+' <span class="closeTab glyphicon glyphicon-remove" aria-hidden="true"></span>'
+  			+'<input class="hiddenProjectId" type="text" name="projectId" value="'+ pId +'" style="display: none;">'
+  			+'</a></li>').insertBefore('#liProjectTabAdd');
+  	
+  	if(listEditableFlag == 1){
+  		$('<div role="tabpanel" class="tab-pane fade" id="'+ tabId + '">'
+  	  			+ '<div class="projectContent">'
+  				+ '<ul class="blockList list-unstyled draggableList">'
+  				+ data
+  				+ '</ul>'
+  				+ '<div class="table-hover addBlock">'
+  				+ '블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>'
+  				+ '</div></div>'
+  	  			+ '</div>').appendTo('.projectTab-content');
+	}else{
+		$('<div role="tabpanel" class="tab-pane fade" id="'+ tabId + '">'
+	  			+ '<div class="projectContent">'
+				+ '<ul class="blockList list-unstyled draggableList blockUnsortable">'
+				+ data
+				+ '</ul>'
+				+ '<div class="table-hover addBlock">'
+				+ '블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>'
+				+ '</div></div>'
+	  			+ '</div>').appendTo('.projectTab-content');
+	}
+  	$("#addProjectName").val('');
+  	
+  	$('#projectTab a:last').tab('show');
+//  	$('#projectTab a:nth-last-child(1)').tab('show');	//자잘한 에러
+  	
+  	$(".blockList").sortable({
+		cancel:".blockUnsortable"
+  	});
+  	
+  	
+  	
+  	/* add project content tag(not real tag) */
+  	var thisTab = document.getElementById(tabId);//.find(".blockList");
+  	var $thisBlock = thisTab.getElementsByClassName('blockList');
+//  	var contentTag = "${ projectContent}";
+  	
+//  	$("${ projectContent }").appendTo(thisBlock);
+//  	$thisBlock.append(contentTag);
+  	
+  	
+  	/* add real content in tab */
+  	
+  	
 }
 
 
@@ -137,7 +204,7 @@ function addNewProject(projectName){
   	
   	if(listEditableFlag == 1){
   		$('<div role="tabpanel" class="tab-pane fade" id="'+ projectName + '">'
-  	  			+ '<div id="projectContent">'
+  	  			+ '<div class="projectContent">'
   				+ '<ul class="blockList list-unstyled draggableList"></ul>'
   				+ '<div class="table-hover addBlock">'
   				+ '블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>'
@@ -145,7 +212,7 @@ function addNewProject(projectName){
   	  			+ '</div>').appendTo('.projectTab-content');
 	}else{
 		$('<div role="tabpanel" class="tab-pane fade" id="'+ projectName + '">'
-	  			+ '<div id="projectContent">'
+	  			+ '<div class="projectContent">'
 				+ '<ul class="blockList list-unstyled draggableList blockUnsortable"></ul>'
 				+ '<div class="table-hover addBlock">'
 				+ '블록 추가 <span id="addBlockGlyp" class="glyphicon glyphicon-plus" aria-hidden="true"></span>'

@@ -13,6 +13,8 @@ public interface ProjectDAO {
 	
 	public ArrayList<Project> doListAll(Member member) throws Exception;
 	
-	public Project doGetProjectContent(Project project, Member member) throws Exception;
+	public Project doGetProjectContent(Project project) throws Exception;
+	
+	public void doUpdateThisProject(Project project) throws Exception;
 
 }

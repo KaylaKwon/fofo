@@ -31,6 +31,7 @@ public class AddProjectController implements Controller{
 			dao.doAddProject(project);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			System.out.println("add project occured an ERROR");
 			e.printStackTrace();
 		}
 

@@ -40,6 +40,7 @@ public class GetProjectEditorController implements Controller{
 
 			request.setAttribute("projectList", list);
 			
+			
 			/*for(Project i : list){
 				System.out.println(i.getProjectName());
 			}*/
@@ -47,7 +48,8 @@ public class GetProjectEditorController implements Controller{
 //			request.setAttribute("test", "this is test2");
 			
 		}catch(Exception e){
-			
+			System.out.println("get project editor occured an ERROR");
+			e.printStackTrace();
 		}finally{
 			
 			

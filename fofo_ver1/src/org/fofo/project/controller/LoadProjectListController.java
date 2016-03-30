@@ -27,11 +27,13 @@ public class LoadProjectListController implements Controller{
 		member.setUserId(123);
 		try{
 			
-			project = dao.doGetProjectContent(project, member);
+			/*project = dao.doGetProjectContent(project, member);
 
 			request.setAttribute("projectContent", project.getProjectContent());
 			
-			System.out.println("selected project content: " + project.getProjectContent());
+			System.out.println("selected project content: " + project.getProjectContent());*/
+			
+			
 			/*ArrayList<Project> list = dao.doListAll(member);
 
 			request.setAttribute("projectList", list);
