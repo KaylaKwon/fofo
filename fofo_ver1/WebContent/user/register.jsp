@@ -34,7 +34,7 @@
 		          <%} %>
            <form action="../doJoin.do" method="post" name="frm">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="Full name" name="name" id="name" >
+            <input type="text" class="form-control" placeholder="Nickname" name="name" id="name" >
             <span class="glyphicon glyphicon-user form-control-feedback" ></span>
              <p id="namecheck"></p>
           </div>
