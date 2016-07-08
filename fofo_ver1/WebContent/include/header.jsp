@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="org.fofo.member.vo.Member" %>
-<%@ page import="org.fofo.member.dao.MemberDAOImpl" %>
+
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -52,7 +52,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="http://localhost:8080/home.jsp" class="logo">
+        <a href="/home.jsp" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>A</b>LT</span>
           <!-- logo for regular state and mobile devices -->
@@ -199,7 +199,7 @@
                     </p>
                   </li>
                   <!-- Menu Body -->
-                  <li class="user-body">
+                  <!--  <li class="user-body">
                     <div class="col-xs-4 text-center">
                       <a href="#">Followers</a>
                     </div>
@@ -244,11 +244,11 @@
 			%>  
 			<br>
  			<br>
-					<li align="center"><a href = "http://localhost:8080/user/login.jsp">
+					<li align="center"><a href = "/user/login.jsp">
           		<i class = "glyphicon glyphicon-ice-lolly"></i>
           		<span>로그인</span>
           	</a></li>
-          	<li align="center"><a href = "http://localhost:8080/user/register.jsp">
+          	<li align="center"><a href = "/user/register.jsp">
           		<i class = "glyphicon glyphicon-user"></i>
           		<span>회원가입</span>
           	</a></li>
@@ -298,12 +298,6 @@
               </a>
             </li>
        
-            <li>
-              <a href="http://localhost:8080/error_common.jsp">
-                <i class="fa fa-calendar"></i> <span>Calendar</span>
-                <small class="label pull-right bg-red">3</small>
-              </a>
-            </li>
             
               <%} %>
             
@@ -313,7 +307,7 @@
                 </a>
               <ul class="treeview-menu">
               	<li><a href="/freeboard.do"><i class="fa fa-circle-o"></i> 자유게시판</a></li>
-                <li><a href="/qaboard.do"><i class="fa fa-circle-o"></i> Q&A</a></li>
+                <li><a href="/error_common.jsp"><i class="fa fa-circle-o"></i> Q&A</a></li>
                 <li><a href="/noticeboard.do"><i class="fa fa-circle-o"></i> 공지사항</a></li>
               </ul>
             </li>
@@ -321,30 +315,4 @@
        </section>
         <!-- /.sidebar -->
       </aside>
-      <!-- Content Wrapper. Contains page content -->
-      
-        
-        
-        
-                 <!-- Sidebar user panel -->
-        <!--  <div class="user-panel">
-            <div class="pull-left image">
-              <img src="/resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-            </div>
-            <div class="pull-left info">
-              <p>Alexander Pierce</p>
-
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-          </div>
-         <!-- search form -->
-       <!--    <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form> 
-          <!-- /.search form -->
-          <!-- sidebar menu: : style can be found in sidebar.less -->
+ 
