@@ -24,7 +24,14 @@
 
       <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
-       
+        <%if(request.getAttribute("join")=="error"){
+		          	%>
+		          <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+               	이메일 중복
+              </div>
+		          <%} %>
            <form action="../doJoin.do" method="post" name="frm">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Full name" name="name" id="name" >

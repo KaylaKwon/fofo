@@ -31,7 +31,11 @@ public class DoJoinController implements Controller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(result==0){
+		if(result==1){//중복이 아닐 경우
+			request.setAttribute("join", "success");
+			returnURL="/home.jsp";
+		}else{//중복
+			request.setAttribute("join", "error");
 			returnURL="/user/register.jsp";
 		}
 

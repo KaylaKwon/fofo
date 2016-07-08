@@ -12,12 +12,12 @@ import org.fofo.common.JDBCUtil;
 
 public class MemberDAOImpl implements MemberDAO{
 	
-	private static String doJoinSQL = "INSERT INTO user(uName, uEmail, uPw, uJoinDate) VALUES(?, ?, ?, ?)";
-	private static String doLoginSQL = "SELECT * FROM user WHERE uEmail = ?";
+	private static String doJoinSQL = "INSERT INTO user(nickname, email, pw) VALUES(?, ?, ?)";
+	private static String doLoginSQL = "SELECT * FROM user WHERE email = ?";
 
-	private static String doIdCheckSQL = "SELECT * FROM user WHERE uEmail = ?";
+	private static String doIdCheckSQL = "SELECT * FROM user WHERE email = ?";
 
-	private static String doListAllSQL = "SELECT * FROM user WHERE uEmail = ?";
+	private static String doListAllSQL = "SELECT * FROM user WHERE email = ?";
 	public MemberDAOImpl() {
 		// TODO Auto-generated constructor stub
 	}
@@ -30,24 +30,22 @@ public class MemberDAOImpl implements MemberDAO{
 		int result=0;
 		int joinResult=0;
 		result=doIdCheck(vo);
-		Date dNow = new Date( );
-		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-		System.out.println("Current Date: " + ft.format(dNow));
 	
-		if(result==1){
+		if(result==1){// 중복이 아닐 경우 실행
 			try{
 				conn = JDBCUtil.getConnection();
 				stmt = conn.prepareStatement(doJoinSQL);
 				stmt.setString(1, vo.getuName());
 				stmt.setString(2, vo.getuEmail());
 				stmt.setString(3, vo.getuPw());
-				stmt.setString(4,ft.format(dNow));
 				
 				int cnt = stmt.executeUpdate();	
 				if(cnt == 1){
 					System.out.println("joining had successed");
+
 				}else{
 					System.out.println("joining had failed");
+
 				}
 				
 			}catch(SQLException e){
@@ -56,10 +54,12 @@ public class MemberDAOImpl implements MemberDAO{
 			}finally{
 				JDBCUtil.close(stmt, conn);
 			}
+
 			joinResult=1;
-		}else{
-			System.out.println("??");
-		
+		}else{//중복일 경우
+			System.out.println("중복이라 가입 실패");
+
+			joinResult=0;
 		}
 		return joinResult;
 
@@ -113,11 +113,11 @@ public class MemberDAOImpl implements MemberDAO{
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
 				
-					System.out.println("중복");
+					System.out.println("memberDAOImpl - doIdCheck 중복");
 					result=-1;
 				
 			}else{
-				System.out.println("안중복");
+				System.out.println("memberDAOImpl - doIdCheck 안중복");
 
 				result=1;
 			}

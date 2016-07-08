@@ -31,9 +31,7 @@ public class DoIdCheckController implements Controller {
 			e.printStackTrace();
 		}
 
-		if(result==-1){//중복
-			 request.setAttribute("idcheck","error");			 
-		}
+		
 		
 		return returnURL;
 	}
