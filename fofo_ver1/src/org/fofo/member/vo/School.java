@@ -2,31 +2,25 @@ package org.fofo.member.vo;
 
 public class School {
 
-	private Integer MySchoolId;
-	private Integer userId;
 	private Integer schoolId;
+	private String schoolName;
+	
 	private String degree;
 	private String major;
+	
 	private Integer entrance;
 	private Integer graduation;
-	private boolean graduateCheck;
-	public Integer getMySchoolId() {
-		return MySchoolId;
-	}
-	public void setMySchoolId(Integer mySchoolId) {
-		MySchoolId = mySchoolId;
-	}
-	public Integer getUserId() {
-		return userId;
-	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
 	public Integer getSchoolId() {
 		return schoolId;
 	}
 	public void setSchoolId(Integer schoolId) {
 		this.schoolId = schoolId;
+	}
+	public String getSchoolName() {
+		return schoolName;
+	}
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
 	}
 	public String getDegree() {
 		return degree;
@@ -52,12 +46,6 @@ public class School {
 	public void setGraduation(Integer graduation) {
 		this.graduation = graduation;
 	}
-	public boolean isGraduateCheck() {
-		return graduateCheck;
-	}
-	public void setGraduateCheck(boolean graduateCheck) {
-		this.graduateCheck = graduateCheck;
-	}
-	
+
 	
 }

@@ -12,8 +12,12 @@ import javax.servlet.http.HttpSession;
 import org.fofo.common.Controller;
 import org.fofo.member.dao.MemberDAOImpl;
 import org.fofo.member.dao.ProfileDAO;
+import org.fofo.member.vo.Award;
+import org.fofo.member.vo.Career;
+import org.fofo.member.vo.Language;
 import org.fofo.member.vo.Member;
 import org.fofo.member.vo.School;
+import org.fofo.member.vo.Skill;
 
 public class EditProfileController implements Controller {
 
@@ -26,6 +30,11 @@ public class EditProfileController implements Controller {
 		MemberDAOImpl dao = new MemberDAOImpl();
 		Member vo = new Member();
 		School sVo = new School();
+		Career cVo= new Career();
+		Award aVo=new Award();
+		Language lVo=new Language();
+		Skill skVo=new Skill();
+		
 		ProfileDAO pDao = new ProfileDAO();
 		HttpSession session=request.getSession();
 		
@@ -35,17 +44,16 @@ public class EditProfileController implements Controller {
 		
 		String action=request.getParameter("formName");
 
+		vo.setuEmail(email);
 		try {
 			switch(action){
 			
 			case "school":
-				vo.setUEmail(email);
-				vo.setUSchoolIds(request.getParameter("schoolId"));
-				sVo.setMySchoolId(Integer.parseInt(request.getParameter("schoolId")));
+				sVo.setSchoolName(request.getParameter("schoolName"));
 				sVo.setDegree(request.getParameter("degree"));
 				sVo.setMajor(request.getParameter("major"));
 				sVo.setEntrance(Integer.parseInt(request.getParameter("entrance")));
-				sVo.setUserId(uid);
+				sVo.setGraduation(Integer.parseInt(request.getParameter("graduation")));
 				pDao.addSchool(vo, sVo);
 				System.out.println("DAO : school");
 				System.out.println("SchoolID : "+request.getParameter("schoolId"));
@@ -55,6 +63,14 @@ public class EditProfileController implements Controller {
 				break;
 				
 			case "career":
+				
+				cVo.setCareerName(request.getParameter("careerName"));
+				cVo.setPosition(request.getParameter("position"));
+				pDao.addCareer(vo, cVo);
+				//cVo.setStartDate(request.getParameter("startDate"));
+				//integer 
+				//cVo.setEndDate(request.getParameter("endDate"));
+				
 				System.out.println("DAO : career");
 				System.out.println("CareerId : "+request.getParameter("careerId"));
 				System.out.println("Position : "+request.getParameter("position"));
@@ -62,6 +78,10 @@ public class EditProfileController implements Controller {
 				break;
 
 			case "skill":
+				
+				skVo.setSkillName(request.getParameter("skillName"));
+				skVo.setSkillComment(request.getParameter("skillComment"));
+				pDao.addSkill(vo, skVo);
 				System.out.println("DAO : skill");
 				System.out.println("Skill : "+request.getParameter("skillId"));
 				System.out.println("Level : "+request.getParameter("level"));
@@ -69,6 +89,9 @@ public class EditProfileController implements Controller {
 
 			case "award":
 				//dao.addAward(vo);
+				aVo.setAwardName(request.getParameter("awardName"));
+				aVo.setAwardComment(request.getParameter("awardComment"));
+				pDao.addAward(vo, aVo);
 				System.out.println("DAO : award");
 				System.out.println("Award Name : "+request.getParameter("awardName"));
 				System.out.println("Institution : "+request.getParameter("institution"));
@@ -78,6 +101,10 @@ public class EditProfileController implements Controller {
 
 			case "language":
 				//dao.addLanguage(vo);
+				lVo.setLanguageName(request.getParameter("languageName"));
+				lVo.setLanguageComment(request.getParameter("langaugeComment"));
+				pDao.addLanguage(vo, lVo);
+				
 				System.out.println("DAO : language");
 				System.out.println("Language Name : "+request.getParameter("languageName"));
 				

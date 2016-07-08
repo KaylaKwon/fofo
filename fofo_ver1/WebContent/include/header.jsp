@@ -69,7 +69,7 @@
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-              <%if(session.getAttribute("name")==null){ %>
+              <%if(session.getAttribute("uid")==null){ %>
                   
  <%}else{%>
                   
@@ -185,7 +185,7 @@
                   <img src="${data.getUProfileImg()}" class="user-image" alt="User Image"/>
                   <span class="hidden-xs">
                   
-                <%=session.getAttribute("name")%>
+                <%=session.getAttribute("nickname")%>
           
                   </span>
                 </a>
@@ -240,7 +240,7 @@
          <!--   <li class="header">MAIN NAVIGATION</li>  --> 
  			
  			 <%
-				if(session.getAttribute("name")==null){
+				if(session.getAttribute("uid")==null){
 			%>  
 			<br>
  			<br>
@@ -270,7 +270,7 @@
           
      <li class ="header" align = "center">MAIN MENU</li>
    	  	<%
- 			 if(session.getAttribute("name")!=null){ %>
+ 			 if(session.getAttribute("uid")!=null){ %>
           
    	  		<li>
               <a href="../listAll.do">

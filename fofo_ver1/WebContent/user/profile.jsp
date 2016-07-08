@@ -66,40 +66,34 @@
 						
 						  <label>Email</label>
 							<br>
-								<p>${data.getUEmail()}</p>
+								<p>${data.getuEmail()}</p>
 								
 							<label>Full name</label>
 							<br>
-			                  	<p>${data.getUName()}</p>
+			                  	<p>${data.getuName()}</p>
 			                  
 			                <label>Nickname</label>
 							<br>
-								<p>${data.getUNickname()}</p>
+								<p>${data.getuNickname()}</p>
 		                
-		                    <label>Date of birth</label>
-							<br>
-								<p>${data.getUBirth()}</p>
+		                   
 		                
 		               </li>
+		               <h1>아직 구현안했음</h1>
 		                 <li class="list-group-item">
 		                 <label>학교</label>
-		                 ${data.getUSchoolIds()}
 		                 </li>
 		                  <li class="list-group-item">
 		                 <label>경력</label>
-		                 ${data.getUCareerIds()}
 		                 </li>
 		                  <li class="list-group-item">
 		                 <label>스킬</label>
-		                 ${data.getUSkillIds()}
 		                 </li>
 		                   <li class="list-group-item">
 		                 <label>수상 내역</label>
-		                 ${data.getUAwardIds()}
 		                 </li>
 		                   <li class="list-group-item">
 		                 <label>구사 언어</label>
-		                 ${data.getULanguageIds()}
 		                 </li>
               		</ul>
 	                <div class="col-xs-4">

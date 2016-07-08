@@ -132,7 +132,7 @@
 		            <div>
 		               	<label>학교</label>
 		               	<!-- test용으로 id입력 -->
-		                <input type="number" class="form-control" placeholder="" name="schoolId" onkeyup="showData(this.value);">
+		                <input type="number" class="form-control" placeholder="" name="schoolName" onkeyup="showData(this.value);">
 	               	</div>
 	                <div>
 		               	<label>학위</label>
@@ -180,7 +180,7 @@
                 
                 <div>
 	               	<label>경력사</label>
-	                  <input type="text" class="form-control" placeholder="" name="careerId">
+	                  <input type="text" class="form-control" placeholder="" name="careerName">
                	</div>
                	
                 <div>
@@ -224,12 +224,12 @@
                   	
                 <div>
 	               	<label>기술</label>
-	                  <input type="text" class="form-control" placeholder="" name="skillId">
+	                  <input type="text" class="form-control" placeholder="" name="skillName">
                	</div>
                		
                 <div>
-	               	<label>수준</label>
-	                  <input type="text" class="form-control" placeholder="" name="level">
+	               	<label>코멘트</label>
+	                  <input type="text" class="form-control" placeholder="" name="skillComment">
                	</div>
                		
                 
@@ -262,14 +262,9 @@
 	               	<label>상 이름</label>
 	                  <input type="text" class="form-control" placeholder="" name="awardName">
                	</div>
-               	 <div>
-	               	<label>수여 기관</label>
-	                  <input type="text" class="form-control" placeholder="" name="institution">
-               	</div>
-             
-               	 <div>
-	               	<label>수상일</label>
-	                  <input type="date" class="form-control" placeholder="" name="awardDate">
+  	         	 <div>
+	               	<label>코멘트</label>
+	                  <input type="date" class="form-control" placeholder="" name="awardComment">
                	</div>
 	            	<div class="modal-footer">
 	               		 <button type="button" class="btn btn-default pull-left" id="closeAward">Close</button>
@@ -299,6 +294,10 @@
               	 <div>
 	               	<label>언어</label>
 	                  <input type="text" class="form-control" placeholder="" name="languageName">
+               	</div>
+               	 <div>
+	               	<label>언어</label>
+	                  <input type="text" class="form-control" placeholder="" name="languageComment">
                	</div>
                	
                	

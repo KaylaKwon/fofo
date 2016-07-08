@@ -22,8 +22,8 @@ public class DoLoginController implements Controller {
 		MemberDAOImpl dao = new MemberDAOImpl();
 		Member vo = new Member();
 		
-		vo.setUEmail(request.getParameter("email"));
-		vo.setUPW(request.getParameter("pw"));
+		vo.setuEmail(request.getParameter("email"));
+		vo.setuPw(request.getParameter("pw"));
 		
 		try {
 			vo=dao.doLogin(vo);
@@ -31,15 +31,15 @@ public class DoLoginController implements Controller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(vo.getUName()!= null){
-			//세션
+		if(vo.getUserId()!= null){
+			//로그인 성공시 세션
 			HttpSession session = request.getSession();
-			session.setAttribute("name", vo.getUName());
-			session.setAttribute("email", vo.getUEmail());
+			session.setAttribute("nickname", vo.getuNickname());
+			session.setAttribute("email", vo.getuEmail());
 			session.setAttribute("uid", vo.getUserId());
 			System.out.println("login!");
 		}else{
-			request.setAttribute("error", "Invalid email or password");
+			request.setAttribute("login", "invalid");
 			returnURL="/user/login.jsp";
 		}
 		return returnURL;

@@ -12,12 +12,12 @@ import org.fofo.common.JDBCUtil;
 
 public class MemberDAOImpl implements MemberDAO{
 	
-	private static String doJoinSQL = "INSERT INTO user(uName, uEmail, uPw, uJoinDate) VALUES(?, ?, ?, ?)";
-	private static String doLoginSQL = "SELECT * FROM user WHERE uEmail = ?";
+	private static String doJoinSQL = "INSERT INTO user(nickname, email, pw) VALUES(?, ?, ?)";
+	private static String doLoginSQL = "SELECT * FROM user WHERE email = ?";
 
-	private static String doIdCheckSQL = "SELECT * FROM user WHERE uEmail = ?";
+	private static String doIdCheckSQL = "SELECT * FROM user WHERE email = ?";
 
-	private static String doListAllSQL = "SELECT * FROM user WHERE uEmail = ?";
+	private static String doListAllSQL = "SELECT * FROM user WHERE email = ?";
 	public MemberDAOImpl() {
 		// TODO Auto-generated constructor stub
 	}
@@ -30,24 +30,22 @@ public class MemberDAOImpl implements MemberDAO{
 		int result=0;
 		int joinResult=0;
 		result=doIdCheck(vo);
-		Date dNow = new Date( );
-		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-		System.out.println("Current Date: " + ft.format(dNow));
 	
-		if(result==1){
+		if(result==1){// 중복이 아닐 경우 실행
 			try{
 				conn = JDBCUtil.getConnection();
 				stmt = conn.prepareStatement(doJoinSQL);
-				stmt.setString(1, vo.getUName());
-				stmt.setString(2, vo.getUEmail());
-				stmt.setString(3, vo.getUPW());
-				stmt.setString(4,ft.format(dNow));
+				stmt.setString(1, vo.getuName());
+				stmt.setString(2, vo.getuEmail());
+				stmt.setString(3, vo.getuPw());
 				
 				int cnt = stmt.executeUpdate();	
 				if(cnt == 1){
 					System.out.println("joining had successed");
+
 				}else{
 					System.out.println("joining had failed");
+
 				}
 				
 			}catch(SQLException e){
@@ -56,10 +54,12 @@ public class MemberDAOImpl implements MemberDAO{
 			}finally{
 				JDBCUtil.close(stmt, conn);
 			}
+
 			joinResult=1;
-		}else{
-			System.out.println("??");
-		
+		}else{//중복일 경우
+			System.out.println("중복이라 가입 실패");
+
+			joinResult=0;
 		}
 		return joinResult;
 
@@ -74,14 +74,15 @@ public class MemberDAOImpl implements MemberDAO{
 		try{
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(doLoginSQL);
-			stmt.setString(1, vo.getUEmail());
-			String pw=vo.getUPW();
+			stmt.setString(1, vo.getuEmail());
+			String pw=vo.getuPw();
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
-				if(cnt.getString("uPw")!=null&&cnt.getString("uPw").equals(pw)){
+				if(cnt.getString("pw")!=null&&cnt.getString("pw").equals(pw)){
 					//일치하면
-					vo.setUName(cnt.getString("uName"));
-					vo.setUserId(cnt.getInt("uId"));
+					//회원정보를 가져옴
+					vo.setuName(cnt.getString("nickname"));
+					vo.setUserId(cnt.getInt("userId"));
 					System.out.println("Login had successed ");
 				
 				}else{
@@ -107,17 +108,17 @@ public class MemberDAOImpl implements MemberDAO{
 		try{
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(doIdCheckSQL);
-			stmt.setString(1, vo.getUEmail());
+			stmt.setString(1, vo.getuEmail());
 			
 			
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
 				
-					System.out.println("중복");
+					System.out.println("memberDAOImpl - doIdCheck 중복");
 					result=-1;
 				
 			}else{
-				System.out.println("안중복");
+				System.out.println("memberDAOImpl - doIdCheck 안중복");
 
 				result=1;
 			}
@@ -146,22 +147,13 @@ public class MemberDAOImpl implements MemberDAO{
 		try{
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(doListAllSQL);
-			stmt.setString(1, vo.getUEmail());
+			stmt.setString(1, vo.getuEmail());
 			cnt = stmt.executeQuery();	
 			
 			if(cnt.next()){
 
-				vo.setUEmail(cnt.getString("uEmail"));
-				vo.setUName(cnt.getString("uName"));
-				vo.setUNickname(cnt.getString("uNickname"));
-				vo.setUBirth(cnt.getString("uBirth"));
-				vo.setUSchoolIds(cnt.getString("uSchoolIds"));
-				vo.setUSchoolNum(cnt.getInt("uSkillNum"));
-				vo.setUCareerIds(cnt.getString("uCareerIds"));
-				vo.setUAwardNum(cnt.getInt("uAwardNum"));
-				vo.setUAwardIds(cnt.getString("uAwardIds"));
-				vo.setULanguageNum(cnt.getInt("uLanguageNum"));
-				vo.setULanguageIds(cnt.getString("uLanguageIds"));
+				vo.setuEmail(cnt.getString("email"));
+				vo.setuNickname(cnt.getString("nickname"));
 				//겟 리스트
 				//스쿨,경력 ... 리스트 받아
 			}

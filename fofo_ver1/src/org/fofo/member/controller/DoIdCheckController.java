@@ -22,7 +22,7 @@ public class DoIdCheckController implements Controller {
 		MemberDAOImpl dao = new MemberDAOImpl();
 		Member vo = new Member();
 	
-		vo.setUEmail(request.getParameter("uId"));
+		vo.setuEmail(request.getParameter("uId"));
 		
 		try {
 			result=dao.doIdCheck(vo);
@@ -31,9 +31,7 @@ public class DoIdCheckController implements Controller {
 			e.printStackTrace();
 		}
 
-		if(result==-1){//중복
-			 request.setAttribute("idcheck","error");			 
-		}
+		
 		
 		return returnURL;
 	}

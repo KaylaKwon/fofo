@@ -21,9 +21,9 @@ public class DoJoinController implements Controller {
 		MemberDAOImpl dao = new MemberDAOImpl();
 		Member vo = new Member();
 		
-		vo.setUName(request.getParameter("name"));
-		vo.setUEmail(request.getParameter("email"));
-		vo.setUPW(request.getParameter("pw"));
+		vo.setuName(request.getParameter("name"));
+		vo.setuEmail(request.getParameter("email"));
+		vo.setuPw(request.getParameter("pw"));
 
 		try {
 			result=dao.doJoin(vo);
@@ -31,7 +31,11 @@ public class DoJoinController implements Controller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(result==0){
+		if(result==1){//중복이 아닐 경우
+			request.setAttribute("join", "success");
+			returnURL="/home.jsp";
+		}else{//중복
+			request.setAttribute("join", "error");
 			returnURL="/user/register.jsp";
 		}
 
