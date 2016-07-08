@@ -24,7 +24,7 @@ public class ListAllController implements Controller{
 		Member vo = new Member();
 		HttpSession session=request.getSession();
 		String email=(String) session.getAttribute("email");
-		System.out.println("세션:"+email);
+		System.out.println("현재 세션:"+email);
 		vo.setuEmail(email);
 		
 		try {

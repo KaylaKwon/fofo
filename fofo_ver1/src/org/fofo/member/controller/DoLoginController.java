@@ -31,15 +31,15 @@ public class DoLoginController implements Controller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(vo.getuName()!= null){
-			//세션
+		if(vo.getUserId()!= null){
+			//로그인 성공시 세션
 			HttpSession session = request.getSession();
-			session.setAttribute("name", vo.getuName());
+			session.setAttribute("nickname", vo.getuNickname());
 			session.setAttribute("email", vo.getuEmail());
 			session.setAttribute("uid", vo.getUserId());
 			System.out.println("login!");
 		}else{
-			request.setAttribute("error", "Invalid email or password");
+			request.setAttribute("login", "invalid");
 			returnURL="/user/login.jsp";
 		}
 		return returnURL;

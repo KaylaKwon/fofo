@@ -78,10 +78,11 @@ public class MemberDAOImpl implements MemberDAO{
 			String pw=vo.getuPw();
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
-				if(cnt.getString("uPw")!=null&&cnt.getString("uPw").equals(pw)){
+				if(cnt.getString("pw")!=null&&cnt.getString("pw").equals(pw)){
 					//일치하면
-					vo.setuName(cnt.getString("uName"));
-					vo.setUserId(cnt.getInt("uId"));
+					//회원정보를 가져옴
+					vo.setuName(cnt.getString("nickname"));
+					vo.setUserId(cnt.getInt("userId"));
 					System.out.println("Login had successed ");
 				
 				}else{
@@ -151,10 +152,8 @@ public class MemberDAOImpl implements MemberDAO{
 			
 			if(cnt.next()){
 
-				vo.setuEmail(cnt.getString("uEmail"));
-				vo.setuName(cnt.getString("uName"));
-				vo.setuNickname(cnt.getString("uNickname"));
-				vo.setuBirth(cnt.getString("uBirth"));
+				vo.setuEmail(cnt.getString("email"));
+				vo.setuNickname(cnt.getString("nickname"));
 				//겟 리스트
 				//스쿨,경력 ... 리스트 받아
 			}
