@@ -330,11 +330,11 @@
 			%>  
 			<br>
  			<br>
-					<li align="center"><a href = "http://localhost:8282/user/login.jsp">
+					<li align="center"><a href = "http://localhost:8080/user/login.jsp">
           		<i class = "glyphicon glyphicon-ice-lolly"></i>
           		<span>로그인</span>
           	</a></li>
-          	<li align="center"><a href = "http://localhost:8282/user/register.jsp">
+          	<li align="center"><a href = "http://localhost:8080/user/register.jsp">
           		<i class = "glyphicon glyphicon-user"></i>
           		<span>회원가입</span>
           	</a></li>

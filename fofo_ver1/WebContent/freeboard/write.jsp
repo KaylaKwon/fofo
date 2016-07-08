@@ -32,7 +32,8 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Writer</label>
-						<input name="writer" class="form-control" placeholder="Enter Writer">
+						<input name="writer" class="form-control" placeholder="Enter Writer" readonly="readonly"
+								value=<%=session.getAttribute("nickname")%>>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Content</label>

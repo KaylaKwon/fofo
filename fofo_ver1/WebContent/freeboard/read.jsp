@@ -58,7 +58,7 @@
 		<form class="box-body" role="addcomt">
 			<input type="hidden" name="fPostId" id="fPostId" value="${freepost.fPostId}">
 			<label for="exampleInputEmail1">Writer</label>
-			<input class="form-control" type="text" placeholder="USER ID" name="userId" id="userId">
+			<input class="form-control" type="text" placeholder="USER ID" name="userId" id="userId" readonly="readonly" value="<%=session.getAttribute("nickname")%>">
 			<label for="exampleInputEmail1">Comment Text</label>
 			<input class="form-control" type="text" placeholder="COMMENT TEXT" name="fCommentContent" id="fCommentContent">
 		</form>
