@@ -38,9 +38,9 @@ public class MemberDAOImpl implements MemberDAO{
 			try{
 				conn = JDBCUtil.getConnection();
 				stmt = conn.prepareStatement(doJoinSQL);
-				stmt.setString(1, vo.getUName());
-				stmt.setString(2, vo.getUEmail());
-				stmt.setString(3, vo.getUPW());
+				stmt.setString(1, vo.getuName());
+				stmt.setString(2, vo.getuEmail());
+				stmt.setString(3, vo.getuPw());
 				stmt.setString(4,ft.format(dNow));
 				
 				int cnt = stmt.executeUpdate();	
@@ -74,13 +74,13 @@ public class MemberDAOImpl implements MemberDAO{
 		try{
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(doLoginSQL);
-			stmt.setString(1, vo.getUEmail());
-			String pw=vo.getUPW();
+			stmt.setString(1, vo.getuEmail());
+			String pw=vo.getuPw();
 			ResultSet cnt = stmt.executeQuery();	
 			if(cnt.next()){
 				if(cnt.getString("uPw")!=null&&cnt.getString("uPw").equals(pw)){
 					//일치하면
-					vo.setUName(cnt.getString("uName"));
+					vo.setuName(cnt.getString("uName"));
 					vo.setUserId(cnt.getInt("uId"));
 					System.out.println("Login had successed ");
 				
@@ -107,7 +107,7 @@ public class MemberDAOImpl implements MemberDAO{
 		try{
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(doIdCheckSQL);
-			stmt.setString(1, vo.getUEmail());
+			stmt.setString(1, vo.getuEmail());
 			
 			
 			ResultSet cnt = stmt.executeQuery();	
@@ -146,22 +146,15 @@ public class MemberDAOImpl implements MemberDAO{
 		try{
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(doListAllSQL);
-			stmt.setString(1, vo.getUEmail());
+			stmt.setString(1, vo.getuEmail());
 			cnt = stmt.executeQuery();	
 			
 			if(cnt.next()){
 
-				vo.setUEmail(cnt.getString("uEmail"));
-				vo.setUName(cnt.getString("uName"));
-				vo.setUNickname(cnt.getString("uNickname"));
-				vo.setUBirth(cnt.getString("uBirth"));
-				vo.setUSchoolIds(cnt.getString("uSchoolIds"));
-				vo.setUSchoolNum(cnt.getInt("uSkillNum"));
-				vo.setUCareerIds(cnt.getString("uCareerIds"));
-				vo.setUAwardNum(cnt.getInt("uAwardNum"));
-				vo.setUAwardIds(cnt.getString("uAwardIds"));
-				vo.setULanguageNum(cnt.getInt("uLanguageNum"));
-				vo.setULanguageIds(cnt.getString("uLanguageIds"));
+				vo.setuEmail(cnt.getString("uEmail"));
+				vo.setuName(cnt.getString("uName"));
+				vo.setuNickname(cnt.getString("uNickname"));
+				vo.setuBirth(cnt.getString("uBirth"));
 				//겟 리스트
 				//스쿨,경력 ... 리스트 받아
 			}

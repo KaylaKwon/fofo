@@ -22,8 +22,8 @@ public class DoLoginController implements Controller {
 		MemberDAOImpl dao = new MemberDAOImpl();
 		Member vo = new Member();
 		
-		vo.setUEmail(request.getParameter("email"));
-		vo.setUPW(request.getParameter("pw"));
+		vo.setuEmail(request.getParameter("email"));
+		vo.setuPw(request.getParameter("pw"));
 		
 		try {
 			vo=dao.doLogin(vo);
@@ -31,11 +31,11 @@ public class DoLoginController implements Controller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(vo.getUName()!= null){
+		if(vo.getuName()!= null){
 			//세션
 			HttpSession session = request.getSession();
-			session.setAttribute("name", vo.getUName());
-			session.setAttribute("email", vo.getUEmail());
+			session.setAttribute("name", vo.getuName());
+			session.setAttribute("email", vo.getuEmail());
 			session.setAttribute("uid", vo.getUserId());
 			System.out.println("login!");
 		}else{

@@ -25,13 +25,13 @@ public class ListAllController implements Controller{
 		HttpSession session=request.getSession();
 		String email=(String) session.getAttribute("email");
 		System.out.println("세션:"+email);
-		vo.setUEmail(email);
+		vo.setuEmail(email);
 		
 		try {
 			vo=dao.listAll(vo);
 			request.setAttribute("data", vo);
 			request.setAttribute("a", "wwwww");
-			System.out.println(vo.getUEmail());
+			System.out.println(vo.getuEmail());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

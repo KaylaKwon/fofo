@@ -21,9 +21,9 @@ public class DoJoinController implements Controller {
 		MemberDAOImpl dao = new MemberDAOImpl();
 		Member vo = new Member();
 		
-		vo.setUName(request.getParameter("name"));
-		vo.setUEmail(request.getParameter("email"));
-		vo.setUPW(request.getParameter("pw"));
+		vo.setuName(request.getParameter("name"));
+		vo.setuEmail(request.getParameter("email"));
+		vo.setuPw(request.getParameter("pw"));
 
 		try {
 			result=dao.doJoin(vo);

@@ -23,7 +23,6 @@ public class ProfileDAO {
 	private static String addAwardSQL="INSERT INTO award(userId,institution,awardName,awardDate) VALUES(?,?,?,?)";
 	private static String addLanguageSQL="INSERT INTO mylanguage(userId,languageId,level) VALUES(?, ?, ?)";
 	
-	
 	public ProfileDAO(){
 		 
 	}
@@ -38,8 +37,9 @@ public class ProfileDAO {
 		
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(addSchoolSQL);
-			stmt.setString(1, vo.getUSchoolIds());
-			stmt.setString(2, vo.getUEmail());
+			//stmt.setString(1, vo.getUSchoolIds());
+			//stmt.setString(2, vo.getuEmail());
+			//디비 정리
 			
 			int cnt = stmt.executeUpdate();	
 			
@@ -61,7 +61,7 @@ public class ProfileDAO {
 			
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(addMySchoolSQL);
-			stmt.setInt(1, sVo.getMySchoolId());
+		//	stmt.setInt(1, sVo.getMySchoolId());
 			
 			int cnt = stmt.executeUpdate();	
 			
@@ -92,10 +92,10 @@ public class ProfileDAO {
 		
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(addMySkillSQL);
-			stmt.setInt(1, vo.getUserId());
+		//	stmt.setInt(1, vo.getUserId());
 			stmt.setInt(2, sVo.getSkillId());
-			stmt.setString(3, sVo.getLevel());
-			stmt.setString(4, sVo.getLevelComment());
+			//stmt.setString(3, sVo.getLevel());
+			//stmt.setString(4, sVo.getLevelComment());
 			
 			int cnt = stmt.executeUpdate();	
 			
@@ -126,9 +126,9 @@ public class ProfileDAO {
 			
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(addLanguageSQL);
-			stmt.setInt(1, vo.getUserId());
-			stmt.setInt(2, lVo.getLanguageId());
-			stmt.setString(3, lVo.getLevel());
+		//	stmt.setInt(1, vo.getUserId());
+		//	stmt.setInt(2, lVo.getLanguageId());
+			//stmt.setString(3, lVo.getLevel());
 	
 			int cnt = stmt.executeUpdate();	
 			
@@ -159,11 +159,11 @@ public class ProfileDAO {
 		
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(addMyCareerSQL);
-			stmt.setInt(1, vo.getUserId());
+		//	stmt.setInt(1, vo.getUserId());
 			stmt.setInt(2, cVo.getCareerId());
 			stmt.setString(3, cVo.getPosition());
-			stmt.setString(4, cVo.getStartDate());
-			stmt.setString(5, cVo.getEndDate());
+		//	stmt.setString(4, cVo.getStartDate());
+		//	stmt.setString(5, cVo.getEndDate());
 			
 			int cnt = stmt.executeUpdate();	
 			
@@ -193,10 +193,10 @@ public class ProfileDAO {
 		
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(addAwardSQL);
-			stmt.setInt(1, vo.getUserId());
-			stmt.setString(2, aVo.getInstitution());
-			stmt.setString(3, aVo.getAwardName());
-			stmt.setString(4, aVo.getAwardDate());
+		//	stmt.setInt(1, vo.getUserId());
+		//	stmt.setString(2, aVo.getInstitution());
+		//	stmt.setString(3, aVo.getAwardName());
+		//	stmt.setString(4, aVo.getAwardDate());
 			
 			int cnt = stmt.executeUpdate();	
 			

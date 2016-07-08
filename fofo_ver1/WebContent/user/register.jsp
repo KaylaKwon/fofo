@@ -140,25 +140,7 @@
 	    		  $("#emailcheck").css("color","red");
 	    		  count++;
 		    }   
-		      /* $.ajax({
-				url : "../idCheck.do",
-				type : "post",
-				data : {uId:document.frm["email"].value},
-				success : function(data) {
-					alert(request.getAttribute("idcheck"));
-					if (request.getAttribute("idcheck")!=null) {
-						$("#emailcheck").text("중복");
-						count++;
-					} else {
-						
-						$("#emailcheck").text("안중복");
-						
-					}
-				},
-				error : function(error) {
-					alert(error.statusText);
-				}
-			});  */
+		      
     	  if(count!=0){
     		  return false;
     	  }else{
