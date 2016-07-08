@@ -65,7 +65,7 @@ public class HandlerMapping {
 		mappings.put("/loadProjectList.do", new LoadProjectListController());
 		mappings.put("/project.do", new GetProjectEditorController());
 		mappings.put("/loadProjectContent.do", new LoadProjectContentController());
-		mappings.put("/updateThisProject.do", new UpdateThisProjectController());
+	//	mappings.put("/updateThisProject.do", new UpdateThisProjectController());
 //		mappings.put("/addProjectList.do", new AddProjectController());
 		
 		

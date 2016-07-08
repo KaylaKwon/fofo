@@ -63,7 +63,7 @@ public class MessageDAO {
 		}finally{
 			JDBCUtil.close(rst, stmt, conn);
 		}
-		System.out.println(""+message.getSuserId()+"¿ÍÀÇ ¸Þ½ÃÁöºÒ·¯¿À±â ¼º°ø");
+		System.out.println(""+message.getSuserId()+"ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		return list;
 	}
 		
@@ -90,7 +90,7 @@ public class MessageDAO {
 		}finally{
 			JDBCUtil.close(rst, stmt, conn);
 		}
-		//System.out.println("¸®½ºÆ®Á¤º¸ : " + list);
+		//System.out.println("ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ : " + list);
 		return list;
 		
 	}
@@ -115,6 +115,8 @@ public class MessageDAO {
 			JDBCUtil.close(stmt, conn);
 		}
 	}
+	
+
 	
 	public MessageDAO() {
 		// TODO Auto-generated constructor stub
